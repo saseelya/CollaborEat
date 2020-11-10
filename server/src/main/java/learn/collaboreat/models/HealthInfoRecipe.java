@@ -1,7 +1,5 @@
 package learn.collaboreat.models;
 
-import javax.validation.constraints.NotBlank;
-
 public class HealthInfoRecipe {
 
     private int healthInfoId;

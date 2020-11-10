@@ -1,6 +1,7 @@
 package learn.collaboreat.models;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,16 +17,16 @@ public class Recipe {
     private String recipeDescription;
     @NotBlank(message = "Recipe ingredients are required.")
     private String recipeIngredients;
-    @NotBlank(message = "Recipe cook time is required.")
+    @PositiveOrZero(message = "Recipe Cook Time must be zero or positive.")
     private int recipeCookTime;
     @NotBlank(message = "Recipe steps are required.")
     private String recipeSteps;
-    @NotBlank(message = "Recipe date is required.")
     private LocalDate recipeDate;
+    @PositiveOrZero(message = "Recipe Rating must be zero or positive.")
     private double recipeRating;
-    @NotBlank(message = "User Id is required.")
+    @PositiveOrZero(message = "User ID must be zero or positive.")
     private int userId; // foreign key
-    @NotBlank(message = "Meal Type Id is required.")
+    @PositiveOrZero(message = "Meal Type ID must be zero or positive.")
     private int mealTypeId; //foreign key
     private List<HealthInfoRecipe> healthInfo = new ArrayList<>();
 
