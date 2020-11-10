@@ -22,10 +22,6 @@ public class RecipeTest {
         recipe.setRecipeRating(-2);
         recipe.setRecipeCookTime(-2);
 
-//        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-//        Validator validator = factory.getValidator();
-//        Set<ConstraintViolation<Recipe>> violations = validator.validate(recipe);
-
         Set<ConstraintViolation<Recipe>> violations = getViolations(recipe);
         assertEquals(9, violations.size());
     }
