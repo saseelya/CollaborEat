@@ -24,11 +24,12 @@ USE `collaboreat-schema-test` ;
 -- Table `collaboreat-schema-test`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`user` (
-  `userId` INT NOT NULL,
-  `username` VARCHAR(45) NOT NULL,
+  `userId` INT NOT NULL auto_increment,
+  `firstName` VARCHAR(45) NOT NULL,
+  `lastName` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`userId`),
-  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
 
@@ -37,7 +38,7 @@ ENGINE = InnoDB;
 -- Table `collaboreat-schema-test`.`mealType`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`mealType` (
-  `mealTypeId` INT NOT NULL,
+  `mealTypeId` INT NOT NULL auto_increment,
   `mealTypeName` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`mealTypeId`),
   UNIQUE INDEX `mealTypeName_UNIQUE` (`mealTypeName` ASC) VISIBLE)
@@ -48,7 +49,7 @@ ENGINE = InnoDB;
 -- Table `collaboreat-schema-test`.`recipe`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`recipe` (
-  `recipeId` INT NOT NULL,
+  `recipeId` INT NOT NULL auto_increment,
   `recipeName` VARCHAR(45) NOT NULL,
   `recipeStory` VARCHAR(2048) NOT NULL,
   `recipeDescription` VARCHAR(1024) NOT NULL,
@@ -79,7 +80,7 @@ ENGINE = InnoDB;
 -- Table `collaboreat-schema-test`.`healthInfo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`healthInfo` (
-  `healthInfoId` INT NOT NULL,
+  `healthInfoId` INT NOT NULL auto_increment,
   `healthInfoName` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`healthInfoId`))
 ENGINE = InnoDB;
@@ -89,7 +90,7 @@ ENGINE = InnoDB;
 -- Table `collaboreat-schema-test`.`feedback`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`feedback` (
-  `feedbackId` INT NOT NULL,
+  `feedbackId` INT NOT NULL auto_increment,
   `feedbackComment` VARCHAR(1024) NOT NULL,
   `feedbackRating` INT NOT NULL,
   `userId` INT NOT NULL,
