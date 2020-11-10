@@ -101,8 +101,8 @@ public class FeedbackTest {
         feedback.setFeedbackId(1);
         feedback.setFeedbackComment("This is a test feedback");
         feedback.setFeedbackRating(3);
-        feedback.setUser(new User());
-        feedback.setRecipe(new Recipe());
+        feedback.setUserId(1);
+        feedback.setRecipeId(1);
         return feedback;
     }
 }

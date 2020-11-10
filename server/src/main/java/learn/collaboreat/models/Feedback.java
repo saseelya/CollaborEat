@@ -14,13 +14,13 @@ public class Feedback {
 
     @Min(value = 1, message = "Rating must be between 1 and 5.")
     @Max(value = 5, message = "Rating must be between 1 and 5.")
-    private int feedbackRating;
+    private double feedbackRating;
 
-    @NotNull(message = "Recipe is required to add feedback.")
-    private Recipe recipe;
+    @Positive(message = "Recipe ID must be greater than zero.")
+    private int recipeId;
 
-    @NotNull(message = "User is required to add feedback.")
-    private User user;
+    @Positive(message = "User ID must be greater than zero.")
+    private int userId;
 
     public int getFeedbackId() {
         return feedbackId;
@@ -38,7 +38,7 @@ public class Feedback {
         this.feedbackComment = feedbackComment;
     }
 
-    public int getFeedbackRating() {
+    public double getFeedbackRating() {
         return feedbackRating;
     }
 
@@ -46,20 +46,20 @@ public class Feedback {
         this.feedbackRating = feedbackRating;
     }
 
-    public Recipe getRecipe() {
-        return recipe;
+    public int getRecipeId() {
+        return recipeId;
     }
 
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
     }
 
-    public User getUser() {
-        return user;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -69,13 +69,13 @@ public class Feedback {
         Feedback feedback = (Feedback) o;
         return feedbackId == feedback.feedbackId &&
                 feedbackRating == feedback.feedbackRating &&
-                Objects.equals(feedbackComment, feedback.feedbackComment) &&
-                Objects.equals(recipe, feedback.recipe) &&
-                Objects.equals(user, feedback.user);
+                recipeId == feedback.recipeId &&
+                userId == feedback.userId &&
+                Objects.equals(feedbackComment, feedback.feedbackComment);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackId, feedbackComment, feedbackRating, recipe, user);
+        return Objects.hash(feedbackId, feedbackComment, feedbackRating, recipeId, userId);
     }
 }

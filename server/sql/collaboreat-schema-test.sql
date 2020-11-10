@@ -131,7 +131,66 @@ CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`recipeHealthInfo` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+delimiter //
+create procedure set_known_good_state()
+begin
+	delete from `collaboreat-schema-test`.`user`;
+    alter table `collaboreat-schema-test`.`user` auto_increment = 1;
+    delete from `collaboreat-schema-test`.`mealType`;
+    alter table `collaboreat-schema-test`.`mealType` auto_increment = 1;
+    delete from `collaboreat-schema-test`.`recipe`;
+    alter table `collaboreat-schema-test`.`recipe` auto_increment = 1;
+    delete from `collaboreat-schema-test`.`healthInfo`;
+    alter table `collaboreat-schema-test`.`healthInfo` auto_increment = 1;
+    delete from `collaboreat-schema-test`.`feedback`;
+    alter table `collaboreat-schema-test`.`feedback` auto_increment = 1;
+    delete from `collaboreat-schema-test`.`recipeHealthInfo`;
+    
+
+	insert into `collaboreat-schema-test`.`user`(`firstName`, `lastName`, `email`, `password`)
+		values 
+			('Dingo', 'Nevada', 'fakeEmail@fakie.com', 'password'),
+            ('Cece', 'Slitty', 'bigFake@fake.com', 'password');
+            
+	insert into `collaboreat-schema-test`.`mealType`(`mealTypeName`)
+		values
+			('Breakfast'),
+            ('Dinner');
+            
+	insert into `collaboreat-schema-test`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
+		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`)
+        values 
+			('The Sauce','The Story', 'The Description', 'Milk, Butter, Flour', 15, 'mix the stuff, heat it up', 
+				'2020-10-20', 0, 1, 1),
+			('The Not Sauce', 'Another Story', 'Another Description', 'Not Milk, Not Butter', 10, 'do nothing, drink alc',
+				'2020-10-15', 0, 2, 2);
+                
+	insert into `collaboreat-schema-test`.`healthInfo`(`healthInfoName`)
+		values
+			('Gluten Free'),
+            ('Sugar Free');
+            
+	insert into `collaboreat-schema-test`.`feedback`(`feedbackComment`, `feedbackRating`, `userId`, `recipeId`)
+		values
+			('This is bad', 1, 2, 1),
+            ('This is good', 5, 1, 2);
+       
+   insert into `collaboreat-schema-test`.`recipeHealthInfo`(`healthInfoId`, `recipeId`)
+		values
+			(2, 1),
+            (1, 2);
+            
+end //
+delimiter ;
+
+SET SQL_SAFE_UPDATES = 0;
+call set_known_good_state();
+SET SQL_SAFE_UPDATES = 1;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+
+
