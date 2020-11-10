@@ -2,6 +2,8 @@ package learn.collaboreat.models;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Recipe {
 
@@ -20,7 +22,20 @@ public class Recipe {
     private String recipeSteps;
     @NotBlank(message = "Recipe date is required.")
     private LocalDate recipeDate;
-    private int recipeRating;
+    private double recipeRating;
+    @NotBlank(message = "User Id is required.")
+    private int userId; // foreign key
+    @NotBlank(message = "Meal Type Id is required.")
+    private int mealTypeId; //foreign key
+    private List<HealthInfoRecipe> healthInfo = new ArrayList<>();
+
+    public List<HealthInfoRecipe> getHealthInfo() {
+        return healthInfo;
+    }
+
+    public void setHealthInfo(List<HealthInfoRecipe> healthInfo) {
+        this.healthInfo = healthInfo;
+    }
 
     public int getRecipeId() {
         return recipeId;
@@ -82,15 +97,15 @@ public class Recipe {
         return recipeDate;
     }
 
-    public void setRecipeDate() {
-        this.recipeDate = LocalDate.now();
+    public void setRecipeDate(LocalDate recipeDate) {
+        this.recipeDate = recipeDate;
     }
 
-    public int getRecipeRating() {
+    public double getRecipeRating() {
         return recipeRating;
     }
 
-    public void setRecipeRating(int recipeRating) {
+    public void setRecipeRating(double recipeRating) {
         this.recipeRating = recipeRating;
     }
 
@@ -110,12 +125,6 @@ public class Recipe {
         this.mealTypeId = mealTypeId;
     }
 
-    @NotBlank(message = "User Id is required.")
-    private int userId; // foreign key
-    @NotBlank(message = "Meal Type Id is required.")
-    private int mealTypeId; //foreign key
-
-    // TODO: list of type HealthInfoRecipe
 
 
 
