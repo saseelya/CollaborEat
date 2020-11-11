@@ -46,7 +46,7 @@ public class HealthInfoJDBCTemplateRepository implements HealthInfoRepository {
             return null;
         }
 
-        final String sql = "insert into healthInfoId (`healthInfoName`) values (?);";
+        final String sql = "insert into healthInfo (`healthInfoName`) values (?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
