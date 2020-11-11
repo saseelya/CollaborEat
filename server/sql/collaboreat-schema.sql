@@ -131,17 +131,18 @@ CREATE TABLE IF NOT EXISTS `collaboreat-schema`.`recipeHealthInfo` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-insert into `collaboreat-schema-test`.`user`(`firstName`, `lastName`, `email`, `password`)
+
+insert into `collaboreat-schema`.`user`(`firstName`, `lastName`, `email`, `password`)
 		values 
 			('Dingo', 'Nevada', 'fakeEmail@fakie.com', 'password'),
             ('Cece', 'Slitty', 'bigFake@fake.com', 'password');
             
-insert into `collaboreat-schema-test`.`mealType`(`mealTypeName`)
+insert into `collaboreat-schema`.`mealType`(`mealTypeName`)
 		values
 			('Breakfast'),
             ('Dinner');
             
-insert into `collaboreat-schema-test`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
+insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
 		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`)
         values 
 			('The Sauce','The Story', 'The Description', 'Milk, Butter, Flour', 15, 'mix the stuff, heat it up', 
@@ -149,21 +150,21 @@ insert into `collaboreat-schema-test`.`recipe`(`recipeName`, `recipeStory`, `rec
 			('The Not Sauce', 'Another Story', 'Another Description', 'Not Milk, Not Butter', 10, 'do nothing, drink alc',
 				'2020-10-15', 0, 2, 2);
                 
-insert into `collaboreat-schema-test`.`healthInfo`(`healthInfoName`)
+insert into `collaboreat-schema`.`healthInfo`(`healthInfoName`)
 		values
 			('Gluten Free'),
             ('Sugar Free');
             
-insert into `collaboreat-schema-test`.`feedback`(`feedbackComment`, `feedbackRating`, `userId`, `recipeId`)
+insert into `collaboreat-schema`.`feedback`(`feedbackComment`, `feedbackRating`, `userId`, `recipeId`)
 		values
 			('This is bad', 1, 2, 1),
             ('This is good', 5, 1, 2);
        
-insert into `collaboreat-schema-test`.`recipeHealthInfo`(`healthInfoId`, `recipeId`)
+insert into `collaboreat-schema`.`recipeHealthInfo`(`healthInfoId`, `recipeId`)
 		values
 			(2, 1),
             (1, 2);
-            
+  
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
