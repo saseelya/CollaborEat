@@ -121,7 +121,9 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
     @Override
     public boolean deleteById(int recipeId) {
         jdbcTemplate.update("delete from recipeHealthInfo where recipeId = ?;", recipeId);
+        jdbcTemplate.update("delete from feedback where recipeId = ?;", recipeId);
         return jdbcTemplate.update("delete from recipe where recipeId = ?;", recipeId) > 0;
+
     }
 
 
