@@ -134,19 +134,18 @@ ENGINE = InnoDB;
 delimiter //
 create procedure set_known_good_state()
 begin
-	delete from `collaboreat-schema-test`.`user`;
-    alter table `collaboreat-schema-test`.`user` auto_increment = 1;
-    delete from `collaboreat-schema-test`.`mealType`;
-    alter table `collaboreat-schema-test`.`mealType` auto_increment = 1;
-    delete from `collaboreat-schema-test`.`recipe`;
-    alter table `collaboreat-schema-test`.`recipe` auto_increment = 1;
+	delete from `collaboreat-schema-test`.`feedback`;
+    alter table `collaboreat-schema-test`.`feedback` auto_increment = 1;
+	delete from `collaboreat-schema-test`.`recipeHealthInfo`;
     delete from `collaboreat-schema-test`.`healthInfo`;
     alter table `collaboreat-schema-test`.`healthInfo` auto_increment = 1;
-    delete from `collaboreat-schema-test`.`feedback`;
-    alter table `collaboreat-schema-test`.`feedback` auto_increment = 1;
-    delete from `collaboreat-schema-test`.`recipeHealthInfo`;
+    delete from `collaboreat-schema-test`.`recipe`;
+    alter table `collaboreat-schema-test`.`recipe` auto_increment = 1;
+    delete from `collaboreat-schema-test`.`mealType`;
+    alter table `collaboreat-schema-test`.`mealType` auto_increment = 1;
+	delete from `collaboreat-schema-test`.`user`;
+    alter table `collaboreat-schema-test`.`user` auto_increment = 1;
     
-
 	insert into `collaboreat-schema-test`.`user`(`firstName`, `lastName`, `email`, `password`)
 		values 
 			('Dingo', 'Nevada', 'fakeEmail@fakie.com', 'password'),
