@@ -3,9 +3,11 @@ package learn.collaboreat.data;
 import learn.collaboreat.data.mappers.RecipeHealthInfoMapper;
 import learn.collaboreat.models.RecipeHealthInfo;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class RecipeHealthInfoJDBCTemplateRepository implements RecipeHealthInfoRepository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -16,10 +18,10 @@ public class RecipeHealthInfoJDBCTemplateRepository implements RecipeHealthInfoR
 
     @Override
     public List<RecipeHealthInfo> findAll() {
-        final String sql = "select aa.recipeId, aa.healthInfoId" +
+        final String sql = "select rhi.recipeId, rhi.healthInfoId, h.healthInfoName " +
                 "from recipeHealthInfo rhi " +
-                "join recipe r on r.recipeId = rhi.recipeId " +
-                "join healthInfo h on h.healthInfoId = h.healthInfoId;";
+                "join recipe r on rhi.recipeId = r.recipeId " +
+                "join healthInfo h on rhi.healthInfoId = h.healthInfoId;";
         return jdbcTemplate.query(sql, new RecipeHealthInfoMapper());
     }
 
@@ -30,7 +32,7 @@ public class RecipeHealthInfoJDBCTemplateRepository implements RecipeHealthInfoR
 
         return jdbcTemplate.update(sql,
                 recipeHealthInfo.getRecipeId(),
-                recipeHealthInfo.getHealthInfo()) > 0;
+                recipeHealthInfo.getHealthInfo().getHealthInfoId()) > 0;
     }
 
     @Override
