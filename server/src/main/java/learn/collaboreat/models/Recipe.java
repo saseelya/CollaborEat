@@ -28,13 +28,13 @@ public class Recipe {
     private int userId; // foreign key
     @PositiveOrZero(message = "Meal Type ID must be zero or positive.")
     private int mealTypeId; //foreign key
-    private List<HealthInfoRecipe> healthInfo = new ArrayList<>();
+    private List<RecipeHealthInfo> healthInfo = new ArrayList<>();
 
-    public List<HealthInfoRecipe> getHealthInfo() {
+    public List<RecipeHealthInfo> getHealthInfo() {
         return healthInfo;
     }
 
-    public void setHealthInfo(List<HealthInfoRecipe> healthInfo) {
+    public void setHealthInfo(List<RecipeHealthInfo> healthInfo) {
         this.healthInfo = healthInfo;
     }
 

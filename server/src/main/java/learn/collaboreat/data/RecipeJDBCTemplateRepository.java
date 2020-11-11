@@ -2,10 +2,12 @@ package learn.collaboreat.data;
 
 import learn.collaboreat.data.mappers.HealthInfoMapper;
 import learn.collaboreat.data.mappers.HealthInfoRecipeMapper;
+import learn.collaboreat.data.mappers.RecipeHealthInfoMapper;
 import learn.collaboreat.data.mappers.RecipeMapper;
 import learn.collaboreat.models.HealthInfo;
 import learn.collaboreat.models.HealthInfoRecipe;
 import learn.collaboreat.models.Recipe;
+import learn.collaboreat.models.RecipeHealthInfo;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -125,11 +127,13 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
 
     private void addHealthInfo(Recipe recipe) {
 
-        final String sql = "select rhi.healthInfoId, rhi.recipeId "
-                + "from recipeHealthInfo rhi  "
+        final String sql = "select rhi.healthInfoId, rhi.recipeId, "
+                + "hi.healthInfoId, hi.healthInfoName "
+                + "from recipeHealthInfo rhi "
+                + "inner join healthInfo hi on rhi.healthInfoId = hi.healthInfoId "
                 + "where rhi.recipeId = ?;";
 
-        List<HealthInfoRecipe> healthInfo = jdbcTemplate.query(sql, new HealthInfoRecipeMapper(), recipe.getRecipeId());
+        List<RecipeHealthInfo> healthInfo = jdbcTemplate.query(sql, new RecipeHealthInfoMapper(), recipe.getRecipeId());
         recipe.setHealthInfo(healthInfo);
 
     }
