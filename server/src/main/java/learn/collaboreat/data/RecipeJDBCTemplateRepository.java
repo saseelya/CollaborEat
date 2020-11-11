@@ -1,6 +1,7 @@
 package learn.collaboreat.data;
 
 import learn.collaboreat.data.mappers.HealthInfoMapper;
+import learn.collaboreat.data.mappers.HealthInfoRecipeMapper;
 import learn.collaboreat.data.mappers.RecipeMapper;
 import learn.collaboreat.models.HealthInfo;
 import learn.collaboreat.models.HealthInfoRecipe;
@@ -47,7 +48,9 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
         Recipe recipe = jdbcTemplate.query(recipeSql, new RecipeMapper(), recipeId).stream()
                 .findFirst().orElse(null);
 
-        // TODO: Add list of healthInfoRecipe with helper method
+        if (recipe != null){
+            addHealthInfo(recipe);
+        }
         return recipe;
     }
 
@@ -120,14 +123,14 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
     }
 
 
-//    private void addHealthInfo(Recipe recipe) {
-//
-//        final String sql = "select rhi.healthInfoId, rhi.recipeId "
-//                + "from recipeHealthInfo rhi  "
-//                + "where rhi.recipeId = ?;";
-//
-//        List<HealthInfoRecipe> healthInfo = jdbcTemplate.query(sql, new HealthInfoRecipe(), recipe.getRecipeId());
-//        recipe.setHealthInfo(healthInfo);
-//
-//    }
+    private void addHealthInfo(Recipe recipe) {
+
+        final String sql = "select rhi.healthInfoId, rhi.recipeId "
+                + "from recipeHealthInfo rhi  "
+                + "where rhi.recipeId = ?;";
+
+        List<HealthInfoRecipe> healthInfo = jdbcTemplate.query(sql, new HealthInfoRecipeMapper(), recipe.getRecipeId());
+        recipe.setHealthInfo(healthInfo);
+
+    }
 }
