@@ -44,6 +44,12 @@ class RecipeHealthInfoJDBCTemplateRepositoryTest {
         }
     }
 
+    @Test
+    void shouldDelete() {
+        assertTrue(repository.deleteByKey(2, 1));
+        assertFalse(repository.deleteByKey(2,1));
+    }
+
     RecipeHealthInfo makeRecipeHealthInfo() {
         RecipeHealthInfo rhi = new RecipeHealthInfo();
         rhi.setRecipeId(1);
