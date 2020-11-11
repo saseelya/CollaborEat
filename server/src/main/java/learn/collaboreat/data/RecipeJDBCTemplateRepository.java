@@ -16,7 +16,7 @@ import java.sql.Statement;
 import java.util.List;
 
 @Repository
-public class RecipeJDBCTemplateRepository {
+public class RecipeJDBCTemplateRepository implements RecipeRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -24,6 +24,7 @@ public class RecipeJDBCTemplateRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
     public List<Recipe> findAll() {
         final String sql =
                 "select recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, " +
@@ -34,6 +35,7 @@ public class RecipeJDBCTemplateRepository {
         return jdbcTemplate.query(sql, recipeMapper);
     }
 
+    @Override
     public Recipe findById(int recipeId) {
         final String recipeSql =
                 "select recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, " +
@@ -49,6 +51,7 @@ public class RecipeJDBCTemplateRepository {
         return recipe;
     }
 
+    @Override
     public Recipe add(Recipe recipe) {
         final String sql = "insert into recipe " +
                 "(recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, " +
@@ -80,6 +83,7 @@ public class RecipeJDBCTemplateRepository {
         return recipe;
     }
 
+    @Override
     public boolean update(Recipe recipe) {
         final String sql = "update recipe set " +
                 "recipeName = ?, " +
@@ -109,6 +113,7 @@ public class RecipeJDBCTemplateRepository {
                 recipe.getRecipeId()) > 0;
     }
 
+    @Override
     public boolean deleteById(int recipeId) {
         jdbcTemplate.update("delete from recipeHealthInfo where recipeId = ?;", recipeId);
         return jdbcTemplate.update("delete from recipe where recipeId = ?;", recipeId) > 0;
