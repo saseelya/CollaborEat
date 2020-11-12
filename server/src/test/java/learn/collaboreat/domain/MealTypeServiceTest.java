@@ -27,12 +27,33 @@ class MealTypeServiceTest {
         assertEquals(mealType, actual);
     }
 
+    @Test
+    void shouldAdd() {
+        MealType mealType = makeMealType();
+        mealType.setMealTypeId(0);
+        MealType mockOut = makeMealType();
 
+        when(repository.add(mealType)).thenReturn(mockOut);
 
+        Result<MealType> actual = service.add(mealType);
+        assertEquals(ResultType.SUCCESS, actual.getType());
+        assertEquals(mockOut, actual.getPayload());
+    }
 
+    @Test
+    void shouldNotAddInvalid() {
+        MealType nullMeal = null;
+        when(repository.add(nullMeal)).thenReturn(null);
 
+        Result<MealType> actual = service.add(nullMeal);
+        assertEquals(ResultType.INVALID, actual.getType());
 
+        MealType mealType = makeMealType();
+        when(repository.add(mealType)).thenReturn(mealType);
 
+        Result<MealType> actual2 = service.add(mealType);
+        assertEquals(ResultType.INVALID, actual.getType());
+    }
 
     MealType makeMealType() {
         MealType mealType = new MealType();
