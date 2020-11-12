@@ -44,8 +44,11 @@ public class FeedbackController {
         return ErrorResponse.build(result);
     }
 
-    @PutMapping
-    public ResponseEntity<Object> update(@RequestBody Feedback feedback) {
+    @PutMapping("/{feedbackId}")
+    public ResponseEntity<Object> update(@PathVariable int feedBackId, @RequestBody Feedback feedback) {
+        if (feedBackId != feedback.getFeedbackId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         Result<Feedback> result = service.update(feedback);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
