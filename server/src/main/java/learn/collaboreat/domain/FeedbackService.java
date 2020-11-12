@@ -1,6 +1,7 @@
 package learn.collaboreat.domain;
 
 import learn.collaboreat.data.FeedbackJDBCTemplateRepository;
+import learn.collaboreat.data.FeedbackRepository;
 import learn.collaboreat.models.Feedback;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,9 @@ import java.util.List;
 @Service
 public class FeedbackService {
 
-    private FeedbackJDBCTemplateRepository repository;
+    private final FeedbackRepository repository;
 
-    public FeedbackService(FeedbackJDBCTemplateRepository repository) {
+    public FeedbackService(FeedbackRepository repository) {
         this.repository = repository;
     }
 

@@ -10,10 +10,8 @@ public interface RecipeRepository {
 
     List<Recipe> findAll();
 
-    @Transactional
     Recipe findById(int recipeId);
 
-    @Transactional
     Recipe add(Recipe recipe);
 
     boolean update(Recipe recipe);

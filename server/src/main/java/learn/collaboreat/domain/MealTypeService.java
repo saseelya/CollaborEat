@@ -1,6 +1,7 @@
 package learn.collaboreat.domain;
 
 import learn.collaboreat.data.MealTypeJDBCTemplateRepository;
+import learn.collaboreat.data.MealTypeRepository;
 import learn.collaboreat.models.MealType;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,9 @@ import java.util.List;
 @Service
 public class MealTypeService {
 
-    private final MealTypeJDBCTemplateRepository repository;
+    private final MealTypeRepository repository;
 
-    public MealTypeService(MealTypeJDBCTemplateRepository repository) {
+    public MealTypeService(MealTypeRepository repository) {
         this.repository = repository;
     }
 

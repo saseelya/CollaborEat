@@ -24,9 +24,8 @@ public class RecipeServiceTest {
     RecipeService service;
 
     @MockBean
-   // RecipeJDBCTemplateRepository recipeRepository;
     RecipeRepository recipeRepository;
-    // TODO: Unable to use interface, so it's mocking the JDBC Rep for now
+
 
     @Test
     void shouldAddValidRecipe() {

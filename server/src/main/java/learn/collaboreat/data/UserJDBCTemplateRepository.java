@@ -21,7 +21,7 @@ public class UserJDBCTemplateRepository implements UserRepository{
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    private RecipeJDBCTemplateRepository recipeRepository;
+    private RecipeRepository recipeRepository;
 
     public UserJDBCTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

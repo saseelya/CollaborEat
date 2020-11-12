@@ -20,7 +20,7 @@ class UserJDBCTemplateRepositoryTest {
     UserJDBCTemplateRepository repository;
 
     @Autowired
-    RecipeJDBCTemplateRepository recipeRepository;
+    RecipeRepository recipeRepository;
 
     @Autowired
     KnownGoodState knownGoodState;

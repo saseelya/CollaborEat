@@ -40,7 +40,6 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
     }
 
     @Override
-    @Transactional
     public Recipe findById(int recipeId) {
         final String recipeSql =
                 "select recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, " +
@@ -59,7 +58,6 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
     }
 
     @Override
-    @Transactional
     public Recipe add(Recipe recipe) {
         final String sql = "insert into recipe " +
                 "(recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, " +

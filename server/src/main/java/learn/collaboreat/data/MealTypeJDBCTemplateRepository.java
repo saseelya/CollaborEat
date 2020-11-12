@@ -14,7 +14,7 @@ import java.util.List;
 @Repository
 public class MealTypeJDBCTemplateRepository implements MealTypeRepository{
 
-    private final JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
 
     public MealTypeJDBCTemplateRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

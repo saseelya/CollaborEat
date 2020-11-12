@@ -71,7 +71,6 @@ public class MealTypeTest {
         assertTrue(violations.isEmpty());
     }
 
-
     MealType makeMealType() {
         MealType mealType = new MealType();
         mealType.setMealTypeId(1);
