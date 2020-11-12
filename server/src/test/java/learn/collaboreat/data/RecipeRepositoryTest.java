@@ -67,6 +67,11 @@ public class RecipeRepositoryTest {
     void shouldDeleteRecipe() {
         repository.deleteById(2);
         assertEquals(1, repository.findAll().size());
+    }
+
+    @Test
+    void shouldUpdateTheSauce() {
+        Recipe recipe = repository.findById(1);
 
     }
 
