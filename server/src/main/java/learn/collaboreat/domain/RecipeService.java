@@ -17,7 +17,6 @@ public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final RecipeHealthInfoRepository rhiRepository;
 
-    @Autowired
     private Validator validator;
 
     public RecipeService(RecipeRepository recipeRepository, RecipeHealthInfoRepository rhiRepository) {

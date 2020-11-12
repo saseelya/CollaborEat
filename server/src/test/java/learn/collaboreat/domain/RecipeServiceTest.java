@@ -1,5 +1,6 @@
 package learn.collaboreat.domain;
 
+import learn.collaboreat.data.RecipeHealthInfoRepository;
 import learn.collaboreat.data.RecipeJDBCTemplateRepository;
 import learn.collaboreat.data.RecipeRepository;
 import learn.collaboreat.models.Recipe;
@@ -23,7 +24,8 @@ public class RecipeServiceTest {
     RecipeService service;
 
     @MockBean
-    RecipeJDBCTemplateRepository recipeRepository;
+   // RecipeJDBCTemplateRepository recipeRepository;
+    RecipeRepository recipeRepository;
     // TODO: Unable to use interface, so it's mocking the JDBC Rep for now
 
     @Test
