@@ -17,8 +17,6 @@ public class RecipeService {
     private final RecipeRepository recipeRepository;
     private final RecipeHealthInfoRepository rhiRepository;
 
-    private Validator validator;
-
     public RecipeService(RecipeRepository recipeRepository, RecipeHealthInfoRepository rhiRepository) {
         this.recipeRepository = recipeRepository;
         this.rhiRepository = rhiRepository;
