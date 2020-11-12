@@ -20,7 +20,6 @@ public class FeedbackJDBCTemplateRepository implements FeedbackRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     @Override
     public List<Feedback> findAll() {
         final String sql = "select feedbackId, feedbackComment, feedbackRating, recipeId, userId " +

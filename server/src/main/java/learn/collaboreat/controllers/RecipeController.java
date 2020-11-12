@@ -13,7 +13,7 @@ import java.util.List;
 @CrossOrigin(origins = {"localhost:3000"})
 @RequestMapping("/recipe")
 public class RecipeController {
-    //Hey
+
     private final RecipeService service;
 
     public RecipeController(RecipeService service) {
