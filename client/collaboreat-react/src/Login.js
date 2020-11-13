@@ -1,25 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
-export default function Login({ auth }) {
-    const [username, setUsername] = userState('');
+import AuthContext from './components/AuthContext';
+
+export default function Login() {
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState([]);
+    const auth = useContext(AuthContext);
+    const history = useHistory();
     
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const token = "notatoken";
-        
-        auth.login();
-        history.pushState('/');
+
+        const response = await fetch('http://localhost:8080/user/authenticate', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        });
+
+        if (response.satus === 200) {
+            const { jwt_token } = await response.json();
+
+            auth.login(jwt_token);
+
+            history.push('/')
+        } else if (response.status === 403) {
+            setErrors(['Login failed.']);
+        } else {
+            setErrors(['Unknown error.']);
+        }
     };
 
     return (
         <div>
             <h2>Login</h2>
-
+            {/* <Errors errors={errors} /> */}
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Username:</label>
+                    <label>Email:</label>
                     <input type="text" onChange={(event) => setUsername(event.target.value)} />
                 </div>
                 <div>

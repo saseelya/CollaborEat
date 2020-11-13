@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
 
 import HealthInfo from './HealthInfo';
 import Feedback from './FeedBack';
@@ -12,6 +13,8 @@ import User from './User';
 import MealType from './MealType';
 import Recipe from './Recipe';
 import ViewRecipe from './components/ViewRecipe';
+import AuthContext from './components/AuthContext';
+import Login from './Login';
 
 function About() {
   return <h1>About</h1>;
@@ -35,7 +38,41 @@ function EditRecipe() {
 
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  const login = (token) => {
+    const { appUserId, sub: authorities } = jwt_decode(token);
+
+    const roles = authorities.split(',');
+  
+    const user = {
+      appUserId: parseInt(appUserId, 10),
+      roles,
+      token,
+      hasRole(role) {
+        return this.roles.includes(role);
+      }
+    };
+  
+    console.log(user);
+
+    setUser(user);
+
+    return user;
+  };
+
+  const logout = () => {
+    setUser(null);
+  };
+
+  const auth = {
+    user,
+    login,
+    logout
+  };
+
   return (
+    <AuthContext.Provider value={auth}>
     <Router>
       <div>
         <nav>
@@ -62,7 +99,10 @@ function App() {
               <Link to="/recipe">Recipe</Link>
             </li>
             <li>
-              <Link to="/recipe/1">View Recipe</Link>
+              <Link to="/recipe">View Recipe</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
         </nav>
@@ -85,11 +125,14 @@ function App() {
           <Route path="/mealType">
             <MealType />
           </Route>
-          <Route path="/recipe/1">
-            <ViewRecipe displayText="View Recipe" />
+          <Route path="/recipe/:id">
+            <ViewRecipe />
           </Route>
           <Route exact path="/recipe">
             <Recipe />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route exact path="/">
             <h1>Home Page</h1>
@@ -100,6 +143,7 @@ function App() {
         </Switch>
       </div>
     </Router>
+    </AuthContext.Provider>
   );
 }
 export default App;
