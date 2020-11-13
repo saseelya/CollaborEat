@@ -10,6 +10,7 @@ import HealthInfo from './HealthInfo';
 import Feedback from './FeedBack';
 import User from './User';
 import MealType from './MealType';
+import Recipe from './Recipe';
 
 function About() {
   return <h1>About</h1>;
@@ -55,6 +56,9 @@ function App() {
             <li>
               <Link to="/mealType">Meal Type</Link>
             </li>
+            <li>
+              <Link to="/recipe">Recipe</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
@@ -76,6 +80,9 @@ function App() {
           <Route path="/mealType">
             <MealType />
           </Route>
+          <Route path="/recipe">
+            <Recipe />
+          </Route>
           <Route exact path="/">
             <h1>Home Page</h1>
           </Route>
@@ -87,5 +94,4 @@ function App() {
     </Router>
   );
 }
-// added a comment
 export default App;

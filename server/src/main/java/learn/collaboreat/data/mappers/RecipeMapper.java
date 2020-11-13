@@ -25,9 +25,7 @@ public class RecipeMapper implements RowMapper<Recipe> {
         recipe.setRecipeDate(resultSet.getDate("recipeDate").toLocalDate());
         recipe.setRecipeRating(resultSet.getInt("recipeRating"));
         recipe.setUserId(resultSet.getInt("userId"));
-        if (resultSet.getInt("mealTypeId") == 0) {
-            recipe.setMealTypeId(resultSet.getInt("mealTypeId"));
-        }
+        recipe.setMealTypeId(resultSet.getInt("mealTypeId"));
 
         return recipe;
     }
