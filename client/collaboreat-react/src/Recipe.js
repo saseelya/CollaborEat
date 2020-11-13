@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ViewRecipe from './components/ViewRecipe';
 
 export default function Recipe() {
   const [Recipes, setRecipe] = useState([]);
@@ -10,7 +11,7 @@ export default function Recipe() {
         setRecipe(data);
       });
   };
-
+  
   useEffect(() => {
     getRecipe();
   }, []);
@@ -39,7 +40,8 @@ export default function Recipe() {
           {Recipes.map(recipe => (
             <tr key={recipe.recipeId}>
                 <td>{recipe.recipeId}</td>
-                <td>{recipe.recipeName}</td> 
+                {/* <td><a href={'/recipe/' + recipe.recipeId + '/' + recipe.recipeName}>{recipe.recipeName}</a></td>  */}
+                <td><a href={'/recipe/' + recipe.recipeId + '/' + recipe.recipeName} onClick={<ViewRecipe recipeId={recipe.recipeId} recipeName={recipe.recipeName} />}>{recipe.recipeName}</a></td> 
                 <td>{recipe.recipeStory}</td>
                 <td>{recipe.recipeDescription}</td>
                 <td>{recipe.recipeIngredients}</td>
