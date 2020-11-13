@@ -5,6 +5,7 @@ import learn.collaboreat.data.FeedbackRepository;
 import learn.collaboreat.models.Feedback;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,6 +23,17 @@ public class FeedbackService {
 
     public Feedback findById(int feedbackId) {
         return repository.findById(feedbackId);
+    }
+
+    public List<Feedback> findByRecipeId(int recipeId) {
+        List<Feedback> all = findAll();
+        List<Feedback> matches = new ArrayList<>();
+        for (Feedback feedback : all) {
+            if (feedback.getRecipeId() == recipeId) {
+                matches.add(feedback);
+            }
+        }
+        return matches;
     }
 
     public Result<Feedback> add(Feedback feedback) {

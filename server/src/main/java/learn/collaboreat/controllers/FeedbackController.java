@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
 @RequestMapping("/feedback")
 public class FeedbackController {
 
@@ -32,6 +31,15 @@ public class FeedbackController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(feedback);
+    }
+
+    @GetMapping("/{recipeId}")
+    public ResponseEntity<Object> findByRecipeId(@PathVariable int recipeId) {
+        List<Feedback> feedbacks = service.findByRecipeId(recipeId);
+        if (feedbacks == null || feedbacks.size() == 0) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(feedbacks);
     }
 
     @PostMapping
