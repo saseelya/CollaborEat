@@ -11,6 +11,7 @@ import Feedback from './FeedBack';
 import User from './User';
 import MealType from './MealType';
 import Recipe from './Recipe';
+import ViewRecipe from './components/ViewRecipe';
 
 function About() {
   return <h1>About</h1>;
@@ -31,6 +32,7 @@ function AddRecipe() {
 function EditRecipe() {
   return <h1>Edit Recipe</h1>;
 }
+
 
 function App() {
   return (
@@ -59,6 +61,9 @@ function App() {
             <li>
               <Link to="/recipe">Recipe</Link>
             </li>
+            <li>
+              <Link to="/recipe/1">View Recipe</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
@@ -80,7 +85,10 @@ function App() {
           <Route path="/mealType">
             <MealType />
           </Route>
-          <Route path="/recipe">
+          <Route path="/recipe/1">
+            <ViewRecipe displayText="View Recipe" />
+          </Route>
+          <Route exact path="/recipe">
             <Recipe />
           </Route>
           <Route exact path="/">
