@@ -34,15 +34,6 @@ public class FeedbackController {
         return ResponseEntity.ok(feedback);
     }
 
-    @GetMapping("/{recipeId}")
-    public ResponseEntity<Object> findByRecipeId(@PathVariable int recipeId) {
-        List<Feedback> feedbacks = service.findByRecipeId(recipeId);
-        if (feedbacks == null || feedbacks.size() == 0) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return ResponseEntity.ok(feedbacks);
-    }
-
     @PostMapping
     public ResponseEntity<Object> add(@RequestBody Feedback feedback) {
         Result<Feedback> result = service.add(feedback);
