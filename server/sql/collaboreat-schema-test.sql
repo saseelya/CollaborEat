@@ -29,9 +29,28 @@ CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`user` (
   `lastName` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
+  `disabled` boolean not null default(0),
   PRIMARY KEY (`userId`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`role` (
+	`roleId` int primary key auto_increment,
+    `name` varchar(50) not null unique
+);
+
+CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`userRole` (
+	`userId` int not null,
+    `roleId` int not null,
+    constraint pk_userRole
+		primary key (userId, roleId),
+	constraint fk_userRole_userId
+        foreign key (userId)
+         references user(userId),
+	constraint fk_userRole_roleId
+         foreign key (roleId)
+         references `role`(roleId)
+);
 
 
 -- -----------------------------------------------------
@@ -143,6 +162,9 @@ begin
     alter table `collaboreat-schema-test`.`recipe` auto_increment = 1;
     delete from `collaboreat-schema-test`.`mealType`;
     alter table `collaboreat-schema-test`.`mealType` auto_increment = 1;
+    delete from `collaboreat-schema-test`.`userRole`;
+    delete from `collaboreat-schema-test`.`role`;
+    alter table `collaboreat-schema-test`.`role` auto_increment = 1;
 	delete from `collaboreat-schema-test`.`user`;
     alter table `collaboreat-schema-test`.`user` auto_increment = 1;
     
@@ -150,6 +172,16 @@ begin
 		values 
 			('Dingo', 'Nevada', 'fakeEmail@fakie.com', 'password'),
             ('Cece', 'Slitty', 'bigFake@fake.com', 'password');
+            
+	insert into role (`name`) 
+		values 
+			('USER'),
+			('ADMIN');
+        
+	insert into userRole (`userId`, `roleId`)
+		values
+			(1, 1),
+            (2, 2);
             
 	insert into `collaboreat-schema-test`.`mealType`(`mealTypeName`)
 		values

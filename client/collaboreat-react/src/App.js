@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import HealthInfo from './HealthInfo';
+import Feedback from './FeedBack';
 
 function About() {
   return <h1>About</h1>;
@@ -46,6 +47,9 @@ function App() {
             <li>
               <Link to="/healthInfo">Health Info</Link>
             </li>
+            <li>
+              <Link to="/feedback">Feedback</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
@@ -60,6 +64,9 @@ function App() {
           </Route>
           <Route path="/healthInfo">
             <HealthInfo />
+          </Route>
+          <Route path="/feedback">
+            <Feedback />
           </Route>
           <Route exact path="/">
             <h1>Home Page</h1>
