@@ -2,6 +2,8 @@ package learn.collaboreat.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import learn.collaboreat.data.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -21,6 +23,7 @@ public class JwtConverter {
     private final int EXPIRATION_MINUTES = 15;
     private final int EXPIRATION_MILLIS = EXPIRATION_MINUTES * 60 * 1000;
 
+
     public String getTokenFromUser(User user) {
 
         String authorities = user.getAuthorities().stream()
@@ -36,7 +39,7 @@ public class JwtConverter {
                 .compact();
     }
 
-    public User getUserFromToken(String token) {
+    public org.springframework.security.core.userdetails.User getUserFromToken(String token) {
 
         if (token == null || !token.startsWith("Bearer ")) {
             return null;
