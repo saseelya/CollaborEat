@@ -1,23 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import {useParams} from 'react-router-dom';
 
-function ViewRecipe({ recipeId, recipeName}) {
+function ViewRecipe() {
   const [recipe, setRecipe] = useState('');
+  const {id} = useParams();
 
-  const getRecipe = () => {
-    fetch(`http://localhost:8080/recipe/${recipeId}/${recipeName}`)
-      .then(response => response.json())
-      .then(data => {
-        setRecipe(data);
-      });
-  };
   
   useEffect(() => {
+    const getRecipe = () => {
+      fetch(`http://localhost:8080/recipe/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          setRecipe(data);
+        });
+    };
     getRecipe();
-  }, []);
+  }, [id]);
 
   return (
     <>
-      <h2>2{recipeName}</h2>
+      <h2>{recipe.recipeName}</h2>
 
       <table className="table table-dark table-striped table-hover">
         <thead>

@@ -41,7 +41,7 @@ export default function Recipe() {
             <tr key={recipe.recipeId}>
                 <td>{recipe.recipeId}</td>
                 {/* <td><a href={'/recipe/' + recipe.recipeId + '/' + recipe.recipeName}>{recipe.recipeName}</a></td>  */}
-                <td><a href={'/recipe/' + recipe.recipeId + '/' + recipe.recipeName} onClick={<ViewRecipe recipeId={recipe.recipeId} recipeName={recipe.recipeName} />}>{recipe.recipeName}</a></td> 
+                <td><a href={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</a></td> 
                 <td>{recipe.recipeStory}</td>
                 <td>{recipe.recipeDescription}</td>
                 <td>{recipe.recipeIngredients}</td>

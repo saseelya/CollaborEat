@@ -24,8 +24,8 @@ public class RecipeController {
         return service.findAll();
     }
 
-    @GetMapping("/{recipeId}/{recipeName}")
-    public ResponseEntity<Recipe> findById(@PathVariable int recipeId, @PathVariable String recipeName) {
+    @GetMapping("/{recipeId}")
+    public ResponseEntity<Recipe> findById(@PathVariable int recipeId) {
         Recipe recipe = service.findById(recipeId);
         if (recipe == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
