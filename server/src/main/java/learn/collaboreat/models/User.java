@@ -25,7 +25,26 @@ public class User {
     @NotBlank(message = "Password is required.")
     private String password;
 
+    private boolean disabled;
+
     private List<Recipe> recipes = new ArrayList<>();
+    private List<String> roles = new ArrayList<>();
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
+    }
+
+    public List<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 
     public List<Recipe> getRecipes() {
         return new ArrayList<>(recipes);
@@ -73,6 +92,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean hasRole(String role) {
+        if (roles == null) {
+            return false;
+        }
+        return roles.contains(role);
     }
 
     @Override

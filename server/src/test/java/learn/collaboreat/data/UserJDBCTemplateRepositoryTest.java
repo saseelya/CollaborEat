@@ -74,6 +74,15 @@ class UserJDBCTemplateRepositoryTest {
     }
 
     @Test
+    void shouldUpdatePassword() {
+        User user = makeUser();
+        user.setUserId(1);
+        user.setPassword("UpdatedPassword");
+
+        assertTrue(repository.updatePassword(user));
+    }
+
+    @Test
     void shouldDelete() {
         User user = repository.findById(1);
 
@@ -89,6 +98,7 @@ class UserJDBCTemplateRepositoryTest {
         user.setLastName("Nevada");
         user.setEmail("fake@faker.com");
         user.setPassword("password");
+        user.setDisabled(false);
         return user;
     }
 

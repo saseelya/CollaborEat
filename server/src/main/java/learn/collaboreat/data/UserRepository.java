@@ -12,9 +12,13 @@ public interface UserRepository {
 
     User findById(int userId);
 
+    User findByEmail(String email);
+
     User add(User user);
 
     boolean update(User user);
+
+    boolean updatePassword(User user);
 
     boolean delete(User user);
 }
