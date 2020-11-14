@@ -24,7 +24,7 @@ public class FeedbackController {
         return service.findAll();
     }
 
-    @GetMapping("/{feedbackId}")
+    @GetMapping("/test/{feedbackId}")
     public ResponseEntity<Object> findById(@PathVariable int feedbackId) {
         Feedback feedback = service.findById(feedbackId);
         if (feedback == null) {
@@ -34,12 +34,8 @@ public class FeedbackController {
     }
 
     @GetMapping("/{recipeId}")
-    public ResponseEntity<Object> findByRecipeId(@PathVariable int recipeId) {
-        List<Feedback> feedbacks = service.findByRecipeId(recipeId);
-        if (feedbacks == null || feedbacks.size() == 0) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return ResponseEntity.ok(feedbacks);
+    public List<Feedback> findByRecipeId(@PathVariable int recipeId) {
+        return service.findByRecipeId(recipeId);
     }
 
     @PostMapping
