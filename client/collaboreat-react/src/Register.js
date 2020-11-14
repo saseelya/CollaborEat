@@ -61,26 +61,26 @@ export default function Register() {
 
     return (
         <div>
-            <h2>Login</h2>
+            <h2>Join and Collabor-EAT!</h2>
             {/* <Errors errors={errors} /> */}
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="form-group">
                     <label>First Name:</label>
                     <input type="text" onChange={(event) => setFirstName(event.target.value)} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Last Name:</label>
                     <input type="text" onChange={(event) => setLastName(event.target.value)} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Email:</label>
                     <input type="text" onChange={(event) => setEmail(event.target.value)} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Password:</label>
                     <input type="password" onChange={(event) => setPassword(event.target.value)} />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" className="btn btn-primary">Login</button>
                 <Link to="/">Cancel</Link>
             </form>
         </div>

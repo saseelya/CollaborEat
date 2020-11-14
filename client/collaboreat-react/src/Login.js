@@ -2,8 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import AuthContext from './components/AuthContext';
-
-import User from './User';
+import Errors from './components/Errors';
 
 export default function Login() {
     const [email, setEmail] = useState('');
@@ -33,27 +32,27 @@ export default function Login() {
 
             history.push('/');
         } else if (response.status === 403) {
-            console.log('Login failed.');
+            setErrors(['Login failed.']);
         } else {
-            console.log('Unknown error.');
+            setErrors(['Unknown error.']);
         }
     };
 
     return (
         <div>
             <h2>Login</h2>
-            {/* <Errors errors={errors} /> */}
+            <Errors errors={errors} />
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="form-group">
                     <label>Email:</label>
                     <input type="text" onChange={(event) => setEmail(event.target.value)} />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Password:</label>
                     <input type="password" onChange={(event) => setPassword(event.target.value)} />
                 </div>
-                <button type="submit">Login</button>
-                <Link to='/register'>Register an account</Link>
+                <button type="submit" className="btn btn-primary">Login</button>
+                <Link to='/register'>Not a User? Sign up Today!</Link>
             </form>
         </div>
     )
