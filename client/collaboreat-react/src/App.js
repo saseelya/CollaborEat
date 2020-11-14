@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
 } from 'react-router-dom';
 import jwt_decode from "jwt-decode";
@@ -16,7 +15,8 @@ import Recipe from './Recipe';
 import ViewRecipe from './components/ViewRecipe';
 import AuthContext from './components/AuthContext';
 import Login from './Login';
-import Register from './Register'
+import Register from './Register';
+import NavBar from './components/NavBar';
 
 function About() {
   return <h1>About</h1>;
@@ -74,45 +74,7 @@ export default function AppTestND() {
     <AuthContext.Provider value={auth}>
         <Router>
         <div>
-            <nav>
-            <ul>
-                <li>
-                <Link to="/">Home</Link>
-                </li>
-                <li>
-                <Link to="/about">About</Link>
-                </li>
-                <li>
-                <Link to="/healthInfo">Health Info</Link>
-                </li>
-                <li>
-                <Link to="/feedback">Feedback</Link>
-                </li>
-                <li>
-                <Link to="/mealType">Meal Type</Link>
-                </li>
-                <li>
-                <Link to="/recipe">Recipe</Link>
-                </li>
-                {!auth.user && (
-            <>
-                <li>
-                <Link to="/login">Login</Link>
-                </li>
-                <li>
-                <Link to="/register">Register</Link>
-                </li>
-            </>
-                )}
-            </ul>
-            {auth.user && (
-                <div>
-                    <p>Hello {auth.user.firstName}!</p>
-                    <a href={"/user/" + auth.user.userId}>Account Summary</a>
-                    <button onClick={() => auth.logout()}>Logout</button>
-                </div>
-                )}
-            </nav>
+            <NavBar />
             <Switch>
             <Route path="/about">
                 <About />
