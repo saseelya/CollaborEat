@@ -8,3 +8,11 @@ Content-Type: application/json
     "email": "ndorsett@dev-10.com",
     "password": "pa55word!"
 }
+
+{
+    "userId": 0,
+    "firstName": "Jamie",
+    "lastName": "Lepito",
+    "email": "jlepito@dev-10.com",
+    "password": "pa66word!"
+}
