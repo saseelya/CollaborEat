@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Recipe from './Recipe';
+import RecipeCards from './components/RecipeCards';
 
 export default function MainLayout() {
     return (
@@ -9,13 +9,13 @@ export default function MainLayout() {
                 <h1>CollaborEat</h1>
                 <h2>Top Recipes</h2>
                 <div>
-                    <Recipe />
+                    <RecipeCards />
                 </div>
             </div>
             <div>
                 <h2>Top Breakfast Recipes</h2>
                 <div>
-                    <Recipe />
+                    <RecipeCards />
                 </div>
             </div>
         </>
