@@ -7,38 +7,20 @@ export default function NavBar() {
   const auth = useContext(AuthContext);
 
   return (
-    <nav>
-    <ul>
-        <li>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <Link to="/">Home</Link>
-        </li>
-        <li>
         <Link to="/about">About</Link>
-        </li>
-        <li>
         <Link to="/healthInfo">Health Info</Link>
-        </li>
-        <li>
         <Link to="/feedback">Feedback</Link>
-        </li>
-        <li>
         <Link to="/mealType">Meal Type</Link>
-        </li>
-        <li>
         <Link to="/recipe">Recipe</Link>
-        </li>
         {!auth.user && (
     <>
-        <li>
         <Link to="/login">Login</Link>
-        </li>
-        <li>
         <Link to="/register">Register</Link>
-        </li>
     </>
         )}
-    </ul>
-    {auth.user && (
+        {auth.user && (
         <div>
             <p>Hello {auth.user.firstName}!</p>
             <a href={"/user/" + auth.user.userId}>Account Summary</a>
