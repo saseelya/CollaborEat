@@ -1,24 +1,38 @@
-import React, { useState, useContext } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 import AuthContext from './components/AuthContext';
 import Errors from './components/Errors';
 
-export default function Register() {
+export default function EditUser() {
+    const [user, setUser] = useState('');
+    const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [errors, setErrors] = useState([]);
+
+    const {id} = useParams();
     const auth = useContext(AuthContext);
     const history = useHistory();
-    const userId = 0;
+
+    useEffect(() => {
+        const getUser = () => {
+          fetch(`http://localhost:8080/user/${id}`)
+            .then(response => response.json())
+            .then(data => {
+              setUser(data);
+            });
+        };
+        getUser();
+      }, [id]);
     
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const response = await fetch('http://localhost:8080/user/create_account_user', {
-            method: 'POST',
+        const response = await fetch(`http://localhost:8080/user/edit/${userId}`, {
+            method: 'PUT',
             headers: {
                 "Content-Type": "application/json"
             },
@@ -62,21 +76,22 @@ export default function Register() {
             <h2>Join and Collabor-EAT!</h2>
             <Errors errors={errors} />
             <form onSubmit={handleSubmit}>
+                <input type="hidden" value={user.userId}/>
                 <div className="form-group">
                     <label>First Name:</label>
-                    <input type="text" onChange={(event) => setFirstName(event.target.value)} />
+                    <input type="text" value={user.firstName} onChange={(event) => setFirstName(event.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>Last Name:</label>
-                    <input type="text" onChange={(event) => setLastName(event.target.value)} />
+                    <input type="text" value={user.lastName} onChange={(event) => setLastName(event.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>Email:</label>
-                    <input type="text" onChange={(event) => setEmail(event.target.value)} />
+                    <input type="text" value={user.email} onChange={(event) => setEmail(event.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>Password:</label>
-                    <input type="password" onChange={(event) => setPassword(event.target.value)} />
+                    <input type="password" value={user.password} onChange={(event) => setPassword(event.target.value)} />
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
                 <Link to="/">Cancel</Link>

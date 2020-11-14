@@ -17,6 +17,8 @@ import AuthContext from './components/AuthContext';
 import Login from './Login';
 import Register from './Register';
 import NavBar from './components/NavBar';
+import EditUser from './EditUser';
+import MainLayout from './mainLayout';
 
 function About() {
   return <h1>About</h1>;
@@ -82,6 +84,9 @@ export default function AppTestND() {
             <Route path="/user/:id">
                 <User />
             </Route>
+            <Route path="/user/edit/:id">
+              <EditUser />
+            </Route>
             <Route path="/add">
                 <AddRecipe />
             </Route>
@@ -107,7 +112,7 @@ export default function AppTestND() {
                 <Register />
             </Route>
             <Route exact path="/">
-                <h1>Home Page</h1>
+                <MainLayout />
             </Route>
             <Route path="*">
                 <NotFound />
