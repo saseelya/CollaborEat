@@ -1,48 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import UserRecipes from './components/UserRecipes';
 
 export default function User() {
-  const [Users, setUser] = useState([]);
-
-  const getUsers = () => {
-    fetch('http://localhost:8080/user')
-      .then(response => response.json())
-      .then(data => {
-        setUser(data);
-      });
-  };
+  const [user, setUser] = useState('');
+  const {id} = useParams();
 
   useEffect(() => {
-    getUsers();
-  }, []);
+    const getUser = () => {
+      fetch(`http://localhost:8080/user/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          setUser(data);
+        });
+    };
+    getUser();
+  }, [id]);
 
   return (
     <>
-      <h2>User</h2>
-
-      <table className="table table-dark table-striped table-hover">
-        <thead>
-          <tr>
-            <th scope="col">User Id</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Password</th>
-            <th scope="col">Disabled</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Users.map(user => (
-            <tr key={user.userId}>
-                <td>{user.userId}</td> 
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.email}</td>
-                <td>{user.password}</td>
-                <td>{user.disabled}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <h1>{user.firstName} {user.lastName}</h1>
+      <div>
+        <p>Email: {user.email}</p>
+      </div>
+      <div>
+        <UserRecipes userId={user.userId} />
+      </div>
     </>
   );
 }

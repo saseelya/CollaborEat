@@ -25,18 +25,8 @@ public class User {
     @NotBlank(message = "Password is required.")
     private String password;
 
-    private boolean disabled;
-
     private List<Recipe> recipes = new ArrayList<>();
     private List<String> roles = new ArrayList<>();
-
-    public boolean isDisabled() {
-        return disabled;
-    }
-
-    public void setDisabled(boolean disabled) {
-        this.disabled = disabled;
-    }
 
     public List<String> getRoles() {
         return roles;

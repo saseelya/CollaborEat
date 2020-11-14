@@ -147,7 +147,6 @@ class UserServiceTest {
         user.setLastName("Nevada");
         user.setEmail("Faker@faker.com");
         user.setPassword("passw0rd!");
-        user.setDisabled(false);
         return user;
     }
 }

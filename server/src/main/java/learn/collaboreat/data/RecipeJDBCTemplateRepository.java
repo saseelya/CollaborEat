@@ -51,7 +51,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
         Recipe recipe = jdbcTemplate.query(recipeSql, new RecipeMapper(), recipeId).stream()
                 .findFirst().orElse(null);
 
-        if (recipe != null){
+        if (recipe != null) {
             addHealthInfo(recipe);
         }
         return recipe;

@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
 
-        if (user == null || user.isDisabled()) {
+        if (user == null) {
             throw new UsernameNotFoundException(email + " not found.");
         }
 

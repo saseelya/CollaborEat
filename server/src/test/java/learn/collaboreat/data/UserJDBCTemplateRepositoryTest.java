@@ -98,7 +98,6 @@ class UserJDBCTemplateRepositoryTest {
         user.setLastName("Nevada");
         user.setEmail("fake@faker.com");
         user.setPassword("password");
-        user.setDisabled(false);
         return user;
     }
 

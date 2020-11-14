@@ -29,7 +29,7 @@ public class UserJDBCTemplateRepository implements UserRepository{
 
     @Override
     public List<User> findAll() {
-        final String sql = "select userId, firstName, lastName, email, password, `disabled` " +
+        final String sql = "select userId, firstName, lastName, email, password " +
                 "from user;";
 
         return jdbcTemplate.query(sql, new UserMapper());
@@ -37,7 +37,7 @@ public class UserJDBCTemplateRepository implements UserRepository{
 
     @Override
     public User findByEmail(String email) {
-        final String sql = "select userId, firstName, lastName, email, password, `disabled` " +
+        final String sql = "select userId, firstName, lastName, email, password " +
                 "from user where email = ?;";
 
         User user = jdbcTemplate.query(sql, new UserMapper(), email).stream()
@@ -53,7 +53,7 @@ public class UserJDBCTemplateRepository implements UserRepository{
 
     @Override
     public User findById(int userId) {
-        final String sql = "select userId, firstName, lastName, email, password, `disabled` " +
+        final String sql = "select userId, firstName, lastName, email, password " +
                 "from user where userId = ?;";
 
         User user = jdbcTemplate.query(sql, new UserMapper(), userId).stream()
@@ -95,15 +95,13 @@ public class UserJDBCTemplateRepository implements UserRepository{
         final String sql = "update user set "
                 + "firstName = ?, "
                 + "lastName = ?, "
-                + "email = ?, "
-                + "disabled = ? "
+                + "email = ? "
                 + "where userId = ?;";
 
         return jdbcTemplate.update(sql,
                 user.getFirstName(),
                 user.getLastName(),
                 user.getEmail(),
-                user.isDisabled(),
                 user.getUserId()) > 0;
     }
 

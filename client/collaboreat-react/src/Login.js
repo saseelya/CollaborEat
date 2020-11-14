@@ -3,12 +3,14 @@ import { Link, useHistory } from 'react-router-dom';
 
 import AuthContext from './components/AuthContext';
 
+import User from './User';
+
 export default function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
-    const auth = useContext(AuthContext);
     const history = useHistory();
+    const auth = useContext(AuthContext);
     
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -19,21 +21,21 @@ export default function Login() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username,
+                email,
                 password
             })
         });
 
-        if (response.satus === 200) {
+        if (response.status === 200) {
             const { jwt_token } = await response.json();
 
             auth.login(jwt_token);
 
-            history.push('/')
+            history.push('/');
         } else if (response.status === 403) {
-            setErrors(['Login failed.']);
+            console.log('Login failed.');
         } else {
-            setErrors(['Unknown error.']);
+            console.log('Unknown error.');
         }
     };
 
@@ -44,14 +46,14 @@ export default function Login() {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Email:</label>
-                    <input type="text" onChange={(event) => setUsername(event.target.value)} />
+                    <input type="text" onChange={(event) => setEmail(event.target.value)} />
                 </div>
                 <div>
                     <label>Password:</label>
                     <input type="password" onChange={(event) => setPassword(event.target.value)} />
                 </div>
-                <a href='/' type="submit" class="button">Login</a>
-                <a href='/register'>Register an account</a>
+                <button type="submit">Login</button>
+                <Link to='/register'>Register an account</Link>
             </form>
         </div>
     )

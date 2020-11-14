@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/recipe")
@@ -61,5 +62,12 @@ public class RecipeController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/user/{userId}")
+    public List<Recipe> findByUser(@PathVariable int userId) {
+        return service.findAll().stream().filter(recipe ->
+                recipe.getUserId() == userId)
+                .collect(Collectors.toList());
     }
 }

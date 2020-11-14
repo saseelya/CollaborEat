@@ -19,12 +19,16 @@ import java.util.stream.Collectors;
 public class JwtConverter {
 
     private Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    private final String ISSUER = "bug-safari";
+    private final String ISSUER = "collaboreat";
     private final int EXPIRATION_MINUTES = 15;
     private final int EXPIRATION_MILLIS = EXPIRATION_MINUTES * 60 * 1000;
 
+    @Autowired
+    private UserRepository repository;
+
 
     public String getTokenFromUser(User user) {
+        learn.collaboreat.models.User appUser = repository.findByEmail(user.getUsername());
 
         String authorities = user.getAuthorities().stream()
                 .map(i -> i.getAuthority())
@@ -33,6 +37,8 @@ public class JwtConverter {
         return Jwts.builder()
                 .setIssuer(ISSUER)
                 .setSubject(user.getUsername())
+                .claim("userId", String.valueOf(appUser.getUserId()))
+                .claim("firstName", appUser.getFirstName())
                 .claim("authorities", authorities)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_MILLIS))
                 .signWith(key)

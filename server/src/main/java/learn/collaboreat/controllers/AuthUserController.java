@@ -52,7 +52,7 @@ public class AuthUserController {
     public ResponseEntity<Map<String, String>> authenticate(@RequestBody Map<String, String> credentials) {
 
         UsernamePasswordAuthenticationToken authToken =
-                new UsernamePasswordAuthenticationToken(credentials.get("username"), credentials.get("password"));
+                new UsernamePasswordAuthenticationToken(credentials.get("email"), credentials.get("password"));
 
         try {
             Authentication authentication = authenticationManager.authenticate(authToken);
