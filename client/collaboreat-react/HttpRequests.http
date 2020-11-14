@@ -9,10 +9,28 @@ Content-Type: application/json
     "password": "pa55word!"
 }
 
+###
+
+POST http://localhost:8080/user/create_account_admin HTTP/1.1
+Content-Type: application/json
+
 {
     "userId": 0,
     "firstName": "Jamie",
     "lastName": "Lepito",
     "email": "jlepito@dev-10.com",
     "password": "pa66word!"
+}
+
+###
+
+POST http://localhost:8080/user/create_account_admin HTTP/1.1
+Content-Type: application/json
+
+{
+    "userId": 0,
+    "firstName": "Cecilia",
+    "lastName": "Barkume",
+    "email": "cbarkume@dev-10.com",
+    "password": "pa77word!"
 }
