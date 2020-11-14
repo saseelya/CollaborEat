@@ -8,8 +8,7 @@ export default function NavBar() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/">CollaborEat</Link>
         <Link to="/healthInfo">Health Info</Link>
         <Link to="/feedback">Feedback</Link>
         <Link to="/mealType">Meal Type</Link>

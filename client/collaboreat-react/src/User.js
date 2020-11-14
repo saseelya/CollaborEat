@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import UserRecipes from './components/UserRecipes';
+import EditUser from './EditUser';
 
 export default function User() {
   const [user, setUser] = useState('');
@@ -23,8 +24,11 @@ export default function User() {
       <div>
         <p>Email: {user.email}</p>
       </div>
-      <div>
+      {/* <div>
         <UserRecipes userId={user.userId} />
+      </div> */}
+      <div>
+        <button onClick={<EditUser userId={user.userId}/>}>Edit Info</button>  
       </div>
     </>
   );

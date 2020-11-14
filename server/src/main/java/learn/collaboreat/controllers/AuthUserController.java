@@ -4,6 +4,7 @@ package learn.collaboreat.controllers;
 import learn.collaboreat.domain.Result;
 import learn.collaboreat.domain.UserService;
 import learn.collaboreat.models.Feedback;
+import learn.collaboreat.models.Recipe;
 import learn.collaboreat.models.User;
 import learn.collaboreat.security.JwtConverter;
 import org.springframework.http.HttpStatus;
@@ -48,6 +49,39 @@ public class AuthUserController {
         return ResponseEntity.ok(user);
     }
 
+    @PostMapping("/create_account_user")
+    public ResponseEntity<?> createAccountUser(@RequestBody User user) {
+        user.getRoles().add("USER");
+        Result<User> result = service.add(user);
+        if (result.isSuccess()) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("appUserId", String.valueOf(user.getUserId()));
+            return new ResponseEntity<>(map, HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
+    }
+
+    @PostMapping("/create_account_admin")
+    public ResponseEntity<?> createAccountAdmin(@RequestBody User user) {
+        user.getRoles().add("ADMIN");
+        Result<User> result = service.add(user);
+        if (result.isSuccess()) {
+            HashMap<String, String> map = new HashMap<>();
+            map.put("appUserId", String.valueOf(user.getUserId()));
+            return new ResponseEntity<>(map, HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
+    }
+
+    @PutMapping("/edit/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable int userId, @RequestBody User user) {
+        Result<User> result = service.update(user);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
+    }
+
     @PostMapping("/authenticate")
     public ResponseEntity<Map<String, String>> authenticate(@RequestBody Map<String, String> credentials) {
 
@@ -84,29 +118,5 @@ public class AuthUserController {
         map.put("jwt_token", jwtToken);
 
         return new ResponseEntity<>(map, HttpStatus.OK);
-    }
-
-    @PostMapping("/create_account_user")
-    public ResponseEntity<?> createAccountUser(@RequestBody User user) {
-        user.getRoles().add("USER");
-        Result<User> result = service.add(user);
-        if (result.isSuccess()) {
-            HashMap<String, String> map = new HashMap<>();
-            map.put("appUserId", String.valueOf(user.getUserId()));
-            return new ResponseEntity<>(map, HttpStatus.CREATED);
-        }
-        return ErrorResponse.build(result);
-    }
-
-    @PostMapping("/create_account_admin")
-    public ResponseEntity<?> createAccountAdmin(@RequestBody User user) {
-        user.getRoles().add("ADMIN");
-        Result<User> result = service.add(user);
-        if (result.isSuccess()) {
-            HashMap<String, String> map = new HashMap<>();
-            map.put("appUserId", String.valueOf(user.getUserId()));
-            return new ResponseEntity<>(map, HttpStatus.CREATED);
-        }
-        return ErrorResponse.build(result);
     }
 }
