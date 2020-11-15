@@ -97,7 +97,6 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
                 "recipeDescription = ?, " +
                 "recipeIngredients = ?, " +
                 "recipeCookTime = ?, " +
-                "recipeCookTime = ?, " +
                 "recipeSteps = ?, " +
                 "recipeDate = ?, " +
                 "recipeRating = ?, " +

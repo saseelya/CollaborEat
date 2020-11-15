@@ -37,13 +37,16 @@ public class RecipeController {
     @PostMapping("/add")
     public ResponseEntity<Object> add(@RequestBody Recipe recipe) {
         Result<Recipe> result = service.add(recipe);
+        for (String m : result.getMessages()) {
+            System.out.println(m);
+        }
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }
         return ErrorResponse.build(result);
     }
 
-    @PutMapping("/{recipeId}/{recipeName}")
+    @PutMapping("/edit/{recipeId}")
     public ResponseEntity<Object> update(
             @PathVariable int recipeId, @PathVariable String recipeName, @RequestBody Recipe recipe) {
         if (recipeId != recipe.getRecipeId()) {
@@ -56,7 +59,7 @@ public class RecipeController {
         return ErrorResponse.build(result);
     }
 
-    @DeleteMapping("/{recipeId}/{recipeName}")
+    @DeleteMapping("/delete/{recipeId}")
     public ResponseEntity<Object> deleteById(@PathVariable int recipeId) {
         if (service.deleteById(recipeId)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
