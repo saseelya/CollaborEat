@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function RecipeCards() {
   const [Recipes, setRecipe] = useState([]);
@@ -26,7 +27,8 @@ export default function RecipeCards() {
                   <div class="card-body">
                     <h4 class="card-title"><a href={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</a></h4> 
                     <p class="card-text">
-                      Created By: {recipe.userId}
+                      Created By: 
+                      <Link to={"/user/" + recipe.userId}>{recipe.userId}</Link>
                     </p>
                     <p class="card-text">
                       Uploaded On: {recipe.recipeDate}

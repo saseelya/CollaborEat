@@ -1,22 +1,7 @@
 // import React, { useState, useEffect } from 'react';
 
 
-// export default function UserRecipes(props) {
-//   const [Recipes, setRecipe] = useState([]); 
-
-//   const getRecipe = () => {
-//     fetch(`http://localhost:8080/recipe/user/${props.userId}`)
-//       .then(response => response.json())
-//       .then(data => {
-//         setRecipe(data);
-//       });
-//   };
-
-//   useEffect(() => {
-//     getRecipe();
-//   }, []);
-
-//   return (
+// return (
 //     <>
 //       <h2>Recipes</h2>
 
