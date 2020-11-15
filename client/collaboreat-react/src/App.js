@@ -13,6 +13,7 @@ import User from './User';
 import MealType from './MealType';
 import Recipe from './Recipe';
 import ViewRecipe from './components/ViewRecipe';
+import AddRecipe from './components/AddRecipe';
 import AuthContext from './components/AuthContext';
 import Login from './Login';
 import Register from './Register';
@@ -28,9 +29,9 @@ function NotFound() {
   return <h1>Not Found</h1>;
 }
 
-function AddRecipe() {
-  return <h1>Add Recipe</h1>;
-}
+// function AddRecipe() {
+//   return <h1>Add Recipe</h1>;
+// }
 
 function EditRecipe() {
   return <h1>Edit Recipe</h1>;
