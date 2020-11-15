@@ -13,24 +13,31 @@ export default function EditUser() {
     const [lastName, setLastName] = useState('');
     const [errors, setErrors] = useState([]);
 
-    const {id} = useParams();
     const auth = useContext(AuthContext);
     const history = useHistory();
+    const { id } = useParams();
 
     useEffect(() => {
         const getUser = () => {
-          fetch(`http://localhost:8080/user/${id}`)
+            fetch(`http://localhost:8080/user/${id}`)
             .then(response => response.json())
             .then(data => {
-              setUser(data);
-            });
+                setUser(data);
+            })
+            .then(
+                setUserId(user.userId),
+                setEmail(user.email),
+                setPassword(user.password),
+                setFirstName(user.firstName),
+                setLastName(user.lastName),
+            );
         };
         getUser();
-      }, [id]);
+    }, [id]);
     
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        setUserId(user.userId);
         const response = await fetch(`http://localhost:8080/user/edit/${userId}`, {
             method: 'PUT',
             headers: {
@@ -65,7 +72,7 @@ export default function EditUser() {
                 history.push('/')
             }
         } else if (response.status === 400) {
-            setErrors(['Account creation failed.']);
+            setErrors(['Account Update failed.']);
         } else {
             setErrors(['Unknown error.']);
         }
@@ -73,28 +80,25 @@ export default function EditUser() {
 
     return (
         <div>
-            <h2>Join and Collabor-EAT!</h2>
+            <h2>Update Your Information</h2>
             <Errors errors={errors} />
             <form onSubmit={handleSubmit}>
-                <input type="hidden" value={user.userId}/>
+                <input type="hidden" value={userId}/>
                 <div className="form-group">
                     <label>First Name:</label>
-                    <input type="text" value={user.firstName} onChange={(event) => setFirstName(event.target.value)} />
+                    <input type="text" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>Last Name:</label>
-                    <input type="text" value={user.lastName} onChange={(event) => setLastName(event.target.value)} />
+                    <input type="text" value={lastName} onChange={(event) => setLastName(event.target.value)} />
                 </div>
                 <div className="form-group">
                     <label>Email:</label>
-                    <input type="text" value={user.email} onChange={(event) => setEmail(event.target.value)} />
+                    <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
                 </div>
-                <div className="form-group">
-                    <label>Password:</label>
-                    <input type="password" value={user.password} onChange={(event) => setPassword(event.target.value)} />
-                </div>
-                <button type="submit" className="btn btn-primary">Login</button>
-                <Link to="/">Cancel</Link>
+                <input type="hidden" value={password} onChange={(event) => setPassword(event.target.value)} />
+                <button type="submit" className="btn btn-primary">Update</button>
+                <Link to={"/user/" + user.userId}>Cancel</Link>
             </form>
         </div>
     )

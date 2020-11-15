@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import UserRecipes from './components/UserRecipes';
-import EditUser from './EditUser';
+
 
 export default function User() {
   const [user, setUser] = useState('');
   const [Recipes, setRecipe] = useState([]);
   const {id} = useParams();
+
 
   useEffect(() => {
     const getUser = () => {
@@ -31,27 +31,27 @@ export default function User() {
     <>
       <h1>{user.firstName} {user.lastName}</h1>
       <div>
-        <p>Email: {user.email}</p>
+        <Link to={"/user/edit/" + user.userId} type="button">Edit Info</Link>
       </div>
       <div>
-        <Link to={"user/edit/" + user.userId} type="button">Edit Info</Link>  
+        <Link to={"/user/delete/" + user.userId} type="button">Close Account</Link>  
       </div>
       <div>
       <h2>Submitted Recipes</h2>
-      <div class="row">
+      <div className="row">
               {Recipes.map(recipe => (
-                <div class="col">
-                <div class="card" key={recipe.recipeId}>
-                  <img class="card-img-top" url=""/>
-                  <div class="card-body">
-                    <h4 class="card-title"><a href={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</a></h4> 
-                    <p class="card-text">
+                <div className="col">
+                <div className="card" key={recipe.recipeId}>
+                  <img className="card-img-top" url=""/>
+                  <div className="card-body">
+                    <h4 className="card-title"><a href={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</a></h4> 
+                    <p className="card-text">
                       Created By: {recipe.userId}
                     </p>
-                    <p class="card-text">
+                    <p className="card-text">
                       Uploaded On: {recipe.recipeDate}
                     </p>
-                    <p class="card-text">
+                    <p className="card-text">
                       Rating: {recipe.recipeRating}
                     </p> 
                   </div>

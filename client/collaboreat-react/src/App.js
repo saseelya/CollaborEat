@@ -20,6 +20,7 @@ import Register from './Register';
 import NavBar from './components/NavBar';
 import EditUser from './EditUser';
 import MainLayout from './mainLayout';
+import DeleteUser from './DeleteUser';
 
 function About() {
   return <h1>About</h1>;
@@ -82,11 +83,14 @@ export default function AppTestND() {
             <Route path="/about">
                 <About />
             </Route>
+            <Route exact path="/user/edit/:id">
+              <EditUser />
+            </Route>
+            <Route exact path="/user/delete/:id">
+              <DeleteUser />
+            </Route>
             <Route path="/user/:id">
                 <User />
-            </Route>
-            <Route path="/user/edit/:id">
-              <EditUser />
             </Route>
             <Route path="/add">
                 <AddRecipe />

@@ -75,9 +75,24 @@ public class AuthUserController {
 
     @PutMapping("/edit/{userId}")
     public ResponseEntity<?> updateUser(@PathVariable int userId, @RequestBody User user) {
+        if (userId != user.getUserId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
         Result<User> result = service.update(user);
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
+        }
+        return ErrorResponse.build(result);
+    }
+
+    @DeleteMapping("/delete/{userId}")
+    public ResponseEntity<?> deleteUser(@PathVariable int userId, @RequestBody User user) {
+        if (userId != user.getUserId()) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Result<User> result = service.delete(user);
+        if (result.isSuccess()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         return ErrorResponse.build(result);
     }
