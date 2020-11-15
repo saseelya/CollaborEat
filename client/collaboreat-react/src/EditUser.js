@@ -69,7 +69,7 @@ export default function EditUser() {
     
                 auth.login(jwt_token);
     
-                history.push('/')
+                // history.push(`/user/${userId}`)
             }
         } else if (response.status === 400) {
             setErrors(['Account Update failed.']);

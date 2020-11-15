@@ -34,7 +34,7 @@ export default function EditUser() {
         setPassword(user.password);
         setFirstName(user.firstName);
         setLastName(user.lastName);
-        const response = fetch(`http://localhost:8080/user/delete/${user.userId}`, {
+        fetch(`http://localhost:8080/user/delete/${user.userId}`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json"
@@ -47,9 +47,6 @@ export default function EditUser() {
                 password
             })
         });
-        if (response.status === 201) {
-            history.push("/");
-        }
     };       
 
     return (
@@ -69,7 +66,7 @@ export default function EditUser() {
                     <label>Email:</label>
                     <input type="text" value={user.email} />
                 </div>
-                <button type="submit" className="btn btn-danger">Close Account</button>
+                <button href="/" type="submit" className="btn btn-danger">Close Account</button>
                 <Link to={"/user/" + user.userId}>Cancel</Link>
             </form>
         </div>

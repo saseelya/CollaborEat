@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import Card from './components/Card';
 
 
 export default function User() {
@@ -31,32 +32,16 @@ export default function User() {
     <>
       <h1>{user.firstName} {user.lastName}</h1>
       <div>
-        <Link to={"/user/edit/" + user.userId} type="button">Edit Info</Link>
+        <Link to={"/user/edit/" + user.userId} className="btn btn-warning">Edit Info</Link>
       </div>
       <div>
-        <Link to={"/user/delete/" + user.userId} type="button">Close Account</Link>  
+        <Link to={"/user/delete/" + user.userId} className="btn btn-danger">Close Account</Link>  
       </div>
       <div>
       <h2>Submitted Recipes</h2>
       <div className="row">
               {Recipes.map(recipe => (
-                <div className="col">
-                <div className="card" key={recipe.recipeId}>
-                  <img className="card-img-top" url=""/>
-                  <div className="card-body">
-                    <h4 className="card-title"><a href={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</a></h4> 
-                    <p className="card-text">
-                      Created By: {recipe.userId}
-                    </p>
-                    <p className="card-text">
-                      Uploaded On: {recipe.recipeDate}
-                    </p>
-                    <p className="card-text">
-                      Rating: {recipe.recipeRating}
-                    </p> 
-                  </div>
-                  </div>
-                </div>
+                <Card recipe={recipe} />
               ))}
         </div>
       </div>
