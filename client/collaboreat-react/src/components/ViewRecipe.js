@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {useParams} from 'react-router-dom';
+import MealType from './RecipeMealType';
+import GetPerson from './Person';
+import GetFeedback from './RecipeFeedback';
 
 function ViewRecipe() {
   const [recipe, setRecipe] = useState('');
@@ -33,7 +36,6 @@ function ViewRecipe() {
       <table className="table table-dark table-striped table-hover">
         <thead>
           <tr>
-            <th scope="col">Recipe Id</th>
             <th scope="col">Recipe </th>
             <th scope="col">Recipe Story</th>
             <th scope="col">Recipe Description</th>
@@ -48,7 +50,6 @@ function ViewRecipe() {
         </thead>
         <tbody>
             <tr key={recipe.recipeId}>
-                <td>{recipe.recipeId}</td>
                 <td>{recipe.recipeName}</td> 
                 <td>{recipe.recipeStory}</td>
                 <td>{recipe.recipeDescription}</td>
@@ -57,8 +58,8 @@ function ViewRecipe() {
                 <td>{recipe.recipeSteps}</td>
                 <td>{recipe.recipeDate}</td>
                 <td>{recipe.recipeRating}</td>
-                <td>{recipe.userId}</td>
-                <td>{recipe.mealTypeId}</td>
+                <GetPerson id={recipe.userId} />
+                <MealType recipe={recipe} />
             </tr>
         </tbody>
       </table>
@@ -68,22 +69,14 @@ function ViewRecipe() {
       <table className="table table-dark table-striped table-hover">
         <thead>
           <tr>
-            <th scope="col">Feedback Id</th>
+            <th scope="col">User</th>
             <th scope="col">Feedback</th>
             <th scope="col">Feedback Rating</th>
-            <th scope="col">recipeId</th>
-            <th scope="col">userId</th>
           </tr>
         </thead>
         <tbody>
         {Feedbacks.map(feedback =>
-            <tr key={feedback.feedbackId}>
-                <td>{feedback.feedbackId}</td> 
-                <td>{feedback.feedbackComment}</td>
-                <td>{feedback.feedbackRating} / 5</td>
-                <td>{feedback.recipeId}</td>
-                <td>{feedback.userId}</td>
-            </tr>
+            <GetFeedback feedback={feedback} />
           )}
         </tbody>
       </table>

@@ -10,7 +10,7 @@ import jwt_decode from "jwt-decode";
 import HealthInfo from './HealthInfo';
 import Feedback from './FeedBack';
 import User from './User';
-import MealType from './MealType';
+import MealType from './components/RecipeMealType';
 import Recipe from './Recipe';
 import ViewRecipe from './components/ViewRecipe';
 import AddRecipe from './components/AddRecipe';
@@ -100,9 +100,6 @@ export default function AppTestND() {
             </Route>
             <Route path="/feedback">
                 <Feedback />
-            </Route>
-            <Route path="/mealType">
-                <MealType />
             </Route>
             <Route path="/recipe/:id">
                 <ViewRecipe />

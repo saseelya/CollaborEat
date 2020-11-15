@@ -46,7 +46,7 @@ export default function EditUser() {
                 email,
                 password
             })
-        });
+        })
     };       
 
     return (
