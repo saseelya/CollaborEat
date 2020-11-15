@@ -63,7 +63,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
         final String sql = "insert into recipe " +
                 "(recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, " +
                 "recipeSteps, recipeDate, recipeRating, userId, mealTypeId) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?);";
+                "values (?,?,?,?,?,?,?,?,?,?);";
 
 
         KeyHolder keyHolder = new GeneratedKeyHolder();

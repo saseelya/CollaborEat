@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {useParams} from 'react-router-dom';
+
+import AuthContext from './AuthContext';
 
 export default function AddRecipe() {
   const [recipeName, setRecipeName] = useState('');
@@ -9,10 +11,11 @@ export default function AddRecipe() {
   const [mealTypeId, setMealTypeId] = useState('');
   const [recipeIngredients, setRecipeIngredients] = useState('');
   const [recipeSteps, setRecipeSteps] = useState('');
+  const recipeId = 0;
   const recipeRating = 0;
   const recipeDate = 0;
-  const userId = 0; // will this be a new fetch to get the user who is logged in?
-  // const recipeId = 0;
+  const auth = useContext(AuthContext);
+  const userId = 2; // will this be a new fetch to get the user who is logged in?
 
   const handleAddSubmit = (event) => {
     event.preventDefault();
@@ -22,9 +25,8 @@ export default function AddRecipe() {
       headers: {
         'Content-Type': 'application/json'
       },
-      //recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, " +
-      // "recipeSteps, recipeDate, recipeRating, userId, mealTypeId
       body: JSON.stringify({
+        recipeId,
         recipeName,
         recipeStory,
         recipeDescription,

@@ -47,7 +47,7 @@ export default function EditUser() {
                 password
             })
         });
-        if (response.status == 201) {
+        if (response.status === 201) {
             history.push("/");
         }
     };       
