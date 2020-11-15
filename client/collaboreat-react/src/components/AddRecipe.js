@@ -8,6 +8,10 @@ export default function AddRecipe() {
   const [recipeCookTime, setRecipeCookTime] = useState('');
   const [mealTypeId, setMealTypeId] = useState('');
   const [recipeIngredients, setRecipeIngredients] = useState('');
+  const [recipeSteps, setRecipeSteps] = useState('');
+  const recipeRating = 0;
+  const recipeDate = 0;
+  const userId = 0; // will this be a new fetch to get the user who is logged in?
 
   const handleAddSubmit = (event) => {
     event.preventDefault();
@@ -19,10 +23,14 @@ export default function AddRecipe() {
       },
       body: JSON.stringify({
         recipeName,
-        recipeDescription,
         recipeStory,
-        recipeCookTime,
+        recipeDescription,
         recipeIngredients,
+        recipeCookTime,
+        recipeSteps,
+        recipeDate,
+        recipeRating,
+        userId,
         mealTypeId
       })
     })
@@ -70,6 +78,11 @@ export default function AddRecipe() {
         <label htmlFor="recipeIngredients">Recipe Ingredients:  </label>
         <textarea id="recipeIngredients" value={recipeIngredients} 
           onChange={(event) => setRecipeIngredients(event.target.value)} type="text" placeholder="List your ingredients with a new line for each" />
+      </div>
+      <div>
+        <label htmlFor="recipeSteps">Recipe Steps:  </label>
+        <textarea id="recipeSteps" value={recipeSteps} 
+          onChange={(event) => setRecipeSteps(event.target.value)} type="text" placeholder="List your steps with a new line for each" />
       </div>
       <div>
         <label htmlFor="mealType">Select a Meal Type:  </label>
