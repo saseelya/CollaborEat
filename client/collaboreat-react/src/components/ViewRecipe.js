@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import MealType from './RecipeMealType';
 import GetPerson from './Person';
 import GetFeedback from './RecipeFeedback';
+import GetRating from './RecipeRating';
 
 function ViewRecipe() {
   const [recipe, setRecipe] = useState('');
@@ -57,7 +58,7 @@ function ViewRecipe() {
                 <td>{recipe.recipeCookTime}</td>
                 <td>{recipe.recipeSteps}</td>
                 <td>{recipe.recipeDate}</td>
-                <td>{recipe.recipeRating}</td>
+                <GetRating id={recipe.recipeId} />
                 <GetPerson id={recipe.userId} />
                 <MealType recipe={recipe} />
             </tr>
