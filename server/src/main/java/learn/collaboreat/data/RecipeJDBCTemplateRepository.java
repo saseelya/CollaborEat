@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -60,7 +61,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
     @Override
     public Recipe add(Recipe recipe) {
         final String sql = "insert into recipe " +
-                "(recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, " +
+                "(recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, " +
                 "recipeSteps, recipeDate, recipeRating, userId, mealTypeId) " +
                 "values (?,?,?,?,?,?,?,?,?,?,?);";
 
@@ -68,17 +69,16 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, recipe.getRecipeId());
-            ps.setString(2, recipe.getRecipeName());
-            ps.setString(3, recipe.getRecipeStory());
-            ps.setString(4, recipe.getRecipeDescription());
-            ps.setString(5, recipe.getRecipeIngredients());
-            ps.setInt(6, recipe.getRecipeCookTime());
-            ps.setString(7, recipe.getRecipeSteps());
-            ps.setDate(8, Date.valueOf(recipe.getRecipeDate()));
-            ps.setDouble(9, recipe.getRecipeRating());
-            ps.setInt(10, recipe.getUserId());
-            ps.setInt(11, recipe.getMealTypeId());
+            ps.setString(1, recipe.getRecipeName());
+            ps.setString(2, recipe.getRecipeStory());
+            ps.setString(3, recipe.getRecipeDescription());
+            ps.setString(4, recipe.getRecipeIngredients());
+            ps.setInt(5, recipe.getRecipeCookTime());
+            ps.setString(6, recipe.getRecipeSteps());
+            ps.setDate(7, Date.valueOf(LocalDate.now()));
+            ps.setDouble(8, recipe.getRecipeRating());
+            ps.setInt(9, recipe.getUserId());
+            ps.setInt(10, recipe.getMealTypeId());
 
             return ps;
         }, keyHolder);

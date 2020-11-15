@@ -12,15 +12,18 @@ export default function AddRecipe() {
   const recipeRating = 0;
   const recipeDate = 0;
   const userId = 0; // will this be a new fetch to get the user who is logged in?
+  // const recipeId = 0;
 
   const handleAddSubmit = (event) => {
     event.preventDefault();
 
-    fetch('http://localhost:8080/add', {
+    fetch('http://localhost:8080/recipe/add', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
+      //recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, " +
+      // "recipeSteps, recipeDate, recipeRating, userId, mealTypeId
       body: JSON.stringify({
         recipeName,
         recipeStory,

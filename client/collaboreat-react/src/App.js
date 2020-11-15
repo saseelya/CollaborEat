@@ -92,7 +92,7 @@ export default function AppTestND() {
             <Route path="/user/:id">
                 <User />
             </Route>
-            <Route path="/add">
+            <Route exact path="/recipe/add">
                 <AddRecipe />
             </Route>
             <Route path="/healthInfo">
