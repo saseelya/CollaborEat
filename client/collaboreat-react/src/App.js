@@ -22,6 +22,7 @@ import EditUser from './EditUser';
 import MainLayout from './mainLayout';
 import DeleteUser from './DeleteUser';
 import EditRecipe from './components/EditRecipe';
+import DeleteRecipe from './components/DeleteRecipe';
 
 function About() {
   return <h1>About</h1>;
@@ -98,6 +99,9 @@ export default function AppTestND() {
             </Route>
             <Route exact path="/recipe/edit/:id">
                 <EditRecipe />
+            </Route>
+            <Route exact path="/recipe/delete/:id">
+                <DeleteRecipe />
             </Route>
             <Route path="/healthInfo">
                 <HealthInfo />
