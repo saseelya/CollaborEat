@@ -39,7 +39,27 @@ function ViewRecipe() {
     setRecipeId(id);
   }, [id]);
 
+  const pageUpdate = () => {
+    const getRecipe = () => {
+      fetch(`http://localhost:8080/recipe/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          setRecipe(data);
+        });
+    };
+    const getFeedback = () => {
+      fetch(`http://localhost:8080/feedback/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          setFeedback(data);
+        })
+    }
+    getRecipe();
+    getFeedback();
+  }
+
   const handleAddSubmit = (event) => {
+    event.preventDefault();
 
     fetch('http://localhost:8080/feedback/add', {
       method: 'POST',
@@ -57,7 +77,7 @@ function ViewRecipe() {
     .then (response => {
       if (response.status === 201) {
         console.log('Success!');
-        response.json().then(data => console.log(data));
+        pageUpdate();
     } else if (response.status === 400) {
         console.log('Errors!');
         response.json().then(data => {
@@ -136,7 +156,7 @@ function ViewRecipe() {
         </thead>
         <tbody>
         {Feedbacks.map(feedback =>
-            <GetFeedback key={feedback.feedbackId} feedback={feedback} />
+            <GetFeedback key={feedback.feedbackId} feedback={feedback} pageUpdate={pageUpdate} />
           )}
         </tbody>
       </table>
