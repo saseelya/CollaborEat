@@ -39,7 +39,7 @@ export default function Recipe() {
           {Recipes.map(recipe => (
             <tr key={recipe.recipeId}>
                 <td>{recipe.recipeId}</td>
-                <td><a href={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</a></td> 
+                <td><Link to={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</Link></td> 
                 <td>{recipe.recipeStory}</td>
                 <td>{recipe.recipeDescription}</td>
                 <td>{recipe.recipeIngredients}</td>

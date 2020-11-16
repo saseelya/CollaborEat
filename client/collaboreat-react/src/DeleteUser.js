@@ -71,7 +71,7 @@ export default function EditUser() {
                     <label>Email:</label>
                     <input type="text" value={user.email} />
                 </div>
-                <button href="/" type="submit" className="btn btn-danger">Close Account</button>
+                <button type="submit" className="btn btn-danger"><Link to={"/"}>Close Account</Link></button>
                 <Link to={"/user/" + user.userId}>Cancel</Link>
             </form>
         </div>
