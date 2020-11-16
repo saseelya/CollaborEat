@@ -14,16 +14,16 @@ export default function NavBar() {
         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <Link to="/recipe">Recipe</Link>
-        {!auth.user && (
+        {!auth.appUser && (
     <>
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>
     </>
         )}
-        {auth.user && (
+        {auth.appUser && (
         <div>
-            <p>Welcome Back {auth.user.firstName}!</p>
-            <a href={"/user/" + auth.user.userId}>Account Summary</a>
+            <p>Welcome Back {auth.appUser.firstName}!</p>
+            <a href={"/user/" + auth.appUser.userId}>Account Summary</a>
             <button onClick={() => auth.logout()} className="btn btn-warning">Logout</button>
         </div>
         )}

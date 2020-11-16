@@ -12,7 +12,7 @@ export default function EditUser() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
 
-    // const auth = useContext(AuthContext);
+    const auth = useContext(AuthContext);
     const history = useHistory();
     const { id } = useParams();
 

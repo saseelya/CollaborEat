@@ -93,7 +93,13 @@ export default function AddRecipe() {
         <label htmlFor="mealType">Select a Meal Type:  </label>
         <select id="mealType" value={mealTypeId} onChange={(event) => setMealTypeId(event.target.value)}>
           <option value="1">Breakfast</option>
-          <option value="2">Dinner</option>
+          <option value="2">Brunch</option>
+          <option value="3">Desert</option>
+          <option value="4">Dinner</option>
+          <option value="5">Entree</option>
+          <option value="6">Lunch</option>
+          <option value="7">Side</option>
+          <option value="8">Snack</option>
         </select>
       </div>
       <button type="submit">Add Recipe</button>

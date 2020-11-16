@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Card from './components/Card';
+
+import AuthContext from './components/AuthContext';
 
 
 export default function User() {
   const [user, setUser] = useState('');
   const [Recipes, setRecipe] = useState([]);
   const {id} = useParams();
+
+  const auth = useContext(AuthContext);
 
 
   useEffect(() => {

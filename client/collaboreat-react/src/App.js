@@ -41,15 +41,15 @@ function NotFound() {
 // }
 
 
-export default function AppTestND() {
-  const [user, setUser] = useState(null);
+export default function App() {
+  const [appUser, setAppUser] = useState(null);
 
   const login = (token) => {
     const { userId, firstName, authorities } = jwt_decode(token);
 
     const roles = authorities.split(',');
   
-    const user = {
+    const appUser = {
       userId: parseInt(userId, 10),
       firstName,
       roles,
@@ -59,19 +59,19 @@ export default function AppTestND() {
       }
     };
   
-    console.log(user);
+    console.log(appUser);
 
-    setUser(user);
+    setAppUser(appUser);
 
-    return user;
+    return appUser;
   };
 
   const logout = () => {
-    setUser(null);
+    setAppUser(null);
   };
 
   const auth = {
-    user,
+    appUser,
     login,
     logout
   };

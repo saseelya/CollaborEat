@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS `collaboreat-schema`.`user` (
   `lastName` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(2048) NOT NULL,
-  `disabled` boolean not null default(0),
   PRIMARY KEY (`userId`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -169,7 +168,16 @@ insert into userRole (`userId`, `roleId`)
 insert into `collaboreat-schema`.`mealType`(`mealTypeName`)
 		values
 			('Breakfast'),
-            ('Dinner');
+            ('Brunch'),
+            ('Desert'),
+            ('Dinner'),
+            ('Entree'),
+            ('Lunch'),
+            ('Side'),
+            ('Snack');
+            
+            
+            
             
 insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
 		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`)
@@ -187,7 +195,9 @@ insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDe
 insert into `collaboreat-schema`.`healthInfo`(`healthInfoName`)
 		values
 			('Gluten Free'),
-            ('Sugar Free');
+            ('Sugar Free'),
+            ('Vegitarian'),
+            ('Vegan');
             
 insert into `collaboreat-schema`.`feedback`(`feedbackComment`, `feedbackRating`, `userId`, `recipeId`)
 		values
