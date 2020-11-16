@@ -120,7 +120,6 @@ function ViewRecipe() {
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-        {/* {<input type="hidden" value={ id } />} */}
         </div>
           <button type="submit">Add Comment</button>
       </form>
@@ -137,7 +136,7 @@ function ViewRecipe() {
         </thead>
         <tbody>
         {Feedbacks.map(feedback =>
-            <GetFeedback feedback={feedback} />
+            <GetFeedback key={feedback.feedbackId} feedback={feedback} />
           )}
         </tbody>
       </table>

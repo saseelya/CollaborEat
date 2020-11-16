@@ -21,7 +21,7 @@ export default function Card({ recipe }) {
         <div className="card" key={recipe.recipeId}>
         <img className="card-img-top" url=""/>
         <div className="card-body">
-            <h4 className="card-title"><a href={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</a></h4> 
+            <h4 className="card-title"><Link to={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</Link></h4> 
             <p className="card-text">
             Created By: 
             <Link to={"/user/" + recipe.userId}>{user.firstName} {user.lastName}</Link>

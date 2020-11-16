@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 export default function GetPerson({ id }) {
-  const [person, setPerson] = useState('');
+  const [person, setPerson] = useState(null);
 
   useEffect(() => {
     const getPerson = () => {
@@ -11,10 +11,14 @@ export default function GetPerson({ id }) {
           setPerson(data);
         });
     };
-    getPerson();
+    if (id) {
+      getPerson();
+    }
   }, [id]);
 
+  if (!person) { return <td></td>; }
   return (
-      <div>{person.firstName} {person.lastName}</div>
+      <td>{person.firstName} {person.lastName}</td>
   );
+  
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 export default function MealType({ recipe }) {
-  const [MealType, setMealType] = useState('');
+  const [mealType, setMealType] = useState(null);
 
   useEffect(() => {
     const getMealType = () => {
@@ -11,10 +11,12 @@ export default function MealType({ recipe }) {
           setMealType(data);
         });
     };
-    getMealType();
-  }, [recipe.mealTypeId]);
+    if (recipe && recipe.mealTypeId) {
+      getMealType();
+    }
+  }, [recipe.mealTypeId, recipe]);
 
   return (
-      <td>{MealType.mealTypeName}</td>
+      <td>{mealType ? mealType.mealTypeName : ''}</td>
   );
 }
