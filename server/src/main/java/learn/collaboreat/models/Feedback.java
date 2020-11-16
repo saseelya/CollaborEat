@@ -14,7 +14,7 @@ public class Feedback {
 
     @Min(value = 1, message = "Rating must be between 1 and 5.")
     @Max(value = 5, message = "Rating must be between 1 and 5.")
-    private double feedbackRating;
+    private int feedbackRating;
 
     @Positive(message = "Recipe ID must be greater than zero.")
     private int recipeId;
@@ -38,7 +38,7 @@ public class Feedback {
         this.feedbackComment = feedbackComment;
     }
 
-    public double getFeedbackRating() {
+    public int getFeedbackRating() {
         return feedbackRating;
     }
 

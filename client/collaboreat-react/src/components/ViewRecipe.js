@@ -12,7 +12,8 @@ function ViewRecipe() {
   const {id} = useParams();
 
   const [feedbackComment, setFeedbackComment] = useState('');
-  const [feedbackRating, setFeedbackRating] = useState('');
+  const [feedbackRating, setFeedbackRating] = useState(1);
+  const [recipeId, setRecipeId] = useState(0);
   const feedbackId = 0;
   const auth = useContext(AuthContext);
   const userId = 2; //may need separate fetch call here
@@ -35,10 +36,10 @@ function ViewRecipe() {
     }
     getRecipe();
     getFeedback();
+    setRecipeId(id);
   }, [id]);
 
   const handleAddSubmit = (event) => {
-    event.preventDefault();
 
     fetch('http://localhost:8080/feedback/add', {
       method: 'POST',
@@ -48,7 +49,8 @@ function ViewRecipe() {
       body: JSON.stringify({
         feedbackId,
         feedbackComment,
-        feedbackRating,
+        feedbackRating: parseInt(feedbackRating),
+        recipeId,
         userId
       })
     })
@@ -63,9 +65,8 @@ function ViewRecipe() {
         });
     } else {
         console.log('Oops... not sure what happened here :(');
-    }
+      }
     })
-
   }
 
   return (
@@ -105,19 +106,23 @@ function ViewRecipe() {
 
       <form onSubmit={handleAddSubmit}>
         <div>
-        <label htmlFor="feedbackComment">Comment:  </label>
+          <label htmlFor="feedbackComment">Comment: </label>
           <input id="feedbackComment" value={feedbackComment} 
             onChange={(event) => setFeedbackComment(event.target.value)} type="text" placeholder="Enter your comment!" />
           <label htmlFor="feedbackRating">Select a rating:  </label>
-            <select id="feedbackRating" value={feedbackRating} onChange={(event) => setFeedbackRating(event.target.value)}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          <button type="submit">Add Comment</button>
         </div>
+        <div>
+          <select id="feedbackRating" value={feedbackRating} 
+            onChange={(event) => setFeedbackRating(event.target.value)}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        {/* {<input type="hidden" value={ id } />} */}
+        </div>
+          <button type="submit">Add Comment</button>
       </form>
 
       <h2>Feedback</h2>
