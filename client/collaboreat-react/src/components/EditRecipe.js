@@ -7,13 +7,13 @@ export default function EditRecipe() {
   const [recipeStory, setRecipeStory] = useState('');
   const [recipeDescription, setRecipeDescription] = useState('');
   const [recipeIngredients, setRecipeIngredients] = useState('');
-  const [recipeCookTime, setRecipeCookTime] = useState('');
+  const [recipeCookTime, setRecipeCookTime] = useState(0);
   const [recipeSteps, setRecipeSteps] = useState('');
   const [recipeDate, setRecipeDate] = useState('');
-  const [recipeRating, setRecipeRating] = useState('');
-  const [userId, setUserId] = useState('');
-  const [mealTypeId, setMealTypeId] = useState('');
-  const [recipeId, setRecipeId] = useState('');
+  const [recipeRating, setRecipeRating] = useState(0);
+  const [userId, setUserId] = useState(0);
+  const [mealTypeId, setMealTypeId] = useState(0);
+  const [recipeId, setRecipeId] = useState(0);
 
   const { id } = useParams();
 
@@ -23,20 +23,31 @@ export default function EditRecipe() {
         .then(response => response.json())
         .then((data) => {
             setRecipe(data);
+            setRecipeName(data.recipeName);
+            setRecipeStory(data.recipeStory);
+            setRecipeDescription(data.recipeDescription);
+            setRecipeIngredients(data.recipeIngredients);
+            setRecipeCookTime(data.recipeCookTime);
+            setRecipeSteps(data.recipeSteps);
+            setRecipeDate(data.recipeDate);
+            setRecipeRating(data.recipeRating);
+            setUserId(data.userId);
+            setMealTypeId(data.mealTypeId);
+            setRecipeId(data.recipeId);
         })
-        .then(
-            setRecipeName(recipe.recipeName),
-            setRecipeStory(recipe.recipeStory),
-            setRecipeDescription(recipe.recipeDescription),
-            setRecipeIngredients(recipe.recipeIngredients),
-            setRecipeCookTime(recipe.recipeCookTime),
-            setRecipeSteps(recipe.recipeSteps),
-            setRecipeDate(recipe.recipeDate),
-            setRecipeRating(recipe.recipeRating),
-            setUserId(recipe.userId),
-            setMealTypeId(recipe.mealTypeId),
-            setRecipeId(recipe.recipeId)
-        );
+        // .then(
+        //     setRecipeName(data.recipeName),
+        //     setRecipeStory(data.recipeStory),
+        //     setRecipeDescription(data.recipeDescription),
+        //     setRecipeIngredients(data.recipeIngredients),
+        //     setRecipeCookTime(data.recipeCookTime),
+        //     setRecipeSteps(data.recipeSteps),
+        //     setRecipeDate(data.recipeDate),
+        //     setRecipeRating(data.recipeRating),
+        //     setUserId(data.userId),
+        //     setMealTypeId(data.mealTypeId),
+        //     setRecipeId(data.recipeId)
+        // );
         // .then(({ recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, recipeSteps, recipeDate, recipeRating, userId, mealTypeId, recipeId}) => {
         //   setRecipeName(recipeName),
         //   setRecipeStory(recipeStory),
@@ -80,7 +91,7 @@ export default function EditRecipe() {
     .then (response => {
       if (response.status === 201) {
         console.log('Success!');
-        response.json().then(data => console.log(data));
+        // response.json().then(data => console.log(data));
     } else if (response.status === 400) {
         console.log('Errors!');
         response.json().then(data => {
@@ -130,8 +141,14 @@ export default function EditRecipe() {
       <div>
         <label htmlFor="mealType">Select a Meal Type:  </label>
         <select id="mealType" value={mealTypeId} onChange={(event) => setMealTypeId(event.target.value)}>
-          <option value="1">Breakfast</option>
-          <option value="2">Dinner</option>
+        <option value="1">Breakfast</option>
+          <option value="2">Brunch</option>
+          <option value="3">Desert</option>
+          <option value="4">Dinner</option>
+          <option value="5">Entree</option>
+          <option value="6">Lunch</option>
+          <option value="7">Side</option>
+          <option value="8">Snack</option>
         </select>
       </div>
       <button type="submit">Edit Recipe</button>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export default function DeleteRecipe() {
   const [recipe, setRecipe] = useState('');
@@ -12,7 +12,7 @@ export default function DeleteRecipe() {
   const [recipeDate, setRecipeDate] = useState('');
   const [recipeRating, setRecipeRating] = useState(0);
   const [userId, setUserId] = useState(0);
-  const [mealTypeId, setMealTypeId] = useState(0);
+  const [mealTypeId, setMealTypeId] = useState(1);
   const [recipeId, setRecipeId] = useState(0);
 
   const { id } = useParams();
@@ -62,9 +62,9 @@ export default function DeleteRecipe() {
       })
     })
     .then (response => {
-      if (response.status === 202) {
+      if (response.status === 204) {
         console.log('Success!');
-        response.json().then(data => console.log(data));
+
     } else if (response.status === 400) {
         console.log('Errors!');
         response.json().then(data => {
@@ -87,7 +87,8 @@ export default function DeleteRecipe() {
       <p>Steps:  { recipe.recipeSteps }</p>
 
       <form onSubmit={handleDeleteSubmit}>
-           <button href="/recipe" type="submit">Delete Recipe</button>
+           <button type="submit">Delete Recipe</button>
+           <Link to={"/"}>Go Back to Home Page</Link>
       </form>
     </>
   )
