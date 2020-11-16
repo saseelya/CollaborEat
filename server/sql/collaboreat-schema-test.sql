@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS `collaboreat-schema-test`.`recipe` (
   `recipeRating` INT NOT NULL,
   `userId` INT NOT NULL,
   `mealTypeId` INT NULL,
+  `imageUrl` VARCHAR(250) NULL,
   PRIMARY KEY (`recipeId`),
   INDEX `userId_idx` (`userId` ASC) VISIBLE,
   INDEX `mealTypeId_idx` (`mealTypeId` ASC) VISIBLE,
