@@ -38,7 +38,7 @@ public class FeedbackController {
         return service.findByRecipeId(recipeId);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Object> add(@RequestBody Feedback feedback) {
         Result<Feedback> result = service.add(feedback);
         if (result.isSuccess()) {
