@@ -4,7 +4,6 @@ import Card from './Card';
 
 export default function RecipeCards() {
   const [Recipes, setRecipe] = useState([]);
-  const [user, setUser] = useState('');
 
   const getRecipe = () => {
     fetch('http://localhost:8080/recipe')
@@ -17,14 +16,6 @@ export default function RecipeCards() {
   useEffect(() => {
     getRecipe();
   }, []);
-
-  const getUser = (id) => {
-    fetch(`http://localhost:8080/user/${id}`)
-    .then(response => response.json())
-    .then(data => {
-      setUser(data);
-    });
-  }
 
   return (
     <>

@@ -23,21 +23,18 @@ export default function EditUser() {
             .then(response => response.json())
             .then(data => {
                 setUser(data);
-            })
-            .then(
-                setUserId(user.userId),
-                setEmail(user.email),
-                setPassword(user.password),
-                setFirstName(user.firstName),
-                setLastName(user.lastName),
-            );
+                setUserId(data.userId);
+                setEmail(data.email);
+                setPassword(data.password);
+                setFirstName(data.firstName);
+                setLastName(data.lastName);
+            });
         };
         getUser();
     }, [id]);
     
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setUserId(user.userId);
         const response = await fetch(`http://localhost:8080/user/edit/${userId}`, {
             method: 'PUT',
             headers: {
@@ -53,6 +50,7 @@ export default function EditUser() {
         });
 
         if (response.status === 201) {
+            
             const responseAuth = await fetch('http://localhost:8080/user/authenticate', {
             method: 'POST',
             headers: {
@@ -83,7 +81,7 @@ export default function EditUser() {
             <h2>Update Your Information</h2>
             <Errors errors={errors} />
             <form onSubmit={handleSubmit}>
-                <input type="hidden" value={userId}/>
+                {/* <input type="hidden" value={userId}/> */}
                 <div className="form-group">
                     <label>First Name:</label>
                     <input type="text" value={firstName} onChange={(event) => setFirstName(event.target.value)} />

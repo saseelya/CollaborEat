@@ -22,6 +22,11 @@ export default function EditUser() {
             .then(response => response.json())
             .then(data => {
                 setUser(data);
+                setUserId(data.userId);
+                setEmail(data.email);
+                setPassword(data.password);
+                setFirstName(data.firstName);
+                setLastName(data.lastName);
             });
         };
         getUser();
@@ -53,7 +58,7 @@ export default function EditUser() {
         <div>
             <h2>Close Account</h2>
             <form onSubmit={handleSubmit}>
-                <input type="hidden" value={user.userId}/>
+                {/* <input type="hidden" value={user.userId}/> */}
                 <div className="form-group">
                     <label>First Name:</label>
                     <input type="text" value={user.firstName} />

@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/authenticate").permitAll()
                 .antMatchers("/feedback/rating/{recipeId}").permitAll()
                 .antMatchers("/feedback/add").permitAll()
-//                .antMatchers("/").permitAll()
+                .antMatchers("recipe/mealType/{mealTypeId}").permitAll()
 //                .antMatchers("/").permitAll()
 //                .antMatchers("/").permitAll()
 //                .antMatchers("/").permitAll()

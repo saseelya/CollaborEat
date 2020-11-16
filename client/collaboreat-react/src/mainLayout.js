@@ -18,6 +18,12 @@ export default function MainLayout() {
                     <RecipeCards />
                 </div>
             </div>
+            <div>
+                <h2>Top Entrees</h2>
+                <div>
+                    <RecipeCards />
+                </div>
+            </div>
         </>
     )
 };

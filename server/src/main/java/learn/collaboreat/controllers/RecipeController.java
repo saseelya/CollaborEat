@@ -73,4 +73,11 @@ public class RecipeController {
                 recipe.getUserId() == userId)
                 .collect(Collectors.toList());
     }
+
+    @GetMapping("/mealType/{mealTypeId}")
+    public List<Recipe> findByMealType(@PathVariable int mealTypeId) {
+        return service.findAll().stream().filter(recipe ->
+                recipe.getMealTypeId() == mealTypeId)
+                .collect(Collectors.toList());
+    }
 }

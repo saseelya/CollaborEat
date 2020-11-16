@@ -23,7 +23,7 @@ export default function NavBar() {
         {auth.appUser && (
         <div>
             <p>Welcome Back {auth.appUser.firstName}!</p>
-            <a href={"/user/" + auth.appUser.userId}>Account Summary</a>
+            <Link to={"/user/" + auth.appUser.userId}>Account Summary</Link>
             <button onClick={() => auth.logout()} className="btn btn-warning">Logout</button>
         </div>
         )}

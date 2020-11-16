@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 export default function GetRating({ id }) {
-    const [rating, setRating] = useState('');
+    const [rating, setRating] = useState(0);
 
-    // useEffect(() => {
-    //     const getRating = () => {
-    //         fetch(`http://localhost:8080/feedback/rating/${id}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             setRating(data);
-    //         })
-    //     };
-    //     getRating();
-    // }, [id]);
+    useEffect(() => {
+        const getRating = () => {
+            fetch(`http://localhost:8080/feedback/rating/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                setRating(data);
+            })
+        };
+        getRating();
+    }, [id]);
 
     return (
         <td>{rating}</td>
