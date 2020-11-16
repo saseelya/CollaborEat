@@ -26,7 +26,6 @@ function ViewRecipe() {
       fetch(`http://localhost:8080/recipe/${id}`)
         .then(response => response.json())
         .then(data => {
-          console.log("heyooo");
           setRecipe(data);
         });
     };
@@ -34,7 +33,6 @@ function ViewRecipe() {
       fetch(`http://localhost:8080/feedback/${id}`)
         .then(response => response.json())
         .then(data => {
-          console.log("heyoo");
           setFeedback(data);
         })
     }
@@ -42,7 +40,6 @@ function ViewRecipe() {
       fetch(`http://localhost:8080/feedback/rating/${id}`)
       .then(response => response.json())
       .then(data => {
-          console.log("heyo");
           setRecipeRating(data);
       })
   };
@@ -57,7 +54,6 @@ function ViewRecipe() {
       fetch(`http://localhost:8080/recipe/${id}`)
         .then(response => response.json())
         .then(data => {
-          console.log("heyooo!");
           setRecipe(data);
         })
     }
@@ -66,7 +62,6 @@ function ViewRecipe() {
       fetch(`http://localhost:8080/feedback/${id}`)
         .then(response => response.json())
         .then(data => {
-          console.log("heyoo!");
           setFeedback(data);
         })
     }
@@ -75,10 +70,9 @@ function ViewRecipe() {
       fetch(`http://localhost:8080/feedback/rating/${id}`)
       .then(response => response.json())
       .then(data => {
-          console.log("heyo!");
           setRecipeRating(data);
       })
-  };
+    };
     getRecipeRating();
     getRecipe();
     getFeedback();
@@ -143,7 +137,7 @@ function ViewRecipe() {
                 <td>{recipe.recipeCookTime}</td>
                 <td>{recipe.recipeSteps}</td>
                 <td>{recipe.recipeDate}</td>
-                <td><GetRating id={recipe.recipeId} /></td>
+                <td><GetRating recipe={recipe} /></td>
                 <GetPerson id={recipe.userId} />
                 <MealType recipe={recipe} />
             </tr>

@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 
-export default function GetRating({ id }) {
+export default function GetRating({ recipe }) {
     const [rating, setRating] = useState(0);
 
     useEffect(() => {
         const getRating = () => {
-            fetch(`http://localhost:8080/feedback/rating/${id}`)
+            fetch(`http://localhost:8080/feedback/rating/${recipe.recipeId}`)
             .then(response => response.json())
             .then(data => {
                 setRating(data);
             })
         };
-        if (id) {
+        if (recipe && recipe.recipeId) {
             getRating();
         }
-    }, [id]);
+    }, [recipe]);
 
     if (rating === 0) {
-        return (<td></td>);
+        return (<></>);
     };
     return (
         <>{rating}</>
