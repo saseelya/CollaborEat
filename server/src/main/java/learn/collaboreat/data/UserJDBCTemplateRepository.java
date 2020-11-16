@@ -130,7 +130,7 @@ public class UserJDBCTemplateRepository implements UserRepository{
     private void addRecipes(User user) {
         final String sql = "select recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, " +
                 "recipeCookTime, recipeCookTime, recipeSteps, recipeDate, recipeRating, " +
-                "userId, mealTypeId " +
+                "userId, mealTypeId, imageUrl " +
                 "from recipe where userId = ?;";
 
         var userRecipes = jdbcTemplate.query(sql, new RecipeMapper(), user.getUserId());

@@ -20,7 +20,7 @@ export default function GetRating({ id }) {
         return (<td></td>);
     };
     return (
-        <td>{rating}</td>
+        <>{rating}</>
     );
 }
 

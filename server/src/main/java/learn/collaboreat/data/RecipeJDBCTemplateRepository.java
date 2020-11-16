@@ -35,7 +35,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
         final String sql =
                 "select recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, " +
                         "recipeCookTime, recipeCookTime, recipeSteps, recipeDate, recipeRating, " +
-                        "userId, mealTypeId " +
+                        "userId, mealTypeId, imageUrl " +
                         "from recipe;";
         RecipeMapper recipeMapper = new RecipeMapper();
         return jdbcTemplate.query(sql, recipeMapper);
@@ -46,7 +46,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
         final String recipeSql =
                 "select recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, " +
                         "recipeCookTime, recipeCookTime, recipeSteps, recipeDate, recipeRating, " +
-                        "userId, mealTypeId " +
+                        "userId, mealTypeId, imageUrl " +
                         "from recipe " +
                         "where recipeId = ?;";
 
@@ -63,8 +63,8 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
     public Recipe add(Recipe recipe) {
         final String sql = "insert into recipe " +
                 "(recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, " +
-                "recipeSteps, recipeDate, recipeRating, userId, mealTypeId) " +
-                "values (?,?,?,?,?,?,?,?,?,?);";
+                "recipeSteps, recipeDate, recipeRating, userId, mealTypeId, imageUrl) " +
+                "values (?,?,?,?,?,?,?,?,?,?,?);";
 
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -80,6 +80,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
             ps.setDouble(8, recipe.getRecipeRating());
             ps.setInt(9, recipe.getUserId());
             ps.setInt(10, recipe.getMealTypeId());
+            ps.setString(11, recipe.getImageUrl());
 
             return ps;
         }, keyHolder);
@@ -103,6 +104,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
                 "recipeRating = ?, " +
                 "userId = ?, " +
                 "mealTypeId = ? " +
+                "imageUrl = ? " +
                 "where recipeId = ?;";
 
         return jdbcTemplate.update(sql,
@@ -116,6 +118,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
                 recipe.getRecipeRating(),
                 recipe.getUserId(),
                 recipe.getMealTypeId(),
+                recipe.getImageUrl(),
                 recipe.getRecipeId()) > 0;
     }
 

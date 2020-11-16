@@ -143,7 +143,7 @@ function ViewRecipe() {
                 <td>{recipe.recipeCookTime}</td>
                 <td>{recipe.recipeSteps}</td>
                 <td>{recipe.recipeDate}</td>
-                <GetRating id={recipe.recipeId} />
+                <td><GetRating id={recipe.recipeId} /></td>
                 <GetPerson id={recipe.userId} />
                 <MealType recipe={recipe} />
             </tr>

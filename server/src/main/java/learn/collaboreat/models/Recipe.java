@@ -30,6 +30,16 @@ public class Recipe {
     private int mealTypeId; //foreign key
     private List<RecipeHealthInfo> healthInfo = new ArrayList<>();
 
+    private String imageUrl;
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public List<RecipeHealthInfo> getHealthInfo() {
         return healthInfo;
     }
