@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 
 import AuthContext from './AuthContext';
 
@@ -15,6 +15,8 @@ export default function AddRecipe() {
   const recipeRating = 0;
   const recipeDate = 0;
   const auth = useContext(AuthContext);
+  const history = useHistory();
+
   const userId = 2; // will this be a new fetch to get the user who is logged in?
 
   const handleAddSubmit = (event) => {
@@ -43,6 +45,8 @@ export default function AddRecipe() {
       if (response.status === 201) {
         console.log('Success!');
         response.json().then(data => console.log(data));
+        // push to user's page when we have this info
+        history.push(`/`);
     } else if (response.status === 400) {
         console.log('Errors!');
         response.json().then(data => {
