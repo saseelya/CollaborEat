@@ -38,7 +38,19 @@ public class FeedbackController {
         return service.findByRecipeId(recipeId);
     }
 
-    @PostMapping("/add")
+    @GetMapping("/rating/{recipeId}")
+    public Double getRatingValue(@PathVariable int recipeId) {
+        List<Feedback> feedbacks = service.findByRecipeId(recipeId);
+        double total = 0;
+        for (Feedback f : feedbacks) {
+            total += f.getFeedbackRating();
+        }
+        total = total/feedbacks.size();
+        System.out.println(total);
+        return total;
+    }
+
+    @PostMapping
     public ResponseEntity<Object> add(@RequestBody Feedback feedback) {
         Result<Feedback> result = service.add(feedback);
         if (result.isSuccess()) {
