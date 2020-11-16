@@ -64,6 +64,7 @@ export default function App() {
   };
 
   const logout = () => {
+    
     setAppUser(null);
   };
 

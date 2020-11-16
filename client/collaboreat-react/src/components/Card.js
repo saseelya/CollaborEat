@@ -33,6 +33,7 @@ export default function Card({ recipe }) {
             Rating: {recipe.recipeRating}
             </p> 
             <Link to={"/recipe/edit/" + recipe.recipeId} className="btn">Edit</Link>
+            <Link to={"/recipe/delete/" + recipe.recipeId} className="btn">Delete</Link>
         </div>
         </div>
     </div>
