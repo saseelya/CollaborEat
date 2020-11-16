@@ -24,9 +24,6 @@ import DeleteUser from './DeleteUser';
 import EditRecipe from './components/EditRecipe';
 import DeleteRecipe from './components/DeleteRecipe';
 
-function About() {
-  return <h1>About</h1>;
-}
 
 function NotFound() {
   return <h1>Not Found</h1>;
@@ -82,26 +79,43 @@ export default function App() {
         <div>
             <NavBar />
             <Switch>
-            <Route path="/about">
-                <About />
-            </Route>
             <Route exact path="/user/edit/:id">
-              <EditUser />
+              {appUser ? (
+                <EditUser />) : (
+                <Redirect to="/login" />
+                )
+              }
             </Route>
             <Route exact path="/user/delete/:id">
-              <DeleteUser />
+            {appUser ? (
+                <DeleteUser />) : (
+                <Redirect to="/login" />
+                )
+              }
             </Route>
             <Route path="/user/:id">
                 <User />
             </Route>
             <Route exact path="/recipe/add">
-                <AddRecipe />
+            {appUser ? (
+                <AddRecipe />) : (
+                <Redirect to="/login" />
+                )
+              }
             </Route>
             <Route exact path="/recipe/edit/:id">
-                <EditRecipe />
+            {appUser ? (
+                <EditRecipe />) : (
+                <Redirect to="/login" />
+                )
+              }
             </Route>
             <Route exact path="/recipe/delete/:id">
-                <DeleteRecipe />
+            {appUser ? (
+                <DeleteRecipe />) : (
+                <Redirect to="/login" />
+                )
+              }
             </Route>
             <Route path="/healthInfo">
                 <HealthInfo />

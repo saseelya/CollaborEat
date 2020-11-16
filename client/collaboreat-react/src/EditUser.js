@@ -5,7 +5,7 @@ import AuthContext from './components/AuthContext';
 import Errors from './components/Errors';
 
 export default function EditUser() {
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState(null);
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -50,25 +50,25 @@ export default function EditUser() {
         });
 
         if (response.status === 201) {
+            history.push(`/user/${userId}`)
+            // const responseAuth = await fetch('http://localhost:8080/user/authenticate', {
+            // method: 'POST',
+            // headers: {
+            //     "Content-Type": "application/json"
+            // },
+            // body: JSON.stringify({
+            //     email,
+            //     password
+            // })
+            // });
             
-            const responseAuth = await fetch('http://localhost:8080/user/authenticate', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                email,
-                password
-            })
-            });
-            
-            if (responseAuth.status === 200) {
-                const { jwt_token } = await responseAuth.json();
+            // if (responseAuth.status === 200) {
+            //     const { jwt_token } = await responseAuth.json();
     
-                auth.login(jwt_token);
+            //     auth.login(jwt_token);
     
-                history.push(`/user/${userId}`)
-            }
+                
+            // }
         } else if (response.status === 400) {
             setErrors(['Account Update failed.']);
         } else {
@@ -81,7 +81,6 @@ export default function EditUser() {
             <h2>Update Your Information</h2>
             <Errors errors={errors} />
             <form onSubmit={handleSubmit}>
-                {/* <input type="hidden" value={userId}/> */}
                 <div className="form-group">
                     <label>First Name:</label>
                     <input type="text" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
@@ -96,7 +95,7 @@ export default function EditUser() {
                 </div>
                 <input type="hidden" value={password} onChange={(event) => setPassword(event.target.value)} />
                 <button type="submit" className="btn btn-primary">Update</button>
-                <Link to={"/user/" + user.userId}>Cancel</Link>
+                <Link to={"/user/" + userId}>Cancel</Link>
             </form>
         </div>
     )

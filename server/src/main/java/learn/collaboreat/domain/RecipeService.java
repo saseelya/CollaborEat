@@ -63,6 +63,10 @@ public class RecipeService {
             result.addMessage("You must enter an available recipe ID", ResultType.INVALID);
         }
 
+        if (!recipeRepository.update(recipe)) {
+            result.addMessage("Something went wrong.", ResultType.NOT_FOUND);
+        }
+
         return result;
     }
 

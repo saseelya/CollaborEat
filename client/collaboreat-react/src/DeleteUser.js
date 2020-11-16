@@ -5,7 +5,7 @@ import AuthContext from './components/AuthContext';
 import Errors from './components/Errors';
 
 export default function EditUser() {
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState(null);
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -32,13 +32,8 @@ export default function EditUser() {
         getUser();
     }, [id]);
     
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        setUserId(user.userId);
-        setEmail(user.email);
-        setPassword(user.password);
-        setFirstName(user.firstName);
-        setLastName(user.lastName);
         fetch(`http://localhost:8080/user/delete/${user.userId}`, {
             method: 'DELETE',
             headers: {
@@ -52,27 +47,32 @@ export default function EditUser() {
                 password
             })
         })
+        .then(response => {
+            if (response.status === 204) {
+                auth.logout();
+                history.push('/');
+            }
+        });
     };       
 
     return (
         <div>
             <h2>Close Account</h2>
             <form onSubmit={handleSubmit}>
-                {/* <input type="hidden" value={user.userId}/> */}
                 <div className="form-group">
                     <label>First Name:</label>
-                    <input type="text" value={user.firstName} />
+                    <input type="text" value={firstName} readOnly />
                 </div>
                 <div className="form-group">
                     <label>Last Name:</label>
-                    <input type="text" value={user.lastName} />
+                    <input type="text" value={lastName} readOnly />
                 </div>
                 <div className="form-group">
                     <label>Email:</label>
-                    <input type="text" value={user.email} />
+                    <input type="text" value={email} readOnly />
                 </div>
-                <button type="submit" className="btn btn-danger"><Link to={"/"}>Close Account</Link></button>
-                <Link to={"/user/" + user.userId}>Cancel</Link>
+                <button type="submit" className="btn btn-danger">Close Account</button>
+                <Link to={"/user/" + userId}>Cancel</Link>
             </form>
         </div>
     )

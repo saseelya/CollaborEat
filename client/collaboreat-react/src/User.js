@@ -35,12 +35,12 @@ export default function User() {
   return (
     <>
       <h1>{user.firstName} {user.lastName}</h1>
-      <div>
-        <Link to={"/user/edit/" + user.userId} className="btn btn-warning">Edit Info</Link>
-      </div>
-      <div>
-        <Link to={"/user/delete/" + user.userId} className="btn btn-danger">Close Account</Link>  
-      </div>
+      {auth.appUser && (
+          <div className="col">
+            <Link to={"/user/edit/" + user.userId} className="btn btn-warning">Edit Info</Link>
+            <Link to={"/user/delete/" + user.userId} className="btn btn-danger">Close Account</Link>  
+          </div>
+      )}
       <div>
       <h2>Submitted Recipes</h2>
       <div className="row">
