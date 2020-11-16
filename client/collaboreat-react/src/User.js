@@ -36,7 +36,7 @@ export default function User() {
   return (
     <>
       <h1>{user.firstName} {user.lastName}</h1>
-      {auth.appUser.userId == user.userId && (
+      {auth.appUser && (auth.appUser.userId === user.userId || auth.appUser.hasRole("ROLE_ADMIN")) && (
           <div className="col">
             <Link to={"/user/edit/" + user.userId} className="btn btn-warning">Edit Info</Link>
             <Link to={"/user/delete/" + user.userId} className="btn btn-danger">Close Account</Link>  
