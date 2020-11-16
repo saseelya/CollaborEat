@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 export default function EditRecipe() {
   const [recipe, setRecipe] = useState('');
@@ -16,6 +16,7 @@ export default function EditRecipe() {
   const [recipeId, setRecipeId] = useState(0);
 
   const { id } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     const getRecipe = () => {
@@ -91,6 +92,7 @@ export default function EditRecipe() {
     .then (response => {
       if (response.status === 201) {
         console.log('Success!');
+        history.push(`/recipe/${recipeId}`)
         // response.json().then(data => console.log(data));
     } else if (response.status === 400) {
         console.log('Errors!');

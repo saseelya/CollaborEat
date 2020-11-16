@@ -32,6 +32,7 @@ export default function Card({ recipe }) {
             <p className="card-text">
             Rating: {recipe.recipeRating}
             </p> 
+            <Link to={"/recipe/edit/" + recipe.recipeId} className="btn">Edit</Link>
         </div>
         </div>
     </div>
