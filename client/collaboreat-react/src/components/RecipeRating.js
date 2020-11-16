@@ -11,9 +11,14 @@ export default function GetRating({ id }) {
                 setRating(data);
             })
         };
-        getRating();
+        if (id) {
+            getRating();
+        }
     }, [id]);
 
+    if (rating === 0) {
+        return (<td></td>);
+    };
     return (
         <td>{rating}</td>
     );

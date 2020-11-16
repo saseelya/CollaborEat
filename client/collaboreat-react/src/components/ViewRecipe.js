@@ -5,6 +5,7 @@ import GetPerson from './Person';
 import GetFeedback from './RecipeFeedback';
 
 import AuthContext from './AuthContext';
+import GetRating from './RecipeRating';
 
 function ViewRecipe() {
   const [recipe, setRecipe] = useState('');
@@ -13,6 +14,7 @@ function ViewRecipe() {
 
   const [feedbackComment, setFeedbackComment] = useState('');
   const [feedbackRating, setFeedbackRating] = useState(1);
+  const [recipeRating, setRecipeRating] = useState(0);
   const [recipeId, setRecipeId] = useState(0);
   const feedbackId = 0;
   const auth = useContext(AuthContext);
@@ -24,6 +26,7 @@ function ViewRecipe() {
       fetch(`http://localhost:8080/recipe/${id}`)
         .then(response => response.json())
         .then(data => {
+          console.log("heyooo");
           setRecipe(data);
         });
     };
@@ -31,9 +34,19 @@ function ViewRecipe() {
       fetch(`http://localhost:8080/feedback/${id}`)
         .then(response => response.json())
         .then(data => {
+          console.log("heyoo");
           setFeedback(data);
         })
     }
+    const getRecipeRating = () => {
+      fetch(`http://localhost:8080/feedback/rating/${id}`)
+      .then(response => response.json())
+      .then(data => {
+          console.log("heyo");
+          setRecipeRating(data);
+      })
+  };
+    getRecipeRating();
     getRecipe();
     getFeedback();
     setRecipeId(id);
@@ -44,16 +57,29 @@ function ViewRecipe() {
       fetch(`http://localhost:8080/recipe/${id}`)
         .then(response => response.json())
         .then(data => {
+          console.log("heyooo!");
           setRecipe(data);
-        });
-    };
+        })
+    }
+
     const getFeedback = () => {
       fetch(`http://localhost:8080/feedback/${id}`)
         .then(response => response.json())
         .then(data => {
+          console.log("heyoo!");
           setFeedback(data);
         })
     }
+
+    const getRecipeRating = () => {
+      fetch(`http://localhost:8080/feedback/rating/${id}`)
+      .then(response => response.json())
+      .then(data => {
+          console.log("heyo!");
+          setRecipeRating(data);
+      })
+  };
+    getRecipeRating();
     getRecipe();
     getFeedback();
   }
@@ -117,7 +143,7 @@ function ViewRecipe() {
                 <td>{recipe.recipeCookTime}</td>
                 <td>{recipe.recipeSteps}</td>
                 <td>{recipe.recipeDate}</td>
-                <td>{recipe.recipeRating}</td>
+                <GetRating id={recipe.recipeId} />
                 <GetPerson id={recipe.userId} />
                 <MealType recipe={recipe} />
             </tr>
