@@ -74,6 +74,10 @@ public class RecipeService {
         return recipeRepository.deleteById(recipeId);
     }
 
+    public List<RecipeHealthInfo> findRHIByRecipeId(int recipeId) {
+        return rhiRepository.findByRecipeId(recipeId);
+    }
+
     public Result<Void> addHealthInfo(RecipeHealthInfo rhi) {
         Result<Void> result = validate(rhi);
 

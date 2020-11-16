@@ -10,4 +10,7 @@ public interface RecipeHealthInfoRepository {
     boolean add(RecipeHealthInfo recipeHealthInfo);
 
     boolean deleteByKey(int recipeId, int healthInfoId);
-}
+
+    List<RecipeHealthInfo> findByRecipeId(int recipeId);
+
+    }

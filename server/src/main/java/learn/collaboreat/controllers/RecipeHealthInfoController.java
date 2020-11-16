@@ -3,10 +3,13 @@ package learn.collaboreat.controllers;
 import learn.collaboreat.domain.RecipeService;
 import learn.collaboreat.domain.Result;
 import learn.collaboreat.models.HealthInfo;
+import learn.collaboreat.models.Recipe;
 import learn.collaboreat.models.RecipeHealthInfo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/recipe/healthInfo")
@@ -18,6 +21,10 @@ public class RecipeHealthInfoController {
         this.service = service;
     }
 
+    @GetMapping("/{recipeId}")
+    public List<RecipeHealthInfo> findById(@PathVariable int recipeId) {
+        return service.findRHIByRecipeId(recipeId);
+    }
     @PostMapping
     public ResponseEntity<Object> addHealthInfo(@RequestBody RecipeHealthInfo rhi) {
         Result<Void> result = service.addHealthInfo(rhi);

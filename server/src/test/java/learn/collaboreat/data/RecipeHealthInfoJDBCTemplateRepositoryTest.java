@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.DataAccessException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,6 +49,14 @@ class RecipeHealthInfoJDBCTemplateRepositoryTest {
     void shouldDelete() {
         assertTrue(repository.deleteByKey(2, 1));
         assertFalse(repository.deleteByKey(2,1));
+    }
+
+    @Test
+    void shouldFindHealthInfoFromUserId() {
+        List<RecipeHealthInfo> list = new ArrayList<>();
+        list.add(makeRecipeHealthInfo());
+        assertEquals(1, list.size());
+        assertEquals(1, list.get(0).getHealthInfo().getHealthInfoId());
     }
 
     RecipeHealthInfo makeRecipeHealthInfo() {

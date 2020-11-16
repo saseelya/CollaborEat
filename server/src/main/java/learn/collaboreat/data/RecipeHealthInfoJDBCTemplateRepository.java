@@ -43,4 +43,12 @@ public class RecipeHealthInfoJDBCTemplateRepository implements RecipeHealthInfoR
         return jdbcTemplate.update(sql, recipeId, healthInfoId) > 0;
     }
 
+    @Override
+    public List<RecipeHealthInfo> findByRecipeId(int recipeId) {
+        final String sql = "select recipeId, healthInfoId " +
+                "from recipeHealthInfo where recipeId = ? ;";
+
+        return jdbcTemplate.query(sql, new RecipeHealthInfoMapper(), recipeId);
+    }
+
 }
