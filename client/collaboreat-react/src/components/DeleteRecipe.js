@@ -7,13 +7,13 @@ export default function DeleteRecipe() {
   const [recipeStory, setRecipeStory] = useState('');
   const [recipeDescription, setRecipeDescription] = useState('');
   const [recipeIngredients, setRecipeIngredients] = useState('');
-  const [recipeCookTime, setRecipeCookTime] = useState('');
+  const [recipeCookTime, setRecipeCookTime] = useState(0);
   const [recipeSteps, setRecipeSteps] = useState('');
   const [recipeDate, setRecipeDate] = useState('');
-  const [recipeRating, setRecipeRating] = useState('');
-  const [userId, setUserId] = useState('');
-  const [mealTypeId, setMealTypeId] = useState('');
-  const [recipeId, setRecipeId] = useState('');
+  const [recipeRating, setRecipeRating] = useState(0);
+  const [userId, setUserId] = useState(0);
+  const [mealTypeId, setMealTypeId] = useState(0);
+  const [recipeId, setRecipeId] = useState(0);
 
   const { id } = useParams();
 
@@ -23,20 +23,18 @@ export default function DeleteRecipe() {
         .then(response => response.json())
         .then((data) => {
             setRecipe(data);
+            setRecipeName(data.recipeName);
+            setRecipeStory(data.recipeStory);
+            setRecipeDescription(data.recipeDescription);
+            setRecipeIngredients(data.recipeIngredients);
+            setRecipeCookTime(data.recipeCookTime);
+            setRecipeSteps(data.recipeSteps);
+            setRecipeDate(data.recipeDate);
+            setRecipeRating(data.recipeRating);
+            setUserId(data.userId);
+            setMealTypeId(data.mealTypeId);
+            setRecipeId(data.recipeId);
         })
-        .then(
-            setRecipeName(recipe.recipeName),
-            setRecipeStory(recipe.recipeStory),
-            setRecipeDescription(recipe.recipeDescription),
-            setRecipeIngredients(recipe.recipeIngredients),
-            setRecipeCookTime(recipe.recipeCookTime),
-            setRecipeSteps(recipe.recipeSteps),
-            setRecipeDate(recipe.recipeDate),
-            setRecipeRating(recipe.recipeRating),
-            setUserId(recipe.userId),
-            setMealTypeId(recipe.mealTypeId),
-            setRecipeId(recipe.recipeId)
-        );
     };
     getRecipe();
 }, [id]);
@@ -64,7 +62,7 @@ export default function DeleteRecipe() {
       })
     })
     .then (response => {
-      if (response.status === 201) {
+      if (response.status === 202) {
         console.log('Success!');
         response.json().then(data => console.log(data));
     } else if (response.status === 400) {
@@ -80,19 +78,16 @@ export default function DeleteRecipe() {
 
   return (
     <>
-    {/* 
-        This does the same thing where the variables only display when I save a change
-    */}
       <h2>Delete Recipe</h2>
-      <p>Recipe Name: { recipeName }</p>
-      <p>Description:  { recipeDescription }</p>
-      <p>Story:  { recipeStory }</p>
-      <p>Cook Time:  { recipeCookTime }</p>
-      <p>Ingredients:  { recipeIngredients }</p>
-      <p>Steps:  { recipeSteps }</p>
+      <p>Recipe Name: { recipe.recipeName }</p>
+      <p>Description:  { recipe.recipeDescription }</p>
+      <p>Story:  { recipe.recipeStory }</p>
+      <p>Cook Time:  { recipe.recipeCookTime }</p>
+      <p>Ingredients:  { recipe.recipeIngredients }</p>
+      <p>Steps:  { recipe.recipeSteps }</p>
 
       <form onSubmit={handleDeleteSubmit}>
-           <button type="submit">Delete Recipe</button>
+           <button href="/recipe" type="submit">Delete Recipe</button>
       </form>
     </>
   )

@@ -19,9 +19,9 @@ export default function EditRecipe() {
 
   useEffect(() => {
     const getRecipe = () => {
-        fetch(`http://localhost:8080/recipe/${id}`)
+        fetch(`http://localhost:8080/recipe/${id}`) 
         .then(response => response.json())
-        .then(data => {
+        .then((data) => {
             setRecipe(data);
         })
         .then(
@@ -37,6 +37,20 @@ export default function EditRecipe() {
             setMealTypeId(recipe.mealTypeId),
             setRecipeId(recipe.recipeId)
         );
+        // .then(({ recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, recipeSteps, recipeDate, recipeRating, userId, mealTypeId, recipeId}) => {
+        //   setRecipeName(recipeName),
+        //   setRecipeStory(recipeStory),
+        //     setRecipeDescription(recipeDescription),
+        //     setRecipeIngredients(recipeIngredients),
+        //     setRecipeCookTime(recipeCookTime),
+        //     setRecipeSteps(recipeSteps),
+        //     setRecipeDate(recipeDate),
+        //     setRecipeRating(recipeRating),
+        //     setUserId(userId),
+        //     setMealTypeId(mealTypeId),
+        //     setRecipeId(recipeId)
+        // })
+
     };
     getRecipe();
 }, [id]);
@@ -82,35 +96,36 @@ export default function EditRecipe() {
     <>
       <h2>Edit a Recipe</h2>
       <form onSubmit={handleEditSubmit}>
+      <input type="hidden" value={ recipe.recipeId }/>
       <div>
         <label htmlFor="recipeName">Recipe Name:  </label>
         <input id="recipeName" value={recipeName} 
-          onChange={(event) => setRecipeName(event.target.value)} type="text" placeholder="Name that Recipe!" />
+          onChange={(event) => setRecipeName(event.target.value)} type="text" />
       </div>
       <div>
         <label htmlFor="recipeDescription">Recipe Description:  </label>
         <input id="recipeDescription" value={recipeDescription} 
-          onChange={(event) => setRecipeDescription(event.target.value)} type="text" placeholder="Describe that recipe!" />
+          onChange={(event) => setRecipeDescription(event.target.value)} type="text"/>
       </div>
       <div>
         <label htmlFor="recipeStory">Recipe Story:  </label>
         <input id="recipeStory" value={recipeStory} 
-          onChange={(event) => setRecipeStory(event.target.value)} type="text" placeholder="Tell other collaborEaters about this recipe" />
+          onChange={(event) => setRecipeStory(event.target.value)} type="text" />
       </div>
       <div>
         <label htmlFor="recipeCookTime">Cook Time:  </label>
         <input id="recipeCookTime" value={recipeCookTime} 
-          onChange={(event) => setRecipeCookTime(event.target.value)} type="text" placeholder="How long does it take it make?" />
+          onChange={(event) => setRecipeCookTime(event.target.value)} type="text" />
       </div>
       <div>
         <label htmlFor="recipeIngredients">Recipe Ingredients:  </label>
         <textarea id="recipeIngredients" value={recipeIngredients} 
-          onChange={(event) => setRecipeIngredients(event.target.value)} type="text" placeholder="List your ingredients with a new line for each" />
+          onChange={(event) => setRecipeIngredients(event.target.value)} type="text"/>
       </div>
       <div>
         <label htmlFor="recipeSteps">Recipe Steps:  </label>
         <textarea id="recipeSteps" value={recipeSteps} 
-          onChange={(event) => setRecipeSteps(event.target.value)} type="text" placeholder="List your steps with a new line for each" />
+          onChange={(event) => setRecipeSteps(event.target.value)}/>
       </div>
       <div>
         <label htmlFor="mealType">Select a Meal Type:  </label>
