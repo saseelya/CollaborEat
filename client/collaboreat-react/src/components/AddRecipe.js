@@ -59,9 +59,20 @@ export default function AddRecipe() {
         console.log('Success!');
         response.json().then(data => console.log(data));
 
+        console.log(selected);
         var i;
-        for(i=0; i<selected.length; i++){
-          addHealthInfoBridge(selected[i]);
+        for( i=0; i<selected.length; i++ ){
+          console.log(selected[i]);
+          fetch('http://localhost:8080/recipe/healthInfo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              recipeId,
+              HealthInfo: selected[i]
+            })
+          })
         }
         // push to user's page when we have this info
         history.push(`/`);
@@ -149,7 +160,7 @@ export default function AddRecipe() {
         options={options}
         selected={selected}
         // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
-        onSelectedChange={(selected) => setSelected({selected})} // Function will trigger on select event
+        onSelect={(selected) => setSelected({selected})} // Function will trigger on select event
         // onRemove={this.onRemove} // Function will trigger on remove event
         displayValue="name" // Property name to display in the dropdown options
         />
