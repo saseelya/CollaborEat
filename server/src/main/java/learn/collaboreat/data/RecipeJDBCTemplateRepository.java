@@ -66,7 +66,8 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
                         "recipeCookTime, recipeCookTime, recipeSteps, recipeDate, recipeRating, " +
                         "userId, mealTypeId, imageUrl " +
                         "from recipe " +
-                        "order by recipeDate desc";
+                        "order by recipeDate desc " +
+                        "limit 6;";
         RecipeMapper recipeMapper = new RecipeMapper();
         return jdbcTemplate.query(sql, recipeMapper);
     }
