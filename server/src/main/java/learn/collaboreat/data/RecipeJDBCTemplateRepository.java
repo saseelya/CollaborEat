@@ -60,6 +60,18 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
     }
 
     @Override
+    public List<Recipe> findByDate() {
+        final String sql =
+                "select recipeId, recipeName, recipeStory, recipeDescription, recipeIngredients, " +
+                        "recipeCookTime, recipeCookTime, recipeSteps, recipeDate, recipeRating, " +
+                        "userId, mealTypeId, imageUrl " +
+                        "from recipe " +
+                        "order by recipeDate desc";
+        RecipeMapper recipeMapper = new RecipeMapper();
+        return jdbcTemplate.query(sql, recipeMapper);
+    }
+
+    @Override
     public Recipe add(Recipe recipe) {
         final String sql = "insert into recipe " +
                 "(recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, " +

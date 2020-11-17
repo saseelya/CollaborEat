@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import RecipeCards from './components/RecipeCards';
 import RecipeCardsByType from './components/RecipeCardsByType';
+import RecipeCardsByDate from './components/RecipeCardsByDate';
 
 export default function MainLayout() {
     return (
@@ -9,9 +10,9 @@ export default function MainLayout() {
             <div>
                 <Link to="/recipe/add">Add</Link>
                 <h1>CollaborEat</h1>
-                <h2>Top Recipes</h2>
+                <h2>Newest Submissions</h2>
                 <div>
-                    <RecipeCards />
+                    <RecipeCardsByDate />
                 </div>
             </div>
             <div>
@@ -21,17 +22,11 @@ export default function MainLayout() {
                 </div>
             </div>
             <div>
-                <h2>Top Entrees</h2>
+                <h2>Top Snacks</h2>
                 <div>
-                    <RecipeCardsByType id={5}/>
+                    <RecipeCardsByType id={8}/>
                 </div>
             </div>
         </>
     )
 };
-
-// TODO: Find All
-//       Image cards
-//          Rating
-//          Name
-//          Click to View

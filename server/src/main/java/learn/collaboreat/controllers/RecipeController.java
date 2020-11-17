@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -86,5 +87,10 @@ public class RecipeController {
         return service.findAll().stream().filter(recipe ->
                 recipe.getRecipeName().toUpperCase().contains(food.toUpperCase()))
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/date")
+    public List<Recipe> findByDate() {
+        return service.findByDate();
     }
 }

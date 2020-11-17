@@ -30,6 +30,10 @@ public class RecipeService {
         return recipeRepository.findById(recipeId);
     }
 
+    public List<Recipe> findByDate() {
+        return recipeRepository.findByDate();
+    }
+
     public Result<Recipe> add(Recipe recipe) {
         Result<Recipe> result = new Result<>();
 

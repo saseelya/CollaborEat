@@ -12,6 +12,8 @@ public interface RecipeRepository {
 
     Recipe findById(int recipeId);
 
+    List<Recipe> findByDate();
+
     Recipe add(Recipe recipe);
 
     boolean update(Recipe recipe);
