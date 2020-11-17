@@ -23,6 +23,13 @@ public class RecipeHealthInfoController {
 
     @GetMapping("/{recipeId}")
     public List<RecipeHealthInfo> findById(@PathVariable int recipeId) {
+
+       List<RecipeHealthInfo> all = service.findRHIByRecipeId(recipeId);
+       for (RecipeHealthInfo rhi : all) {
+           System.out.println(rhi.getHealthInfo().getHealthInfoName());
+       }
+
+
         return service.findRHIByRecipeId(recipeId);
     }
     @PostMapping

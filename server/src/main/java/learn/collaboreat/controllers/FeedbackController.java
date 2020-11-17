@@ -46,7 +46,6 @@ public class FeedbackController {
             total += f.getFeedbackRating();
         }
         total = total/feedbacks.size();
-        System.out.println(total);
         return total;
     }
 

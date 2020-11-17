@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 
-export default function RecipeHealthInfo({recipeId}) {
-  const [healthInfos, setHealthInfo] = useState([]);
+// import HealthInfo from './HealthInfo';
 
+// export default function RecipeHealthInfo({ recipe }) {
+//   const [RecipeHealthInfo, setRecipeHealthInfo] = useState([]);
+//   const [HealthInfoObj, setHealthInfoObj] = useState(null);
   
+//   const getRecipeHealthInfo = () => {
+//     fetch(`http://localhost:8080/recipe/healthInfo/${recipe.recipeId}`)
+//       .then(response => response.json())
+//       .then(data => {
+//         setRecipeHealthInfo(data);
+//       });
+//     }
 
-  return (
-    <>
-     <tbody>
-          {Recipes.map(recipe => (
-            <tr key={recipe.recipeId}>
-                <td>{recipe.recipeId}</td>
-                <td><Link to={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</Link></td> 
-                <td>{recipe.recipeStory}</td>
-                <td>{recipe.recipeDescription}</td>
-                <td>{recipe.recipeIngredients}</td>
-                <td>{recipe.recipeCookTime}</td>
-                <td>{recipe.recipeSteps}</td>
-                <td>{recipe.recipeDate}</td>
-                <td>{recipe.recipeRating}</td>
-                <td>{recipe.userId}</td>
-                <td>{recipe.mealTypeId}</td>
-            </tr>
-          ))}
-        </tbody>
-    </>
-  );
-}
+//   useEffect(() => {
+//     getRecipeHealthInfo();
+//   }, []);
+
+//   return (
+//     <>
+//       {RecipeHealthInfo.map(recipeHealthInfo => (
+        
+//         <HealthInfo key={recipeHealthInfo.recipeId} Info={HealthInfoObj} />
+//     ))}
+//     </>
+//   );
+// }

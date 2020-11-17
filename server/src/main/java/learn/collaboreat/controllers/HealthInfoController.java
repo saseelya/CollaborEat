@@ -21,7 +21,11 @@ public class HealthInfoController {
     public List<HealthInfo> findAll() { return service.findAll(); }
 
     @GetMapping("/{healthInfoId}")
-    public HealthInfo findById(@PathVariable int healthInfoId) { return service.findById(healthInfoId); }
+    public HealthInfo findById(@PathVariable int healthInfoId) {
+        HealthInfo info = service.findById(healthInfoId);
+        System.out.println(info.toString());
+        return service.findById(healthInfoId);
+    }
 
     @PostMapping
     public ResponseEntity<Object> add(@RequestBody HealthInfo hi) {
