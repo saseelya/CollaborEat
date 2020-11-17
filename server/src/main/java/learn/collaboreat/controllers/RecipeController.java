@@ -79,6 +79,7 @@ public class RecipeController {
     public List<Recipe> findByMealType(@PathVariable int mealTypeId) {
         return service.findAll().stream().filter(recipe ->
                 recipe.getMealTypeId() == mealTypeId)
+                .limit(6)
                 .collect(Collectors.toList());
     }
 
