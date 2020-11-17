@@ -14,6 +14,7 @@ export default function EditRecipe() {
   const [userId, setUserId] = useState(0);
   const [mealTypeId, setMealTypeId] = useState(0);
   const [recipeId, setRecipeId] = useState(0);
+  const [imageUrl, setImageUrl] = useState('');
 
   const { id } = useParams();
   const history = useHistory();
@@ -35,34 +36,8 @@ export default function EditRecipe() {
             setUserId(data.userId);
             setMealTypeId(data.mealTypeId);
             setRecipeId(data.recipeId);
+            setImageUrl(data.imageUrl);
         })
-        // .then(
-        //     setRecipeName(data.recipeName),
-        //     setRecipeStory(data.recipeStory),
-        //     setRecipeDescription(data.recipeDescription),
-        //     setRecipeIngredients(data.recipeIngredients),
-        //     setRecipeCookTime(data.recipeCookTime),
-        //     setRecipeSteps(data.recipeSteps),
-        //     setRecipeDate(data.recipeDate),
-        //     setRecipeRating(data.recipeRating),
-        //     setUserId(data.userId),
-        //     setMealTypeId(data.mealTypeId),
-        //     setRecipeId(data.recipeId)
-        // );
-        // .then(({ recipeName, recipeStory, recipeDescription, recipeIngredients, recipeCookTime, recipeSteps, recipeDate, recipeRating, userId, mealTypeId, recipeId}) => {
-        //   setRecipeName(recipeName),
-        //   setRecipeStory(recipeStory),
-        //     setRecipeDescription(recipeDescription),
-        //     setRecipeIngredients(recipeIngredients),
-        //     setRecipeCookTime(recipeCookTime),
-        //     setRecipeSteps(recipeSteps),
-        //     setRecipeDate(recipeDate),
-        //     setRecipeRating(recipeRating),
-        //     setUserId(userId),
-        //     setMealTypeId(mealTypeId),
-        //     setRecipeId(recipeId)
-        // })
-
     };
     getRecipe();
 }, [id]);
@@ -86,7 +61,8 @@ export default function EditRecipe() {
         recipeRating,
         userId,
         mealTypeId,
-        recipeId,
+        imageUrl,
+        recipeId
       })
     })
     .then (response => {
@@ -137,8 +113,13 @@ export default function EditRecipe() {
       </div>
       <div>
         <label htmlFor="recipeSteps">Recipe Steps:  </label>
-        <textarea id="recipeSteps" value={recipeSteps} 
+        <textarea id="recipeSteps" value={recipeSteps} type="text" 
           onChange={(event) => setRecipeSteps(event.target.value)}/>
+      </div>
+      <div>
+        <label htmlFor="imageUrl">Link to Image:  </label>
+        <textarea id="imageUrl" value={imageUrl} 
+          onChange={(event) => setImageUrl(event.target.value)} type="text" />
       </div>
       <div>
         <label htmlFor="mealType">Select a Meal Type:  </label>

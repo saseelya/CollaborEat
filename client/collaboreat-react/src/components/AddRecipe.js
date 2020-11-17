@@ -12,6 +12,8 @@ export default function AddRecipe() {
   const [mealTypeId, setMealTypeId] = useState('');
   const [recipeIngredients, setRecipeIngredients] = useState('');
   const [recipeSteps, setRecipeSteps] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
+
   const [recipeHealthInfo, setRecipeHealthInfo] = useState([]);
 
   const recipeId = 0;
@@ -42,7 +44,8 @@ export default function AddRecipe() {
         recipeRating,
         userId,
         mealTypeId,
-        recipeHealthInfo
+        imageUrl
+        // recipeHealthInfo
       })
     })
     .then (response => {
@@ -98,6 +101,11 @@ export default function AddRecipe() {
           onChange={(event) => setRecipeSteps(event.target.value)} type="text" placeholder="List your steps with a new line for each" />
       </div>
       <div>
+        <label htmlFor="imageUrl">Link to Image:  </label>
+        <textarea id="imageUrl" value={imageUrl} 
+          onChange={(event) => setImageUrl(event.target.value)} type="text" placeholder="Add a link to a picture for your recipe" />
+      </div>
+      <div>
         <label htmlFor="mealType">Select a Meal Type:  </label>
         <select id="mealType" value={mealTypeId} onChange={(event) => setMealTypeId(event.target.value)}>
           <option value="1">Breakfast</option>
@@ -115,7 +123,7 @@ export default function AddRecipe() {
       <Multiselect 
         options={[{name: 'Gluten Free', id: 1},{name: 'Sugar Free', id: 2},{name: 'Vegetarian', id: 3},{name: 'Vegan', id: 4}]} // Options to display in the dropdown
         // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
-        onSelect={(event) => recipeHealthInfo.push({id})} // Function will trigger on select event
+        onSelect={(event) => recipeHealthInfo.push("id")} // Function will trigger on select event
         // onRemove={this.onRemove} // Function will trigger on remove event
         displayValue="name" // Property name to display in the dropdown options
         />
