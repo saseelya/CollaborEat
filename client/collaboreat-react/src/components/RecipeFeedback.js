@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 
 import GetPerson from './Person';
 import AuthContext from './AuthContext';
 
 export default function GetFeedback({ feedback, pageUpdate }) {
-  const history = useHistory();
   const auth = useContext(AuthContext);
 
   const handleDeleteSubmit = (event) => {
