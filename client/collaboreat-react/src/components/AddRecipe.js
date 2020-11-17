@@ -15,6 +15,7 @@ export default function AddRecipe() {
   const [imageUrl, setImageUrl] = useState('');
 
   const [recipeHealthInfo, setRecipeHealthInfo] = useState([]);
+  const [selected, setSelected] = useState([]);
 
   const recipeId = 0;
   const recipeRating = 0;
@@ -24,6 +25,12 @@ export default function AddRecipe() {
 
   const userId = 2; // will this be a new fetch to get the user who is logged in?
 
+  const options=[
+    {name: 'Gluten Free', id: 1},
+    {name: 'Sugar Free', id: 2},
+    {name: 'Vegetarian', id: 3},
+    {name: 'Vegan', id: 4}
+  ];
   const handleAddSubmit = (event) => {
     event.preventDefault();
 
@@ -45,13 +52,17 @@ export default function AddRecipe() {
         userId,
         mealTypeId,
         imageUrl
-        // recipeHealthInfo
       })
     })
     .then (response => {
       if (response.status === 201) {
         console.log('Success!');
         response.json().then(data => console.log(data));
+
+        var i;
+        for(i=0; i<selected.length; i++){
+          addHealthInfoBridge(selected[i]);
+        }
         // push to user's page when we have this info
         history.push(`/`);
     } else if (response.status === 400) {
@@ -63,6 +74,20 @@ export default function AddRecipe() {
         console.log('Oops... not sure what happened here :(');
     }
     })
+  }
+
+  const addHealthInfoBridge = (healthInfoObj) => {
+    healthInfoObj.preventDefault();
+    fetch('http://localhost:8080/recipe/healthInfo', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        recipeId,
+        healthInfoObj
+      })
+    });
   }
 
   
@@ -118,16 +143,17 @@ export default function AddRecipe() {
           <option value="8">Snack</option>
         </select>
       </div>
-      {/* <div>
+      <div>
       <label>Select Health Info:  </label>
       <Multiselect 
-        options={[{name: 'Gluten Free', id: 1},{name: 'Sugar Free', id: 2},{name: 'Vegetarian', id: 3},{name: 'Vegan', id: 4}]} // Options to display in the dropdown
+        options={options}
+        selected={selected}
         // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
-        onSelect={(event) => recipeHealthInfo.push("id")} // Function will trigger on select event
+        onSelectedChange={(selected) => setSelected({selected})} // Function will trigger on select event
         // onRemove={this.onRemove} // Function will trigger on remove event
         displayValue="name" // Property name to display in the dropdown options
         />
-      </div> */}
+      </div>
       <button type="submit">Add Recipe</button>
       </form>
     </>
