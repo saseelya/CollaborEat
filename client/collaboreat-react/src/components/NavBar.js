@@ -39,5 +39,3 @@ export default function NavBar() {
     </nav>
   );
 }
-
-// onSubmit={history.push('/recipe/food')
