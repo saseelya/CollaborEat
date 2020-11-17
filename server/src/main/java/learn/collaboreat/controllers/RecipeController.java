@@ -84,7 +84,7 @@ public class RecipeController {
     @GetMapping("/food/{food}")
     public List<Recipe> findByFood(@PathVariable String food) {
         return service.findAll().stream().filter(recipe ->
-                recipe.getRecipeName().contains(food))
+                recipe.getRecipeName().toUpperCase().contains(food.toUpperCase()))
                 .collect(Collectors.toList());
     }
 }

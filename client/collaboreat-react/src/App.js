@@ -25,6 +25,7 @@ import EditRecipe from './components/EditRecipe';
 import DeleteRecipe from './components/DeleteRecipe';
 import HealthInfoByRecipe from './components/HealthInfoByRecipe';
 import RecipeHealthInfo from './components/RecipeHealthInfo';
+import RecipeCardsByFood from './components/RecipeCardsByFood';
 
 
 function NotFound() {
@@ -128,6 +129,9 @@ export default function App() {
             </Route>
             <Route path="/feedback">
                 <Feedback />
+            </Route>
+            <Route exact path="/recipe/food/:food">
+              <RecipeCardsByFood />
             </Route>
             <Route exact path="/recipe/:id">
                 <ViewRecipe />
