@@ -19,9 +19,11 @@ export default function GetRating({ recipe }) {
     if (rating === 0) {
         return (<></>);
     };
-    return (
-        <>{rating}</>
-    );
+    if (!isNaN(rating)) {
+        return (<>{rating}</>);
+    }
+    else {
+        return (<>No Ratings Yet</>);
+    }
+
 }
-
-
