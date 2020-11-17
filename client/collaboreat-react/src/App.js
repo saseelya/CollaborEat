@@ -23,6 +23,7 @@ import MainLayout from './mainLayout';
 import DeleteUser from './DeleteUser';
 import EditRecipe from './components/EditRecipe';
 import DeleteRecipe from './components/DeleteRecipe';
+import HealthInfoByRecipe from './components/HealthInfoByRecipe';
 
 
 function NotFound() {
@@ -118,7 +119,10 @@ export default function App() {
                 )
               }
             </Route>
-            <Route path="/healthInfo">
+            <Route path="/healthInfo/:id">
+                <HealthInfoByRecipe />
+            </Route>
+            <Route exact path="/healthInfo">
                 <HealthInfo />
             </Route>
             <Route path="/feedback">
