@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import RecipeCards from './components/RecipeCards';
+import React, { } from 'react';
+import { Link } from 'react-router-dom';
 import RecipeCardsByType from './components/RecipeCardsByType';
 import RecipeCardsByDate from './components/RecipeCardsByDate';
 
@@ -56,49 +55,49 @@ export default function MainLayout() {
             <div>
             <h1 className="text-center">Top Breakfast Recipes</h1>
                 <div>
-                    <RecipeCardsByType id={1}/>
+                    <RecipeCardsByType mealTypeId={1}/>
                 </div>
             </div>
             <div>
             <h1 className="text-center">Top Brunch Recipes</h1>
                 <div>
-                    <RecipeCardsByType id={2}/>
+                    <RecipeCardsByType mealTypeId={2}/>
                 </div>
             </div>
             <div>
             <h1 className="text-center">Top Dessert Recipes</h1>
                 <div>
-                    <RecipeCardsByType id={3}/>
+                    <RecipeCardsByType mealTypeId={3}/>
                 </div>
             </div>
             <div>
             <h1 className="text-center">Top Dinner Recipes</h1>
                 <div>
-                    <RecipeCardsByType id={4}/>
+                    <RecipeCardsByType mealTypeId={4}/>
                 </div>
             </div>
             <div>
             <h1 className="text-center">Top Entree Recipes</h1>
                 <div>
-                    <RecipeCardsByType id={5}/>
+                    <RecipeCardsByType mealTypeId={5}/>
                 </div>
             </div>
             <div>
-            <h1 className="text-center">Top Lunche Recipes</h1>
+            <h1 className="text-center">Top Lunch Recipes</h1>
                 <div>
-                    <RecipeCardsByType id={6}/>
+                    <RecipeCardsByType mealTypeId={6}/>
                 </div>
             </div>
             <div>
             <h1 className="text-center">Top Side Recipes</h1>
                 <div>
-                    <RecipeCardsByType id={7}/>
+                    <RecipeCardsByType mealTypeId={7}/>
                 </div>
             </div>
             <div>
             <h1 className="text-center">Top Snack Recipes</h1>
                 <div>
-                    <RecipeCardsByType id={8}/>
+                    <RecipeCardsByType mealTypeId={8}/>
                 </div>
             </div>
         </>

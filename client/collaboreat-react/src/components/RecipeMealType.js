@@ -17,6 +17,6 @@ export default function MealType({ recipe }) {
   }, [recipe.mealTypeId, recipe]);
 
   return (
-      <td>{mealType ? mealType.mealTypeName : ''}</td>
+      <>{mealType ? mealType.mealTypeName : ''}</>
   );
 }

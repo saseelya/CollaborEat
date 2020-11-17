@@ -16,7 +16,7 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
         <Link to="/">CollaborEat</Link>
         <form className="form-inline" onSubmit={handleSubmit}>
         <input className="form-control mr-sm-2" type="search" placeholder="Search By Food Item" aria-label="Search" value={foodItem} onChange={(event) => setFoodItem(event.target.value)} />

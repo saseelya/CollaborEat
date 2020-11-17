@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 
 import MealType from './RecipeMealType';
 import GetPerson from './Person';
@@ -98,9 +98,42 @@ function ViewRecipe() {
 
   return (
     <>
-      <h2>{recipe.recipeName}</h2>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <h2>{recipe.recipeName}</h2>
+            <p>Date Added: {recipe.recipeDate}</p>
+            <p>Added By: <Link to={"/user/" + recipe.userId}><GetPerson id={recipe.userId} /></Link></p>
+            <p>Cook Time: {recipe.recipeCookTime}</p>
+            <p>Rating: <GetRating recipe={recipe} /></p>
+          </div>
+        <img className="col" src={recipe.imageUrl} alt="food" height="280" width="280"/>
+      </div>
+      </div>
+      <div className="container">
+        <h4>The Story</h4>
+        <p>{recipe.recipeStory}</p>
+      </div>
+      <div className="container">
+        <h4>The Description</h4>
+        <p>{recipe.recipeDescription}</p>
+      </div>
+      <div className="container">
+        <h4>The Ingredients</h4>
+        <p>{recipe.recipeIngredients}</p>
+      </div>
+      <div className="container">
+        <h4>The Steps</h4>
+        <p>{recipe.recipeSteps}</p>
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col">Meal Type: <Link to={"/recipe/mealType/" + recipe.mealTypeId}><MealType recipe={recipe} /></Link></div>
+          <div className="col">Health Info: <RecipeHealthInfo recipe={recipe} /></div>
+        </div>
+      </div>
 
-      <table className="table table-dark table-striped table-hover">
+      {/* <table className="table table-dark table-striped table-hover">
         <thead>
           <tr>
             <th scope="col">Recipe </th>
@@ -131,7 +164,7 @@ function ViewRecipe() {
                 <td><RecipeHealthInfo recipe={recipe} /></td>
             </tr>
         </tbody>
-      </table>
+      </table> */}
       {auth.appUser && (
       <form onSubmit={handleAddSubmit}>
         <div>

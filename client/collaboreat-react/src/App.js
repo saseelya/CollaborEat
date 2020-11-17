@@ -26,20 +26,12 @@ import DeleteRecipe from './components/DeleteRecipe';
 import HealthInfoByRecipe from './components/HealthInfoByRecipe';
 import RecipeHealthInfo from './components/RecipeHealthInfo';
 import RecipeCardsByFood from './components/RecipeCardsByFood';
+import RecipeCardsByType from './components/RecipeCardsByType';
 
 
 function NotFound() {
   return <h1>Not Found</h1>;
 }
-
-// function AddRecipe() {
-//   return <h1>Add Recipe</h1>;
-// }
-
-// function EditRecipe() {
-//   return <h1>Edit Recipe</h1>;
-// }
-
 
 export default function App() {
   const [appUser, setAppUser] = useState(null);
@@ -97,7 +89,7 @@ export default function App() {
                 )
               }
             </Route>
-            <Route path="/user/:id">
+            <Route exact path="/user/:id">
                 <User />
             </Route>
             <Route exact path="/recipe/add">
@@ -121,17 +113,20 @@ export default function App() {
                 )
               }
             </Route>
-            <Route path="/healthInfo/:id">
+            <Route exact path="/healthInfo/:id">
                 <HealthInfoByRecipe />
             </Route>
             <Route exact path="/healthInfo">
                 <HealthInfo />
             </Route>
-            <Route path="/feedback">
+            <Route exact path="/feedback">
                 <Feedback />
             </Route>
             <Route exact path="/recipe/food/:food">
               <RecipeCardsByFood />
+            </Route>
+            <Route exact path="/recipe/mealType/:id">
+              <RecipeCardsByType />
             </Route>
             <Route exact path="/recipe/:id">
                 <ViewRecipe />
@@ -139,13 +134,13 @@ export default function App() {
             <Route exact path="/recipe/healthInfo/:id">
                 <RecipeHealthInfo />
             </Route>
-            <Route path="/recipe">
+            <Route exact path="/recipe">
                 <Recipe />
             </Route>
-            <Route path="/login">
+            <Route exact path="/login">
                 <Login />
             </Route>
-            <Route path="/register">
+            <Route exact path="/register">
                 <Register />
             </Route>
             <Route exact path="/">

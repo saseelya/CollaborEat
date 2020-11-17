@@ -18,7 +18,7 @@ export default function GetPerson({ id }) {
 
   if (!person) { return <td></td>; }
   return (
-      <td>{person.firstName} {person.lastName}</td>
+      <>{person.firstName} {person.lastName}</>
   );
   
 }

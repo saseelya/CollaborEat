@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom'
 import Card from './Card';
 
-export default function RecipeCardsByType({ id }) {
+export default function RecipeCardsByType({ mealTypeId }) {
   const [Recipes, setRecipe] = useState([]);
+  const {id} = useParams();
 
-  const getRecipe = () => {
-    fetch(`http://localhost:8080/recipe/mealType/${id}`)
+  const getRecipe = (identifier) => {
+    fetch(`http://localhost:8080/recipe/mealType/${identifier}`)
       .then(response => response.json())
       .then(data => {
         setRecipe(data);
@@ -13,8 +15,12 @@ export default function RecipeCardsByType({ id }) {
   };
   
   useEffect(() => {
-    getRecipe();
-  });
+    if (id) {
+      getRecipe(id);
+    } else {
+      getRecipe(mealTypeId);
+    }
+  }, [id, mealTypeId]);
 
   return (
     <>
