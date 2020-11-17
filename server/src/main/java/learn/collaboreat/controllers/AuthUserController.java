@@ -126,7 +126,8 @@ public class AuthUserController {
 
     @PostMapping("/refresh_token")
     public ResponseEntity<Map<String, String>> refreshToken(UsernamePasswordAuthenticationToken principal) {
-        org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(principal.getName(), principal.getName(), principal.getAuthorities());
+        org.springframework.security.core.userdetails.User user =
+                new org.springframework.security.core.userdetails.User(principal.getName(), principal.getName(), principal.getAuthorities());
         String jwtToken = converter.getTokenFromUser(user);
 
         HashMap<String, String> map = new HashMap<>();

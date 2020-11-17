@@ -18,7 +18,7 @@ function ViewRecipe() {
   const [recipeId, setRecipeId] = useState(0);
   const feedbackId = 0;
   const auth = useContext(AuthContext);
-  const userId = 2; //may need separate fetch call here
+  const userId = 2;
 
   
   useEffect(() => {
@@ -143,7 +143,7 @@ function ViewRecipe() {
             </tr>
         </tbody>
       </table>
-
+      {auth.appUser && (
       <form onSubmit={handleAddSubmit}>
         <div>
           <label htmlFor="feedbackComment">Comment: </label>
@@ -163,7 +163,7 @@ function ViewRecipe() {
         </div>
           <button type="submit">Add Comment</button>
       </form>
-
+      )};
       <h2>Feedback</h2>
 
       <table className="table table-dark table-striped table-hover">

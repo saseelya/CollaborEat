@@ -22,7 +22,7 @@ export default function RecipeCards() {
       <h2>Recipes</h2>
       <div className="row">
               {Recipes.map(recipe => (
-                <Card recipe={recipe} />
+                <Card key={recipe.recipeId} recipe={recipe} />
               ))}
         </div>
     </>

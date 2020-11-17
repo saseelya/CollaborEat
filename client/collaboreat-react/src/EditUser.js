@@ -50,25 +50,27 @@ export default function EditUser() {
         });
 
         if (response.status === 201) {
-            history.push(`/user/${userId}`)
-            // const responseAuth = await fetch('http://localhost:8080/user/authenticate', {
+                history.push(`/user/${userId}`)
+            // const responseAuth = await fetch('http://localhost:8080/user/refresh_token', {
             // method: 'POST',
             // headers: {
-            //     "Content-Type": "application/json"
-            // },
-            // body: JSON.stringify({
-            //     email,
-            //     password
+            //     "Authorization": "Bearer " + auth.appUser.token
+            // }
             // })
+            // .then(responseAuth => {
+            //     if (responseAuth.status !== 200) {
+            //         throw "Automatic token refresh failed.";
+            //     }
+            //     history.push(`/user/${userId}`)
+            //     return response.json();
             // });
-            
-            // if (responseAuth.status === 200) {
-            //     const { jwt_token } = await responseAuth.json();
+            // // if (responseAuth.status === 200) {
+            // //     const { jwt_token } = await responseAuth.json();
     
-            //     auth.login(jwt_token);
+            // //     auth.login(jwt_token);
     
                 
-            // }
+            // // }
         } else if (response.status === 400) {
             setErrors(['Account Update failed.']);
         } else {
