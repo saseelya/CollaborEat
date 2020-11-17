@@ -32,7 +32,7 @@ export default function Card({ recipe }) {
               Uploaded On: {recipe.recipeDate}
               </p>
               <p className="card-text">
-              Rating: <GetRating id={recipe.recipeId}/>
+              Rating: <GetRating recipe={recipe}/>
               </p> 
               <Link to={"/recipe/edit/" + recipe.recipeId} className="btn">Edit</Link>
               <Link to={"/recipe/delete/" + recipe.recipeId} className="btn">Delete</Link>

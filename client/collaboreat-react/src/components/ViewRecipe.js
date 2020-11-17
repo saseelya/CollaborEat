@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import MealType from './RecipeMealType';
 import GetPerson from './Person';
 import GetFeedback from './RecipeFeedback';
+import RecipeHealthInfo from './RecipeHealthInfo';
 
 import AuthContext from './AuthContext';
 import GetRating from './RecipeRating';
@@ -126,6 +127,7 @@ function ViewRecipe() {
             <th scope="col">Rating</th>
             <th scope="col">User</th>
             <th scope="col">Meal Type</th>
+            <th scope="col">Health Info</th>
           </tr>
         </thead>
         <tbody>
@@ -140,6 +142,7 @@ function ViewRecipe() {
                 <td><GetRating recipe={recipe} /></td>
                 <GetPerson id={recipe.userId} />
                 <MealType recipe={recipe} />
+                {/* <td><RecipeHealthInfo recipe={recipe} /></td> */}
             </tr>
         </tbody>
       </table>

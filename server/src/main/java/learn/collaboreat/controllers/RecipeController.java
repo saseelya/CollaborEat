@@ -80,4 +80,11 @@ public class RecipeController {
                 recipe.getMealTypeId() == mealTypeId)
                 .collect(Collectors.toList());
     }
+
+    @GetMapping("/food/{food}")
+    public List<Recipe> findByFood(@PathVariable String food) {
+        return service.findAll().stream().filter(recipe ->
+                recipe.getRecipeName().contains(food))
+                .collect(Collectors.toList());
+    }
 }

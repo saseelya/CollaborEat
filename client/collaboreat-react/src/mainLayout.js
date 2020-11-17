@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import RecipeCards from './components/RecipeCards';
 import RecipeCardsByType from './components/RecipeCardsByType';
 
@@ -7,6 +7,7 @@ export default function MainLayout() {
     return (
         <>
             <div>
+                <Link to="/recipe/add">Add</Link>
                 <h1>CollaborEat</h1>
                 <h2>Top Recipes</h2>
                 <div>
