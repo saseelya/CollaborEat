@@ -23,11 +23,13 @@ export default function HealthInfo() {
         <thead>
           <tr>
             <th scope="col">Health Info Id</th>
+            <th scope="col">Health Info Name</th>
           </tr>
         </thead>
         <tbody>
           {healthInfos.map(healthInfo => (
             <tr key={healthInfo.healthInfoId}>
+              <td>{healthInfo.healthInfoId}</td>
               <td>{healthInfo.healthInfoName}</td> 
             </tr>
           ))}

@@ -9,7 +9,7 @@ import AuthContext from './AuthContext';
 import GetRating from './RecipeRating';
 
 function ViewRecipe() {
-  const [recipe, setRecipe] = useState('');
+  const [recipe, setRecipe] = useState(null);
   const [Feedbacks, setFeedback] = useState([]);
   const {id} = useParams();
 
@@ -110,6 +110,10 @@ function ViewRecipe() {
     })
   }
 
+  if (!recipe) {
+    return null;
+  }
+
   return (
     <>
       <h2>{recipe.recipeName}</h2>
@@ -142,7 +146,7 @@ function ViewRecipe() {
                 <td><GetRating recipe={recipe} /></td>
                 <GetPerson id={recipe.userId} />
                 <MealType recipe={recipe} />
-                {/* <td><RecipeHealthInfo recipe={recipe} /></td> */}
+                <td><RecipeHealthInfo recipe={recipe} /></td>
             </tr>
         </tbody>
       </table>

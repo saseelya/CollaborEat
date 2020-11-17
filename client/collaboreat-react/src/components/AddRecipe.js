@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {useParams, useHistory} from 'react-router-dom';
+import { Multiselect } from 'multiselect-react-dropdown';
 
 import AuthContext from './AuthContext';
 
@@ -11,6 +12,8 @@ export default function AddRecipe() {
   const [mealTypeId, setMealTypeId] = useState('');
   const [recipeIngredients, setRecipeIngredients] = useState('');
   const [recipeSteps, setRecipeSteps] = useState('');
+  const [recipeHealthInfo, setRecipeHealthInfo] = useState([]);
+
   const recipeId = 0;
   const recipeRating = 0;
   const recipeDate = 0;
@@ -38,7 +41,8 @@ export default function AddRecipe() {
         recipeDate,
         recipeRating,
         userId,
-        mealTypeId
+        mealTypeId,
+        recipeHealthInfo
       })
     })
     .then (response => {
@@ -106,6 +110,16 @@ export default function AddRecipe() {
           <option value="8">Snack</option>
         </select>
       </div>
+      {/* <div>
+      <label>Select Health Info:  </label>
+      <Multiselect 
+        options={[{name: 'Gluten Free', id: 1},{name: 'Sugar Free', id: 2},{name: 'Vegetarian', id: 3},{name: 'Vegan', id: 4}]} // Options to display in the dropdown
+        // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
+        onSelect={(event) => recipeHealthInfo.push({id})} // Function will trigger on select event
+        // onRemove={this.onRemove} // Function will trigger on remove event
+        displayValue="name" // Property name to display in the dropdown options
+        />
+      </div> */}
       <button type="submit">Add Recipe</button>
       </form>
     </>

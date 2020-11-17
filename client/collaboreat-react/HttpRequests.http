@@ -43,3 +43,7 @@ Content-Type: application/json
     "email": "cbarkume@dev-10.com",
     "password": "pa77word!"
 }
+
+###
+
+GET http://localhost:8080/recipe/healthInfo/1 HTTP/1.1

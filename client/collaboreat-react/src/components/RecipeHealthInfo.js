@@ -1,29 +1,30 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-// import HealthInfo from './HealthInfo';
+import HealthInfo from './HealthInfoByRecipe';
 
-// export default function RecipeHealthInfo({ recipe }) {
-//   const [RecipeHealthInfo, setRecipeHealthInfo] = useState([]);
-//   const [HealthInfoObj, setHealthInfoObj] = useState(null);
+export default function RecipeHealthInfo({ recipe }) {
+  const [recipeHealthInfo, setRecipeHealthInfo] = useState([]);
   
-//   const getRecipeHealthInfo = () => {
-//     fetch(`http://localhost:8080/recipe/healthInfo/${recipe.recipeId}`)
-//       .then(response => response.json())
-//       .then(data => {
-//         setRecipeHealthInfo(data);
-//       });
-//     }
+  const getRecipeHealthInfo = () => {
+    fetch(`http://localhost:8080/recipe/healthInfo/${recipe.recipeId}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setRecipeHealthInfo(data);
+      });
+    }
 
-//   useEffect(() => {
-//     getRecipeHealthInfo();
-//   }, []);
+  useEffect(() => {
+    getRecipeHealthInfo();
+  }, []);
 
-//   return (
-//     <>
-//       {RecipeHealthInfo.map(recipeHealthInfo => (
-        
-//         <HealthInfo key={recipeHealthInfo.recipeId} Info={HealthInfoObj} />
-//     ))}
-//     </>
-//   );
-// }
+  return (
+    <>
+      {recipeHealthInfo.map(rhi => (
+        <ul>
+          <HealthInfo key={rhi.recipeId} healthInfo={rhi.healthInfo} />
+        </ul>
+    ))}
+    </>
+  );
+}
