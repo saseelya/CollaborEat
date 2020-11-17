@@ -60,7 +60,43 @@ export default function MainLayout() {
                 </div>
             </div>
             <div>
-            <h1 className="text-center">Top Snacks</h1>
+            <h1 className="text-center">Top Brunch Recipes</h1>
+                <div>
+                    <RecipeCardsByType id={2}/>
+                </div>
+            </div>
+            <div>
+            <h1 className="text-center">Top Dessert Recipes</h1>
+                <div>
+                    <RecipeCardsByType id={3}/>
+                </div>
+            </div>
+            <div>
+            <h1 className="text-center">Top Dinner Recipes</h1>
+                <div>
+                    <RecipeCardsByType id={4}/>
+                </div>
+            </div>
+            <div>
+            <h1 className="text-center">Top Entree Recipes</h1>
+                <div>
+                    <RecipeCardsByType id={5}/>
+                </div>
+            </div>
+            <div>
+            <h1 className="text-center">Top Lunche Recipes</h1>
+                <div>
+                    <RecipeCardsByType id={6}/>
+                </div>
+            </div>
+            <div>
+            <h1 className="text-center">Top Side Recipes</h1>
+                <div>
+                    <RecipeCardsByType id={7}/>
+                </div>
+            </div>
+            <div>
+            <h1 className="text-center">Top Snack Recipes</h1>
                 <div>
                     <RecipeCardsByType id={8}/>
                 </div>

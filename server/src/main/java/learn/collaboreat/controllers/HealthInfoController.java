@@ -22,8 +22,6 @@ public class HealthInfoController {
 
     @GetMapping("/{healthInfoId}")
     public HealthInfo findById(@PathVariable int healthInfoId) {
-        HealthInfo info = service.findById(healthInfoId);
-        System.out.println(info.toString());
         return service.findById(healthInfoId);
     }
 

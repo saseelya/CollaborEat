@@ -9,7 +9,7 @@ export default function AddRecipe() {
   const [recipeDescription, setRecipeDescription] = useState('');
   const [recipeStory, setRecipeStory] = useState('');
   const [recipeCookTime, setRecipeCookTime] = useState('');
-  const [mealTypeId, setMealTypeId] = useState('');
+  const [mealTypeId, setMealTypeId] = useState(1);
   const [recipeIngredients, setRecipeIngredients] = useState('');
   const [recipeSteps, setRecipeSteps] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -22,8 +22,6 @@ export default function AddRecipe() {
   const recipeDate = 0;
   const auth = useContext(AuthContext);
   const history = useHistory();
-
-  const userId = 2; // will this be a new fetch to get the user who is logged in?
 
   const options=[
     {name: 'Gluten Free', id: 1},
@@ -49,7 +47,7 @@ export default function AddRecipe() {
         recipeSteps,
         recipeDate,
         recipeRating,
-        userId,
+        userId: auth.appUser.userId,
         mealTypeId,
         imageUrl
       })
@@ -61,7 +59,7 @@ export default function AddRecipe() {
 
         console.log(selected);
         var i;
-        for( i=0; i<selected.length; i++ ){
+        for( i = 0; i < selected.length; i++ ){
           console.log(selected[i]);
           fetch('http://localhost:8080/recipe/healthInfo', {
             method: 'POST',
@@ -74,7 +72,6 @@ export default function AddRecipe() {
             })
           })
         }
-        // push to user's page when we have this info
         history.push(`/`);
     } else if (response.status === 400) {
         console.log('Errors!');
@@ -159,9 +156,8 @@ export default function AddRecipe() {
       <Multiselect 
         options={options}
         selected={selected}
-        // selectedValues={this.state.selectedValue} // Preselected value to persist in dropdown
         onSelect={(selected) => setSelected({selected})} // Function will trigger on select event
-        // onRemove={this.onRemove} // Function will trigger on remove event
+        onRemove={(selected) => setSelected({selected})} // Function will trigger on remove event
         displayValue="name" // Property name to display in the dropdown options
         />
       </div>

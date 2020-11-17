@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import GetRating from './RecipeRating';
+import AuthContext from './AuthContext';
 
 export default function Card({ recipe }) {
   const [user, setUser] = useState('');
+  const auth = useContext(AuthContext);
 
   useEffect(() => {
     const getUser = () => {
@@ -37,10 +39,12 @@ export default function Card({ recipe }) {
               Rating: <GetRating recipe={recipe}/>
               </p> 
           </div>
-          <div class="card-footer">
+          {auth.appUser && (auth.appUser.userId === user.userId || auth.appUser.hasRole("ROLE_ADMIN")) && (
+            <div class="card-footer">
                 <h3><Link to={"/recipe/edit/" + recipe.recipeId} class="badge badge-primary text-light">Edit</Link>
                 <Link to={"/recipe/delete/" + recipe.recipeId} class="badge badge-danger text-light">Delete</Link></h3>
-                </div>
+            </div>
+          )}
         </div>
     </div>
     </>

@@ -16,11 +16,9 @@ function ViewRecipe() {
 
   const [feedbackComment, setFeedbackComment] = useState('');
   const [feedbackRating, setFeedbackRating] = useState(1);
-  const [recipeRating, setRecipeRating] = useState(0);
   const [recipeId, setRecipeId] = useState(0);
   const feedbackId = 0;
   const auth = useContext(AuthContext);
-  const userId = 2;
 
   
   useEffect(() => {
@@ -38,14 +36,6 @@ function ViewRecipe() {
           setFeedback(data);
         })
     }
-    const getRecipeRating = () => {
-      fetch(`http://localhost:8080/feedback/rating/${id}`)
-      .then(response => response.json())
-      .then(data => {
-          setRecipeRating(data);
-      })
-  };
-    getRecipeRating();
     getRecipe();
     getFeedback();
     setRecipeId(id);
@@ -67,15 +57,6 @@ function ViewRecipe() {
           setFeedback(data);
         })
     }
-
-    const getRecipeRating = () => {
-      fetch(`http://localhost:8080/feedback/rating/${id}`)
-      .then(response => response.json())
-      .then(data => {
-          setRecipeRating(data);
-      })
-    };
-    getRecipeRating();
     getRecipe();
     getFeedback();
   }
@@ -93,7 +74,7 @@ function ViewRecipe() {
         feedbackComment,
         feedbackRating: parseInt(feedbackRating),
         recipeId,
-        userId
+        userId: auth.appUser.userId
       })
     })
     .then (response => {

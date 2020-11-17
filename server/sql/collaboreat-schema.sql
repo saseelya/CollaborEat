@@ -71,14 +71,14 @@ CREATE TABLE IF NOT EXISTS `collaboreat-schema`.`recipe` (
   `recipeName` VARCHAR(45) NOT NULL,
   `recipeStory` VARCHAR(2048) NOT NULL,
   `recipeDescription` VARCHAR(1024) NOT NULL,
-  `recipeIngredients` VARCHAR(45) NOT NULL,
+  `recipeIngredients` VARCHAR(1024) NOT NULL,
   `recipeCookTime` INT NOT NULL,
   `recipeSteps` VARCHAR(2048) NOT NULL,
   `recipeDate` DATE NOT NULL,
   `recipeRating` INT NOT NULL,
   `userId` INT NOT NULL,
   `mealTypeId` INT NOT NULL,
-  `imageUrl` VARCHAR(250) NULL,
+  `imageUrl` VARCHAR(250) default('https://www.acouplecooks.com/wp-content/uploads/2019/11/Recipes-Header-1-800x400.jpg'),
   PRIMARY KEY (`recipeId`),
   INDEX `userId_idx` (`userId` ASC) VISIBLE,
   INDEX `mealTypeId_idx` (`mealTypeId` ASC) VISIBLE,
@@ -134,8 +134,8 @@ ENGINE = InnoDB;
 -- Table `collaboreat-schema`.`recipeHealthInfo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `collaboreat-schema`.`recipeHealthInfo` (
-  `healthInfoId` INT NOT NULL,
   `recipeId` INT NOT NULL,
+  `healthInfoId` INT NOT NULL,
   PRIMARY KEY (`healthInfoId`, `recipeId`),
   INDEX `recipeId_idx` (`recipeId` ASC) VISIBLE,
   CONSTRAINT `healthInfoId`
@@ -154,7 +154,9 @@ ENGINE = InnoDB;
 insert into `collaboreat-schema`.`user`(`firstName`, `lastName`, `email`, `password`)
 		values 
 			('Dingo', 'Nevada', 'fakeEmail@fakie.com', 'password'),
-            ('Cece', 'Slitty', 'bigFake@fake.com', 'password');
+            ('Cece', 'Slitty', 'bigFake@fake.com', 'password'),
+            ('Jammy', 'Burrito', 'fakiestEmail@fakiest.com', 'password');
+            
             
 insert into role (`name`) 
 	values 
@@ -170,28 +172,25 @@ insert into `collaboreat-schema`.`mealType`(`mealTypeName`)
 		values
 			('Breakfast'),
             ('Brunch'),
-            ('Desert'),
+            ('Dessert'),
             ('Dinner'),
             ('Entree'),
             ('Lunch'),
             ('Side'),
             ('Snack');
             
-            
-            
-            
-insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
-		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`)
-        values 
-			('The Sauce','The Story', 'The Description', 'Milk, Butter, Flour', 15, 'mix the stuff, heat it up', 
-				'2020-10-20', 0, 1, 1),
-			('The Not Sauce', 'Another Story', 'Another Description', 'Not Milk, Not Butter', 10, 'do nothing, drink alc',
-				'2020-10-15', 0, 2, 2);
-insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
-		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`)
-        values
-			('Yummy Cookies', 'Yet another Story', 'Delicious', 'Milk, Eggs, Flour, Butter', 30, 'mix the stuff, heat it up, enjoy',
-				'2020-11-13', 0, 2, 8);
+-- insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
+-- 		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`)
+--         values 
+-- 			('The Sauce','The Story', 'The Description', 'Milk, Butter, Flour', 15, 'mix the stuff, heat it up', 
+-- 				'2020-10-20', 0, 1, 1),
+-- 			('The Not Sauce', 'Another Story', 'Another Description', 'Not Milk, Not Butter', 10, 'do nothing, drink alc',
+-- 				'2020-10-15', 0, 2, 2);
+-- insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
+-- 		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`, `imageUrl`)
+--         values
+-- 			('Yummy Cookies', 'Yet another Story', 'Delicious', 'Milk, Eggs, Flour, Butter', 30, 'mix the stuff, heat it up, enjoy',
+-- 				'2020-11-13', 0, 2, 8, 'https://upload.wikimedia.org/wikipedia/commons/f/f1/2ChocolateChipCookies.jpg');
                 
 insert into `collaboreat-schema`.`healthInfo`(`healthInfoName`)
 		values
@@ -205,7 +204,7 @@ insert into `collaboreat-schema`.`feedback`(`feedbackComment`, `feedbackRating`,
 			('This is bad', 1, 2, 1),
             ('This is good', 5, 1, 2);
        
-insert into `collaboreat-schema`.`recipeHealthInfo`(`healthInfoId`, `recipeId`)
+insert into `collaboreat-schema`.`recipeHealthInfo`(`recipeId`, `healthInfoId`)
 		values
 			(2, 1),
             (1, 2);
