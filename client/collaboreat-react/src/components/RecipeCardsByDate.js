@@ -18,7 +18,6 @@ export default function RecipeCardsByDate() {
 
   return (
     <>
-      <h2>Recipes</h2>
       <div className="row">
               {Recipes.map(recipe => (
                 <Card key={recipe.recipeId} recipe={recipe} />
