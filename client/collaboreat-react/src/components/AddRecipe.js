@@ -3,6 +3,7 @@ import {useParams, useHistory} from 'react-router-dom';
 import { Multiselect } from 'multiselect-react-dropdown';
 
 import AuthContext from './AuthContext';
+import Errors from './Errors';
 
 export default function AddRecipe() {
   const [recipeName, setRecipeName] = useState('');
@@ -13,6 +14,7 @@ export default function AddRecipe() {
   const [recipeIngredients, setRecipeIngredients] = useState('');
   const [recipeSteps, setRecipeSteps] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [errors, setErrors] = useState([]);
 
   const [recipeHealthInfo, setRecipeHealthInfo] = useState([]);
   const [selected, setSelected] = useState([]);
@@ -55,28 +57,38 @@ export default function AddRecipe() {
     .then (response => {
       if (response.status === 201) {
         console.log('Success!');
-        response.json().then(data => console.log(data));
-
-        console.log(selected);
+        response.json().then(data => {
+          console.log(data);
+          console.log(selected);
         var i;
-        for( i = 0; i < selected.length; i++ ){
-          console.log(selected[i]);
+        const selectedHealthInfo = selected.selected;
+        for( i = 0; i < selectedHealthInfo.length; i++ ){
+          console.log(selectedHealthInfo[i]);
           fetch('http://localhost:8080/recipe/healthInfo', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              recipeId,
-              HealthInfo: selected[i]
+              recipeId: data.recipeId,
+              healthInfo: {healthInfoId: selectedHealthInfo[i].id,
+                          healthInfoName: selectedHealthInfo[i].name}
             })
           })
+          .then(response => {
+            if (response.status === 400) {
+              response.json().then(data => {
+                setErrors([data]);
+              })
+            }
+          }) 
         }
         history.push(`/`);
+        });
     } else if (response.status === 400) {
         console.log('Errors!');
         response.json().then(data => {
-        console.log(data);
+        setErrors([data]);
         });
     } else {
         console.log('Oops... not sure what happened here :(');
@@ -102,6 +114,7 @@ export default function AddRecipe() {
   return (
     <>
       <h2>Add a Recipe</h2>
+      <Errors errors={errors} />
       <form onSubmit={handleAddSubmit}>
       <div>
         <label htmlFor="recipeName">Recipe Name:  </label>
