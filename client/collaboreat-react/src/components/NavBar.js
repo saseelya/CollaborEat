@@ -18,14 +18,12 @@ export default function NavBar() {
   return (
         <nav className="navbar sticky-top navbar-light" style={{ backgroundColor: '#e3f2fd' }}>
          <Link to="/"><img className="d-block w-100" src="collaborEatLogoSmall.png?text=Second slide&bg=282c34" alt="Second slide" /></Link>
-         <button className="btn btn-success"><Link to="/recipe" className="text-dark">View All Recipes</Link></button>
+         <button className="text-dark btn btn-primary"><Link to="/recipe/add" className="text-light">Click here to add a recipe!</Link></button>
           <form className="form-inline" onSubmit={handleSubmit}>
           <input className="form-control mr-sm-2 navBarSearchForm" type="search" placeholder="Search By Food Item" aria-label="Search" value={foodItem} onChange={(event) => setFoodItem(event.target.value)} />
 
           <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-
-        <button className="text-dark btn btn-primary"><Link to="/recipe/add" className="text-light">Click here to add a recipe!</Link></button>
 
         {!auth.appUser && (
     <>
