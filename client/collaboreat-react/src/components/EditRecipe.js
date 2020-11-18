@@ -153,7 +153,7 @@ export default function EditRecipe() {
           <select className="form-control col-12" id="mealType" value={mealTypeId} onChange={(event) => setMealTypeId(event.target.value)}>
             <option value="1">Breakfast</option>
             <option value="2">Brunch</option>
-            <option value="3">Desert</option>
+            <option value="3">Dessert</option>
             <option value="4">Dinner</option>
             <option value="5">Entree</option>
             <option value="6">Lunch</option>

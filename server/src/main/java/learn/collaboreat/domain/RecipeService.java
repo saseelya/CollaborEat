@@ -116,8 +116,14 @@ public class RecipeService {
         if (recipe.getRecipeIngredients().isBlank()) {
             result.addMessage("Recipe ingredients are required.", ResultType.INVALID);
         }
-        if (recipe.getRecipeCookTime() < 0) {
+        if (recipe.getRecipeCookTime() < 0 ) {
             result.addMessage("Recipe cook time must be 0 or greater.", ResultType.INVALID);
+        }
+        try {
+            String cookTime = "" + recipe.getRecipeCookTime();
+            Integer.parseInt(cookTime);
+        } catch (NumberFormatException ex) {
+          result.addMessage("Recipe cook time must contain only integers.", ResultType.INVALID);
         }
         if (recipe.getRecipeSteps().isBlank()) {
             result.addMessage("Recipe steps are required.", ResultType.INVALID);
