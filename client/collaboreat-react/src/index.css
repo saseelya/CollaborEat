@@ -89,3 +89,27 @@ li:hover:before{
   border-radius: 2em;
   transition: all .3s ease-out;
 }
+
+.crop-view {
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.crop-view img {
+  width: 300px;
+  height: 300px;
+  margin: 100px 100 0 500px;
+}
+
+.crop-card {
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.crop-card img {
+  width: 200px;
+  height: 200px;
+  margin: 100px 100 0 500px;
+}

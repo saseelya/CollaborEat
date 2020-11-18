@@ -22,11 +22,11 @@ export default function Card({ recipe }) {
   return (
     <>
     <div className="col">
-        <div className="card text-white bg-light mb-3 border-dark text-center" key={recipe.recipeId} style={{ width:"18rem" }}>
+        <div className="card text-white bg-light mb-3 border-dark text-center" key={recipe.recipeId} style={{ width:"18rem", height:"31rem" }}>
         <div class="card-header text-dark">
-              <h4 className="card-title text-dark center"><Link to={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</Link></h4> 
+              <center><h4 className="text-center card-title text-dark" style={{ height:"3rem"}}><Link to={'/recipe/' + recipe.recipeId}>{recipe.recipeName}</Link></h4></center>
             </div>
-        <Link to={'/recipe/' + recipe.recipeId}><img className="card-img-top" src={recipe.imageUrl} alt="food" height="180" width="180"/></Link>
+        <Link to={'/recipe/' + recipe.recipeId}><img className="card-img-top crop-card" src={recipe.imageUrl} alt="food" height="180" width="180"/></Link>
           <div className="card-body text-dark">
               <p className="card-text">
               Created By:&nbsp;
@@ -39,12 +39,15 @@ export default function Card({ recipe }) {
               Rating: <GetRating recipe={recipe}/>
               </p> 
           </div>
+          <div class="card-footer">
           {auth.appUser && (auth.appUser.userId === user.userId || auth.appUser.hasRole("ROLE_ADMIN")) && (
-            <div class="card-footer">
                 <h3><Link to={"/recipe/edit/" + recipe.recipeId} class="badge badge-primary text-light">Edit</Link>
                 <Link to={"/recipe/delete/" + recipe.recipeId} class="badge badge-danger text-light">Delete</Link></h3>
-            </div>
           )}
+          {!(auth.appUser && (auth.appUser.userId === user.userId || auth.appUser.hasRole("ROLE_ADMIN"))) && (
+              <h3>&nbsp;</h3>
+          )}
+          </div>
         </div>
     </div>
     </>

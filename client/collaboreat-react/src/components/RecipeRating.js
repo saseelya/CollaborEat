@@ -20,7 +20,7 @@ export default function GetRating({ recipe }) {
         return (<></>);
     };
     if (!isNaN(rating)) {
-        return (<>{rating}</>);
+        return (<>{rating} / 5</>);
     }
     else {
         return (<>No Ratings Yet</>);

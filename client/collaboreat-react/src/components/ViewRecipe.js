@@ -103,43 +103,61 @@ function ViewRecipe() {
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <h2>{recipe.recipeName}</h2>
-            <FacebookShareButton 
-                url={`google.com`}
-                quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
-                hashtag="#collaboreat">
-                 <FacebookIcon size={36} />
-              </FacebookShareButton>  
-              <TwitterShareButton 
-                url={`google.com`}
-                quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
-                hashtag="#collaboreat">
-                 <TwitterIcon size={36} />
-              </TwitterShareButton>     
-              <PinterestShareButton 
-                url={`google.com`}
-                quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
-                hashtag="#collaboreat">
-                 <PinterestIcon size={36} />
-              </PinterestShareButton>            
-              <EmailShareButton 
-                url={`google.com`}
-                quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
-                hashtag="#collaboreat">
-                 <EmailIcon size={36} />
-              </EmailShareButton>     
-              <p></p>
-            <p>Date Added: {recipe.recipeDate}</p>
-            <p>Added By: <Link to={"/user/" + recipe.userId}><GetPerson id={recipe.userId} /></Link></p>
-            <p>Cook Time: {recipe.recipeCookTime}</p>
-            <p>Rating: <GetRating recipe={recipe} /></p>
+    <center>
+      <table class="table table-lg">
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <tr><h1>{recipe.recipeName}</h1></tr>
+               <hr></hr>
+                <tr>
+                <FacebookShareButton 
+                    url={`google.com`}
+                    quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
+                    hashtag="#collaboreat">
+                    <FacebookIcon size={36} />
+                  </FacebookShareButton>  
+                  <TwitterShareButton 
+                    url={`google.com`}
+                    quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
+                    hashtag="#collaboreat">
+                    <TwitterIcon size={36} />
+                  </TwitterShareButton>     
+                  <PinterestShareButton 
+                    url={`google.com`}
+                    quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
+                    hashtag="#collaboreat">
+                    <PinterestIcon size={36} />
+                  </PinterestShareButton>            
+                  <EmailShareButton 
+                    url={`google.com`}
+                    quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
+                    hashtag="#collaboreat">
+                    <EmailIcon size={36} />
+                  </EmailShareButton> 
+                  <p></p>    
+                </tr>
+                <tr>
+                <p>Date Added: {recipe.recipeDate}</p>
+                </tr>
+                <tr>
+                <p>Added By: <Link to={"/user/" + recipe.userId}><GetPerson id={recipe.userId} /></Link></p>
+                </tr>
+                <tr>
+                <p>Cook Time: {recipe.recipeCookTime} Minutes</p>
+                </tr>
+                <tr>
+                <p>Rating: {<GetRating recipe={recipe}/>}</p>
+                </tr>
+              </div>
+            <div class="crop-view">
+              <img src={recipe.imageUrl} alt="food" class="border border-secondary" style={{ width:"18rem", height:"18rem" }}/>
+            </div>
           </div>
-        <img className="col" src={recipe.imageUrl} alt="food" height="280" width="280"/>
-      </div>
-      </div>
+          </div>
+          </table>
+          <hr></hr>
+          </center>
       <div className="container">
         <h4>The Story</h4>
         <p>{recipe.recipeStory}</p>
