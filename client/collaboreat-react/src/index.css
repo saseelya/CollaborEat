@@ -12,6 +12,6 @@ code {
     monospace;
 }
 
-.my-custom-background {
-  background: linear-gradient(#525252,#050000, #555555);
+.silver-black-gradient {
+  background: linear-gradient(#bbbbbb,#ffffff, #9c9c9c);
 }
