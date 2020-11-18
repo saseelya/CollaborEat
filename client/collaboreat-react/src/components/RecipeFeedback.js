@@ -29,15 +29,18 @@ export default function GetFeedback({ feedback, pageUpdate }) {
     })
   }
 
+
   return (
     <>
     <tr key={feedback.feedbackId}>
         <td><GetPerson id={feedback.userId} /></td>
-        <td>{feedback.feedbackComment}</td>
-        <td>{feedback.feedbackRating} / 5</td>
+        <td>{feedback.feedbackComment.split('\n').map((item, i) => <p key={i}>{item}</p>)}</td>
+        <td class="text-right">{feedback.feedbackRating} / 5</td>
+        <td class="text-right">
         {auth.appUser && (auth.appUser.userId === feedback.userId || auth.appUser.hasRole("ROLE_ADMIN")) && (
-        <td><button type="submit" onClick={(event) => handleDeleteSubmit(event)}>Delete</button></td>
+        <button className="btn btn-success" type="submit" onClick={(event) => handleDeleteSubmit(event)}>Delete</button>
         )}
+        </td>
     </tr>
     </>
   );

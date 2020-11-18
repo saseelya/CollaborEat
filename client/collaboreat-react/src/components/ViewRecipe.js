@@ -180,21 +180,20 @@ function ViewRecipe() {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col">Meal Type: <Link to={"/recipe/mealType/" + recipe.mealTypeId}><MealType recipe={recipe} /></Link></div>
-          <div className="col">Health Info: <RecipeHealthInfo recipe={recipe} /></div>
+          <div className="col">Meal Type: <Link to={"/recipe/mealType/all/" + recipe.mealTypeId}><MealType recipe={recipe} /></Link></div>
+  <div className="col">Health Info: {<RecipeHealthInfo recipe={recipe}/>}</div>
         </div>
       </div>
-
+      <p></p>
+      <p></p>
       {auth.appUser && (
-      <form onSubmit={handleAddSubmit}>
+      <form className="text-center" onSubmit={handleAddSubmit}>
         <div>
           <label htmlFor="feedbackComment">Comment: </label>
-          <input id="feedbackComment" value={feedbackComment} 
+          <textarea className="form-control col-32" rows="4" id="feedbackComment" value={feedbackComment} 
             onChange={(event) => setFeedbackComment(event.target.value)} type="text" placeholder="Enter your comment!" />
-          <label htmlFor="feedbackRating">Select a rating:  </label>
-        </div>
-        <div>
-          <select id="feedbackRating" value={feedbackRating} 
+          <label htmlFor="feedbackRating"><center>Select a rating:</center></label>
+          <select class="custom-select" id="feedbackRating" value={feedbackRating} 
             onChange={(event) => setFeedbackRating(event.target.value)}>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -202,19 +201,24 @@ function ViewRecipe() {
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
+          <div className="text-right">
+        <button className="btn btn-primary" type="submit">Add Comment</button>
         </div>
-          <button type="submit">Add Comment</button>
+        </div>
       </form>
       )};
-      <h2>Feedback</h2>
+      <center>
+      <h2 className="silver-black-gradient">Feedback</h2>
+      </center>
       <Errors errors={errors} />
 
-      <table className="table table-dark table-striped table-hover">
-        <thead>
+      <table className="table table-light table-striped table-hover">
+        <thead class="thead-dark">
           <tr>
-            <th scope="col">User</th>
-            <th scope="col">Feedback</th>
-            <th scope="col">Feedback Rating</th>
+            <th scope="col" className="text-left">User</th>
+            <th scope="col" className="text-left">Feedback</th>
+            <th scope="col" className="text-right">Feedback Rating</th>
+            <th scope="col">&nbsp;</th>
           </tr>
         </thead>
         <tbody>

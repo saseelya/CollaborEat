@@ -145,7 +145,7 @@ export default function EditRecipe() {
         <div class="form-group col-md-3">
         <center><label htmlFor="recipeCookTime">Cook Time:</label></center>
           <input className="form-control col-12" id="recipeCookTime" value={recipeCookTime} 
-            onChange={(event) => setRecipeCookTime(event.target.value)} type="text" placeholder="How long does it take it make?" />
+            onChange={(event) => setRecipeCookTime(event.target.value)} type="number" placeholder="How long does it take it make?" />
         </div>  
 
         <div class="form-group col-md-3">
