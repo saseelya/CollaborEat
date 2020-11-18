@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {useParams, Link} from 'react-router-dom';
+import { EmailShareButton, TwitterShareButton, FacebookShareButton, PinterestShareButton, PinterestIcon, EmailIcon, TwitterIcon, FacebookIcon, } from 'react-share';
 
 import MealType from './RecipeMealType';
 import GetPerson from './Person';
@@ -105,6 +106,31 @@ function ViewRecipe() {
         <div className="row">
           <div className="col">
             <h2>{recipe.recipeName}</h2>
+            <FacebookShareButton 
+                url={`google.com`}
+                quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
+                hashtag="#collaboreat">
+                 <FacebookIcon size={36} />
+              </FacebookShareButton>  
+              <TwitterShareButton 
+                url={`google.com`}
+                quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
+                hashtag="#collaboreat">
+                 <TwitterIcon size={36} />
+              </TwitterShareButton>     
+              <PinterestShareButton 
+                url={`google.com`}
+                quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
+                hashtag="#collaboreat">
+                 <PinterestIcon size={36} />
+              </PinterestShareButton>            
+              <EmailShareButton 
+                url={`google.com`}
+                quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
+                hashtag="#collaboreat">
+                 <EmailIcon size={36} />
+              </EmailShareButton>     
+              <p></p>
             <p>Date Added: {recipe.recipeDate}</p>
             <p>Added By: <Link to={"/user/" + recipe.userId}><GetPerson id={recipe.userId} /></Link></p>
             <p>Cook Time: {recipe.recipeCookTime}</p>
@@ -123,13 +149,13 @@ function ViewRecipe() {
       </div>
       <div className="container">
         <h4>The Ingredients</h4>
-        <ul>
+        <ul className="rounded-unordered-list">
           {recipe.recipeIngredients.split('\n').map((item, i) => <li key={i}>{item}</li>)}
         </ul>
       </div>
       <div className="container">
         <h4>The Steps</h4>
-        <ol>
+        <ol className="rounded-ordered-list">
           {recipe.recipeSteps.split('\n').map((item, i) => <li key={i}>{item}</li>)}
         </ol>
       </div>
