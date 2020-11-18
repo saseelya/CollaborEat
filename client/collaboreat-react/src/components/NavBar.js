@@ -18,7 +18,7 @@ export default function NavBar() {
   return (
         <nav className="navbar sticky-top navbar-light" style={{ backgroundColor: '#e3f2fd' }}>
          <Link to="/"><img className="d-block w-100" src="collaborEatLogoSmall.png?text=Second slide&bg=282c34" alt="Second slide" /></Link>
-         <button className="text-dark btn btn-primary"><Link to="/recipe/add" className="text-light">Click here to add a recipe!</Link></button>
+         <Link to="/recipe/add" className="text-light"><button className="text-dark btn btn-primary">Click here to add a recipe!</button></Link>
           <form className="form-inline" onSubmit={handleSubmit}>
           <input className="form-control mr-sm-2 navBarSearchForm" type="search" placeholder="Search By Food Item" aria-label="Search" value={foodItem} onChange={(event) => setFoodItem(event.target.value)} />
 
@@ -27,8 +27,8 @@ export default function NavBar() {
 
         {!auth.appUser && (
     <>
-        <button className="btn btn-warning my-2 my-lg-0"><Link to="/login">Sign In</Link></button>
-        <button className="btn btn-warning my-2 my-lg-0"><Link to="/register">Sign Up</Link></button>
+        <Link to="/login"><button className="btn btn-warning my-2 my-lg-0">Sign In</button></Link>
+        <Link to="/register"><button className="btn btn-warning my-2 my-lg-0">Sign Up</button></Link>
     </>
         )}
         {auth.appUser && (
