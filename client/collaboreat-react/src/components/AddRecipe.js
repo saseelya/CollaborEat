@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {useParams, useHistory} from 'react-router-dom';
+import {useParams, useHistory, Link} from 'react-router-dom';
 import { Multiselect } from 'multiselect-react-dropdown';
 
 import AuthContext from './AuthContext';
@@ -92,6 +92,7 @@ export default function AddRecipe() {
         });
     } else {
         console.log('Oops... not sure what happened here :(');
+        setErrors(['Oops... not sure what happened here :(']);
     }
     })
   }
@@ -174,7 +175,8 @@ export default function AddRecipe() {
         displayValue="name" // Property name to display in the dropdown options
         />
       </div>
-      <button type="submit">Add Recipe</button>
+        <button type="submit">Add Recipe</button>
+        <Link to={"/"}>Cancel</Link>
       </form>
     </>
   )

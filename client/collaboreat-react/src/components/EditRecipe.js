@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
+import Errors from './Errors';
 
 export default function EditRecipe() {
   const [recipe, setRecipe] = useState('');
@@ -15,6 +16,7 @@ export default function EditRecipe() {
   const [mealTypeId, setMealTypeId] = useState(0);
   const [recipeId, setRecipeId] = useState(0);
   const [imageUrl, setImageUrl] = useState('');
+  const [errors, setErrors] = useState([]);
 
   const { id } = useParams();
   const history = useHistory();
@@ -73,7 +75,8 @@ export default function EditRecipe() {
     } else if (response.status === 400) {
         console.log('Errors!');
         response.json().then(data => {
-        console.log(data);
+          console.log(data);
+          setErrors([data]);
         });
     } else {
         console.log('Oops... not sure what happened here :(');
@@ -84,6 +87,7 @@ export default function EditRecipe() {
   return (
     <>
       <h2>Edit a Recipe</h2>
+      <Errors errors={errors} />
       <form onSubmit={handleEditSubmit}>
       <input type="hidden" value={ recipe.recipeId }/>
       <div>
@@ -135,6 +139,7 @@ export default function EditRecipe() {
         </select>
       </div>
       <button type="submit">Edit Recipe</button>
+      <Link to={"/"}>Cancel</Link>
       </form>
     </>
   )

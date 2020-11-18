@@ -5,6 +5,7 @@ import MealType from './RecipeMealType';
 import GetPerson from './Person';
 import GetFeedback from './RecipeFeedback';
 import RecipeHealthInfo from './RecipeHealthInfo';
+import Errors from './Errors';
 
 import AuthContext from './AuthContext';
 import GetRating from './RecipeRating';
@@ -13,7 +14,7 @@ function ViewRecipe() {
   const [recipe, setRecipe] = useState(null);
   const [Feedbacks, setFeedback] = useState([]);
   const {id} = useParams();
-
+  const [errors, setErrors] = useState([]);
   const [feedbackComment, setFeedbackComment] = useState('');
   const [feedbackRating, setFeedbackRating] = useState(1);
   const [recipeId, setRecipeId] = useState(0);
@@ -84,10 +85,12 @@ function ViewRecipe() {
     } else if (response.status === 400) {
         console.log('Errors!');
         response.json().then(data => {
-        console.log(data);
+          console.log(data);
+          setErrors([data]);
         });
     } else {
         console.log('Oops... not sure what happened here :(');
+        setErrors(['Oops... not sure what happened here :(']);
       }
     })
   }
@@ -187,6 +190,7 @@ function ViewRecipe() {
       </form>
       )};
       <h2>Feedback</h2>
+      <Errors errors={errors} />
 
       <table className="table table-dark table-striped table-hover">
         <thead>
