@@ -16,23 +16,27 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-        <Link to="/">CollaborEat</Link>
-        <form className="form-inline" onSubmit={handleSubmit}>
-        <input className="form-control mr-sm-2" type="search" placeholder="Search By Food Item" aria-label="Search" value={foodItem} onChange={(event) => setFoodItem(event.target.value)} />
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <nav className="navbar sticky-top navbar-light" style={{ backgroundColor: '#e3f2fd' }}>
+         <Link to="/"><img className="d-block w-100" src="collaborEatLogoSmall.png?text=Second slide&bg=282c34" alt="Second slide" /></Link>
+         <button className="btn btn-success"><Link to="/recipe" className="text-dark">View All Recipes</Link></button>
+          <form className="form-inline" onSubmit={handleSubmit}>
+          <input className="form-control mr-sm-2 navBarSearchForm" type="search" placeholder="Search By Food Item" aria-label="Search" value={foodItem} onChange={(event) => setFoodItem(event.target.value)} />
+
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <Link to="/recipe">Recipe</Link>
+
+        <button className="text-dark btn btn-primary"><Link to="/recipe/add" className="text-light">Click here to add a recipe!</Link></button>
+
         {!auth.appUser && (
     <>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
+        <button className="btn btn-warning my-2 my-lg-0"><Link to="/login">Sign In</Link></button>
+        <button className="btn btn-warning my-2 my-lg-0"><Link to="/register">Sign Up</Link></button>
     </>
         )}
         {auth.appUser && (
-        <div>
-            <p>Welcome Back {auth.appUser.firstName}!</p>
-            <Link to={"/user/" + auth.appUser.userId}>Account Summary</Link>
+        <div className="mr-sm-2">
+            Welcome Back, {auth.appUser.firstName}!&nbsp;
+            <Link to={"/user/" + auth.appUser.userId} className="mr-sm-5">Account Summary&nbsp;</Link>
             <button onClick={() => auth.logout()} className="btn btn-warning">Logout</button>
         </div>
         )}

@@ -15,3 +15,7 @@ code {
 .silver-black-gradient {
   background: linear-gradient(#bbbbbb,#ffffff, #9c9c9c);
 }
+
+.navBarSearchForm {
+  width: 500px !important;
+}

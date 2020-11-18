@@ -48,7 +48,6 @@ export default function MainLayout() {
             </Carousel>
 
             <div>
-                <Link to="/recipe/add">Add</Link>
                 <h1 className="text-center text-dark silver-black-gradient">Newest Submissions</h1>
                 <RecipeCardsByDate />
             </div>
