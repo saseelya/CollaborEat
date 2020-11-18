@@ -83,7 +83,7 @@ export default function AddRecipe() {
             }
           }) 
         }
-        history.push(`/`);
+        history.push(`/recipe/${data.recipeId}`)
         });
     } else if (response.status === 400) {
         console.log('Errors!');

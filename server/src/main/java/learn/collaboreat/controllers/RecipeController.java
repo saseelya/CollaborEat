@@ -54,6 +54,7 @@ public class RecipeController {
         for (String m : result.getMessages()) {
             System.out.println(m);
         }
+        System.out.println(result.getPayload().toString());
         if (result.isSuccess()) {
             return new ResponseEntity<>(result.getPayload(), HttpStatus.CREATED);
         }

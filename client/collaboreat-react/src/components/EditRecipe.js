@@ -79,39 +79,42 @@ export default function EditRecipe() {
     .then (response => {
       if (response.status === 201) {
         console.log('Success!');
-        response.json().then( data => {
+        response.json().then(data => {
+          console.log(data);
           console.log(selected);
           var i;
-          const selectedHealthInfo = selected.selected;
+          
           for (i = 0; i < options.length; i++) {
-            fetch(`http://localhost:8080/recipe/healthInfo/${data.recipeId}/${options.options[i].id}`, {
+            fetch(`http://localhost:8080/recipe/healthInfo/${data.recipeId}/${options[i].id}`, {
               method: 'DELETE'
             })
           }
-          for( i = 0; i < selectedHealthInfo.length; i++ ){
-            console.log(selectedHealthInfo[i]);
-            fetch('http://localhost:8080/recipe/healthInfo', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                recipeId: data.recipeId,
-                healthInfo: {healthInfoId: selectedHealthInfo[i].id,
-                            healthInfoName: selectedHealthInfo[i].name}
-              })
-            })
-            .then(response => {
-              if (response.status === 400) {
-                response.json().then(data => {
-                  setErrors([data]);
+          if (selected.selected.length != 0) {
+            const selectedHealthInfo = selected.selected;
+            for( i = 0; i < selectedHealthInfo.length; i++ ){
+              console.log(selectedHealthInfo[i]);
+              fetch('http://localhost:8080/recipe/healthInfo', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  recipeId: data.recipeId,
+                  healthInfo: {healthInfoId: selectedHealthInfo[i].id,
+                              healthInfoName: selectedHealthInfo[i].name}
                 })
-              }
-            }) 
+              })
+              .then(response => {
+                if (response.status === 400) {
+                  response.json().then(data => {
+                    setErrors([data]);
+                  })
+                }
+              }) 
+            }
           }
         });
         history.push(`/recipe/${recipeId}`)
-        // response.json().then(data => console.log(data));
     } else if (response.status === 400) {
         console.log('Errors!');
         response.json().then(data => {
@@ -203,7 +206,7 @@ export default function EditRecipe() {
         </div>
 
         <div class="form-ground col-md-2">
-          <button className="btn btn-success form-control col-16" type="submit">Add Recipe</button>
+          <button className="btn btn-primary form-control col-16" type="submit">Edit Recipe</button>
           <Link to={"/"}><button className="btn btn-danger form-control col-16">Cancel</button></Link>
         </div>
       </div>

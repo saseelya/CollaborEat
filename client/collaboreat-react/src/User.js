@@ -35,21 +35,27 @@ export default function User() {
 
   return (
     <>
-      <h1>{user.firstName} {user.lastName}</h1>
-      {auth.appUser && (auth.appUser.userId === user.userId || auth.appUser.hasRole("ROLE_ADMIN")) && (
-          <div className="col">
-            <Link to="/recipe/add" className="btn btn-primary">Add a Recipe</Link>
-            <Link to={"/user/edit/" + user.userId} className="btn btn-warning">Edit Info</Link>
-            <Link to={"/user/delete/" + user.userId} className="btn btn-danger">Close Account</Link>  
-          </div>
-      )}
+      <div className="Container">
+        <div className="row">
+        <h1 className="col">{user.firstName} {user.lastName}</h1>
+        {auth.appUser && (auth.appUser.userId === user.userId || auth.appUser.hasRole("ROLE_ADMIN")) && (
+            <div className="col">
+              <Link to={"/user/edit/" + user.userId} className="btn btn-warning">Edit Info</Link>
+              <Link to={"/user/delete/" + user.userId} className="btn btn-danger">Close Account</Link>  
+            </div>
+        )}
+      </div>
+      </div>
       <div>
-      <h2>Submitted Recipes</h2>
-      <div className="row">
-              {Recipes.map(recipe => (
-                <Card key={recipe.recipeId} recipe={recipe} />
-              ))}
-        </div>
+      <h2>Submitted Recipes <Link to="/recipe/add" className="btn btn-primary">Add a Recipe</Link></h2>
+        {Recipes.length == 0 ? (
+          <p>You have not created any Recipes on CollaborEat yet.</p>
+        ) : (
+        <div className="row">
+        {Recipes.map(recipe => (
+          <Card key={recipe.recipeId} recipe={recipe} />
+        ))}
+        </div>)}
       </div>
     </>
   );
