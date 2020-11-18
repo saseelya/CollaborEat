@@ -93,7 +93,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
             ps.setDouble(8, recipe.getRecipeRating());
             ps.setInt(9, recipe.getUserId());
             ps.setInt(10, recipe.getMealTypeId());
-            if(recipe.getImageUrl() != null){
+            if(recipe.getImageUrl() != ""){
                 ps.setString(11, recipe.getImageUrl());
             } else {
                 ps.setString(11,"https://www.acouplecooks.com/wp-content/uploads/2019/11/Recipes-Header-1-800x400.jpg");

@@ -47,7 +47,13 @@ export default function User() {
       </div>
       </div>
       <div>
-      <h2>Submitted Recipes <Link to="/recipe/add" className="btn btn-primary">Add a Recipe</Link></h2>
+      <h2 className="text-center text-dark silver-black-gradient">Submitted Recipes 
+      {auth.appUser && (auth.appUser.userId === user.userId) && (
+        <blockquote className="text-right">
+          <Link to="/recipe/add" className="btn btn-primary">Add a Recipe</Link>
+        </blockquote>
+        )}
+      </h2>
         {Recipes.length == 0 ? (
           <p>You have not created any Recipes on CollaborEat yet.</p>
         ) : (

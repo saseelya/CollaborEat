@@ -58,29 +58,31 @@ export default function Register() {
     };
 
     return (
-        <div>
-            <h2>Join and Collabor-EAT!</h2>
-            <Errors errors={errors} />
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>First Name:</label>
-                    <input type="text" onChange={(event) => setFirstName(event.target.value)} />
-                </div>
-                <div className="form-group">
-                    <label>Last Name:</label>
-                    <input type="text" onChange={(event) => setLastName(event.target.value)} />
-                </div>
-                <div className="form-group">
-                    <label>Email:</label>
-                    <input type="text" onChange={(event) => setEmail(event.target.value)} />
-                </div>
-                <div className="form-group">
-                    <label>Password:</label>
-                    <input type="password" onChange={(event) => setPassword(event.target.value)} />
-                </div>
-                <button type="submit" className="btn btn-primary">Login</button>
-                <Link to="/">Cancel</Link>
-            </form>
-        </div>
+        <center>
+            <div className="col-md-3 center">
+                <Errors errors={errors} />
+                <form onSubmit={handleSubmit}>
+                    <h2>Join and Collabor-EAT!</h2>
+                    <div className="form-group">
+                        <label>First Name:</label>
+                        <input type="text" placeholder="First Name" onChange={(event) => setFirstName(event.target.value)} />
+                    </div>
+                    <div className="form-group">
+                        <label>Last Name:</label>
+                        <input type="text" placeholder="Last Name" onChange={(event) => setLastName(event.target.value)} />
+                    </div>
+                    <div className="form-group">
+                        <label>Email:</label>
+                        <input type="text" placeholder="example@email.com" onChange={(event) => setEmail(event.target.value)} />
+                    </div>
+                    <div className="form-group">
+                        <label>Password:</label>
+                        <input type="password" placeholder="password" onChange={(event) => setPassword(event.target.value)} />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Login</button>
+                    <Link to="/">Cancel</Link>
+                </form>
+            </div>
+        </center>
     )
 }
