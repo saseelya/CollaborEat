@@ -76,6 +76,13 @@ public class RecipeController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/mealType/all/{mealTypeId}")
+    public List<Recipe> findByMealTypeAll(@PathVariable int mealTypeId) {
+        return service.findAll().stream().filter(recipe ->
+                recipe.getMealTypeId() == mealTypeId)
+                .collect(Collectors.toList());
+    }
+
     @GetMapping("/mealType/{mealTypeId}")
     public List<Recipe> findByMealType(@PathVariable int mealTypeId) {
         return service.findAll().stream().filter(recipe ->
