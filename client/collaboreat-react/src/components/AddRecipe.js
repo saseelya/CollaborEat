@@ -33,7 +33,10 @@ export default function AddRecipe() {
   ];
   const handleAddSubmit = (event) => {
     event.preventDefault();
-
+    
+    if (!parseInt(recipeCookTime, 10)) {
+      setErrors(["Cook time cannot contain letters."])
+    } else {
     fetch('http://localhost:8080/recipe/add', {
       method: 'POST',
       headers: {
@@ -96,6 +99,7 @@ export default function AddRecipe() {
     }
     })
   }
+}
 
   // const addHealthInfoBridge = (healthInfoObj) => {
   //   healthInfoObj.preventDefault();

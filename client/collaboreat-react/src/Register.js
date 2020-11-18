@@ -48,7 +48,7 @@ export default function Register() {
     
                 auth.login(jwt_token);
     
-                history.goBack();
+                history.push('/');
             }
         } else if (response.status === 400) {
             setErrors(['Account creation failed.']);

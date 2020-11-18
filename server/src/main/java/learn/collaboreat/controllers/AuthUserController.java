@@ -3,8 +3,6 @@ package learn.collaboreat.controllers;
 
 import learn.collaboreat.domain.Result;
 import learn.collaboreat.domain.UserService;
-import learn.collaboreat.models.Feedback;
-import learn.collaboreat.models.Recipe;
 import learn.collaboreat.models.User;
 import learn.collaboreat.security.JwtConverter;
 import org.springframework.http.HttpStatus;
@@ -15,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +61,7 @@ public class AuthUserController {
     }
 
     @PostMapping("/create_account_admin")
-    public ResponseEntity<?> createAccountAdmin(@RequestBody User user) {
+    public ResponseEntity<?> createAccountAdmin(@RequestBody @Valid User user) {
         user.getRoles().add("ADMIN");
         Result<User> result = service.add(user);
         if (result.isSuccess()) {

@@ -116,7 +116,7 @@ export default function App() {
             <Route exact path="/recipe/food/:food">
               <RecipeCardsByFood />
             </Route>
-            <Route exact path="/recipe/mealType/:id">
+            <Route exact path="/recipe/mealType/all/:id">
               <RecipeCardsByType />
             </Route>
             <Route exact path="/recipe/:id">
