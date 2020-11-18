@@ -123,11 +123,15 @@ function ViewRecipe() {
       </div>
       <div className="container">
         <h4>The Ingredients</h4>
-        <p>{recipe.recipeIngredients}</p>
+        <ul>
+          {recipe.recipeIngredients.split('\n').map((item, i) => <li key={i}>{item}</li>)}
+        </ul>
       </div>
       <div className="container">
         <h4>The Steps</h4>
-        <p>{recipe.recipeSteps}</p>
+        <ol>
+          {recipe.recipeSteps.split('\n').map((item, i) => <li key={i}>{item}</li>)}
+        </ol>
       </div>
       <div className="container">
         <div className="row">
