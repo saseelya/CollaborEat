@@ -5,10 +5,8 @@ import learn.collaboreat.data.RecipeHealthInfoRepository;
 import learn.collaboreat.data.RecipeRepository;
 import learn.collaboreat.models.Recipe;
 import learn.collaboreat.models.RecipeHealthInfo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Validator;
 import java.util.List;
 
 @Service
@@ -35,7 +33,7 @@ public class RecipeService {
     }
 
     public Result<Recipe> add(Recipe recipe) {
-        Result<Recipe> result = new Result<>();
+        Result<Recipe> result = validateRecipe(recipe);
 
         if (recipe == null) {
             result.addMessage("Recipe cannot be null", ResultType.INVALID);
@@ -46,14 +44,16 @@ public class RecipeService {
             result.addMessage("You cannot specify a recipe ID", ResultType.INVALID);
         }
 
-        recipe = recipeRepository.add(recipe);
-        result.setPayload(recipe);
+        if (result.isSuccess()){
+            recipe = recipeRepository.add(recipe);
+            result.setPayload(recipe);
+        }
 
         return result;
     }
 
     public Result<Recipe> update(Recipe recipe) {
-        Result<Recipe> result = new Result<>();
+        Result<Recipe> result = validateRecipe(recipe);
 
         if (recipe == null) {
             result.addMessage("Recipe cannot be null", ResultType.INVALID);
@@ -67,9 +67,12 @@ public class RecipeService {
             result.addMessage("You must enter an available recipe ID", ResultType.INVALID);
         }
 
-        if (!recipeRepository.update(recipe)) {
-            result.addMessage("Something went wrong.", ResultType.NOT_FOUND);
+        if (result.isSuccess()){
+            if (!recipeRepository.update(recipe)) {
+                result.addMessage("Something went wrong.", ResultType.NOT_FOUND);
+            }
         }
+
 
         return result;
     }
@@ -83,7 +86,7 @@ public class RecipeService {
     }
 
     public Result<Void> addHealthInfo(RecipeHealthInfo rhi) {
-        Result<Void> result = validate(rhi);
+        Result<Void> result = validateRHI(rhi);
 
         if (!result.isSuccess()) {
             return result;
@@ -99,8 +102,40 @@ public class RecipeService {
         return rhiRepository.deleteByKey(recipeId, healthInfoId);
     }
 
+    private Result<Recipe> validateRecipe(Recipe recipe) {
+        Result<Recipe> result = new Result<>();
+        if (recipe.getRecipeName().isBlank()) {
+            result.addMessage("Recipe name is required.", ResultType.INVALID);
+        }
+        if (recipe.getRecipeStory().isBlank()) {
+            result.addMessage("Recipe story is required.", ResultType.INVALID);
+        }
+        if (recipe.getRecipeDescription().isBlank()) {
+            result.addMessage("Recipe description is required.", ResultType.INVALID);
+        }
+        if (recipe.getRecipeIngredients().isBlank()) {
+            result.addMessage("Recipe ingredients are required.", ResultType.INVALID);
+        }
+        if (recipe.getRecipeCookTime() < 0) {
+            result.addMessage("Recipe cook time must be 0 or greater.", ResultType.INVALID);
+        }
+        if (recipe.getRecipeSteps().isBlank()) {
+            result.addMessage("Recipe steps are required.", ResultType.INVALID);
+        }
+        if (recipe.getRecipeRating() < 0) {
+            result.addMessage("Recipe rating must be 0 or greater.", ResultType.INVALID);
+        }
+        if (recipe.getUserId() < 0) {
+            result.addMessage("User ID must be 0 or greater.", ResultType.INVALID);
+        }
+        if (recipe.getMealTypeId() < 0) {
+            result.addMessage("Meal Type is required.", ResultType.INVALID);
+        }
+        return result;
+    }
 
-    private Result<Void> validate(RecipeHealthInfo rhi) {
+
+    private Result<Void> validateRHI(RecipeHealthInfo rhi) {
         Result<Void> result = new Result<>();
 
         if (rhi == null) {
