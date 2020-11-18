@@ -38,6 +38,9 @@ public class FeedbackService {
 
     public Result<Feedback> add(Feedback feedback) {
         Result<Feedback> result = new Result<>();
+        if (feedback.getFeedbackComment().isBlank()) {
+            result.addMessage("Comments cannot be blank. ", ResultType.INVALID);
+        }
         if (feedback == null) {
             result.addMessage("Feedback must exist.", ResultType.INVALID);
             return result;
@@ -48,13 +51,20 @@ public class FeedbackService {
             return result;
         }
 
-        feedback = repository.add(feedback);
-        result.setPayload(feedback);
+        if (result.isSuccess()) {
+            feedback = repository.add(feedback);
+            result.setPayload(feedback);
+        }
+
         return result;
     }
 
     public Result<Feedback> update(Feedback feedback) {
         Result<Feedback> result = new Result<>();
+
+        if (feedback.getFeedbackComment().isBlank()) {
+            result.addMessage("Comments cannot be blank.", ResultType.INVALID);
+        }
         if (feedback == null) {
             result.addMessage("Feedback must exist.", ResultType.INVALID);
             return result;
@@ -65,10 +75,13 @@ public class FeedbackService {
             return result;
         }
 
-        if (!repository.update(feedback)) {
-            String msg = String.format("feedbackId: %s, not found.", feedback.getFeedbackId());
-            result.addMessage(msg, ResultType.NOT_FOUND);
+        if (result.isSuccess()) {
+            if (!repository.update(feedback)) {
+                String msg = String.format("feedbackId: %s, not found.", feedback.getFeedbackId());
+                result.addMessage(msg, ResultType.NOT_FOUND);
+            }
         }
+
 
         return result;
     }

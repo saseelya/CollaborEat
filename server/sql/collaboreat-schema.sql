@@ -178,19 +178,6 @@ insert into `collaboreat-schema`.`mealType`(`mealTypeName`)
             ('Lunch'),
             ('Side'),
             ('Snack');
-            
--- insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
--- 		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`)
---         values 
--- 			('The Sauce','The Story', 'The Description', 'Milk, Butter, Flour', 15, 'mix the stuff, heat it up', 
--- 				'2020-10-20', 0, 1, 1),
--- 			('The Not Sauce', 'Another Story', 'Another Description', 'Not Milk, Not Butter', 10, 'do nothing, drink alc',
--- 				'2020-10-15', 0, 2, 2);
--- insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
--- 		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`, `imageUrl`)
---         values
--- 			('Yummy Cookies', 'Yet another Story', 'Delicious', 'Milk, Eggs, Flour, Butter', 30, 'mix the stuff, heat it up, enjoy',
--- 				'2020-11-13', 0, 2, 8, 'https://upload.wikimedia.org/wikipedia/commons/f/f1/2ChocolateChipCookies.jpg');
                 
 insert into `collaboreat-schema`.`healthInfo`(`healthInfoName`)
 		values
