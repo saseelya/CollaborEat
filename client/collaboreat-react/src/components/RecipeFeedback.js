@@ -31,7 +31,7 @@ export default function GetFeedback({ feedback, pageUpdate }) {
   return (
     <>
     <tr key={feedback.feedbackId}>
-        <GetPerson id={feedback.userId} />
+        <td><GetPerson id={feedback.userId} /></td>
         <td>{feedback.feedbackComment}</td>
         <td>{feedback.feedbackRating} / 5</td>
         {auth.appUser && (auth.appUser.userId === feedback.userId || auth.appUser.hasRole("ROLE_ADMIN")) && (

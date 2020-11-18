@@ -77,25 +77,33 @@ export default function EditUser() {
 
     return (
         <div>
+            <center>
             <h2>Update Your Information</h2>
+            <hr></hr>
             <Errors errors={errors} />
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>First Name:</label>
+            <label>First Name:</label>
+
+                <div className="col-md-4">
                     <input type="text" value={firstName} onChange={(event) => setFirstName(event.target.value)} />
                 </div>
-                <div className="form-group">
-                    <label>Last Name:</label>
+                <label>Last Name:</label>
+                <div className="col-md-4">
                     <input type="text" value={lastName} onChange={(event) => setLastName(event.target.value)} />
                 </div>
-                <div className="form-group">
-                    <label>Email:</label>
+                <label>Email:</label>
+                <div className="col-md-4">
                     <input type="text" value={email} onChange={(event) => setEmail(event.target.value)} />
                 </div>
                 <input type="hidden" value={password} onChange={(event) => setPassword(event.target.value)} />
-                <button type="submit" className="btn btn-primary">Update</button>
-                <Link to={"/user/" + userId}>Cancel</Link>
+                <hr></hr>
+                <div className="">
+                    <button type="submit" className="btn btn-primary mr-sm-4">Update</button>
+                    &nbsp;
+                    <Link to={"/user/" + userId}><button className="btn btn-danger">Cancel</button></Link>
+                </div>
             </form>
+            </center>
         </div>
     )
 }

@@ -16,7 +16,7 @@ export default function GetPerson({ id }) {
     }
   }, [id]);
 
-  if (!person) { return <td></td>; }
+  if (!person) { return null; }
   return (
       <>{person.firstName} {person.lastName}</>
   );

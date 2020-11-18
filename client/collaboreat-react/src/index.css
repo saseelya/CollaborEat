@@ -13,11 +13,11 @@ code {
 }
 
 .silver-black-gradient {
-  background: linear-gradient(#bbbbbb,#ffffff, #9c9c9c);
+  background: linear-gradient(#d6d6d6,#ffffff, #c0c0c0);
 }
 
 .navBarSearchForm {
-  width: 650px !important;
+  width: 400px !important;
 }
 
 .center {

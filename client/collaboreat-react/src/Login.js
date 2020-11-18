@@ -41,24 +41,24 @@ export default function Login() {
 
     return (
         <center>
-            <div className="col-md-3 center">
+            <h2>Login</h2>
+            <hr></hr>
                 <Errors errors={errors} />
                 <form onSubmit={handleSubmit}>
-                    <h2>Login</h2>
-                    <div className="form-group">
-                        <label>Email:</label>
+                <label>Email:</label>
+                    <div className="col-md-4">
                         <input type="text" placeholder="example@email.com" onChange={(event) => setEmail(event.target.value)} />
                     </div>
-                    <div className="form-group">
-                        <label>Password:</label>
+                    <label>Password:</label>
+                    <div className="col-md-4">
                         <input type="password" placeholder="password" onChange={(event) => setPassword(event.target.value)} />
                     </div>
+                    <hr></hr>
                     <button type="submit" className="btn btn-primary">Login</button>
                     <div>
                         <Link to='/register'>Not a User? Sign up Today!</Link>
                     </div>
                 </form>
-            </div>
         </center>
     )
 }

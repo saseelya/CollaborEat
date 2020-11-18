@@ -80,18 +80,29 @@ export default function DeleteRecipe() {
 
   return (
     <>
-      <h2>Delete Recipe</h2>
-      <p>Recipe Name: { recipe.recipeName }</p>
+    <center>
+      <h2 className="silver-black-gradient">Delete Recipe</h2>
+      <hr></hr>
+      <p>Recipe Name:</p>
+      <p>{ recipe.recipeName }</p>
       <p>Description:  { recipe.recipeDescription }</p>
-      <p>Story:  { recipe.recipeStory }</p>
-      <p>Cook Time:  { recipe.recipeCookTime }</p>
-      <p>Ingredients:  { recipe.recipeIngredients }</p>
-      <p>Steps:  { recipe.recipeSteps }</p>
+      <p>{ recipe.recipeDescription }</p>
+      <p>Story:</p>
+      <p>{ recipe.recipeStory }</p>
+      <p>Cook Time:</p>
+      <p>{ recipe.recipeCookTime }</p>
+      <p>Ingredients:</p>
+      <p>{ recipe.recipeIngredients }</p>
+      <p>Steps:</p>
+      <p> { recipe.recipeSteps }</p>
 
+<hr></hr>
+      <p>Are you sure? Deleting a recipe is permanent.</p>
       <form onSubmit={handleDeleteSubmit}>
-           <button type="submit">Delete Recipe</button>
-           <Link to={"/"}>Cancel</Link>
+           <button type="submit" className="btn btn-danger mr-sm-4">Delete Recipe</button>
+           <Link to={"/"}><button className="btn btn-danger">Cancel</button></Link>
       </form>
+      </center>
     </>
   )
 

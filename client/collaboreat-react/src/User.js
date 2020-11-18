@@ -35,27 +35,20 @@ export default function User() {
 
   return (
     <>
-      <div className="Container">
-        <div className="row">
-        <h1 className="col">{user.firstName} {user.lastName}</h1>
-        {auth.appUser && (auth.appUser.userId === user.userId || auth.appUser.hasRole("ROLE_ADMIN")) && (
-            <div className="col">
-              <Link to={"/user/edit/" + user.userId} className="btn btn-warning">Edit Info</Link>
+      <div>
+      <h2 className="text-center text-dark silver-black-gradient">Recipes Submitted by {user.firstName} {user.lastName}
+      {auth.appUser && (auth.appUser.userId === user.userId || auth.appUser.hasRole("ROLE_ADMIN")) && (
+            <div className="text-right">
+              {auth.appUser && (auth.appUser.userId === user.userId) && (
+             <Link to="/recipe/add" className="mr-sm-4 btn btn-primary">Add a Recipe</Link>
+        )}
+              <Link to={"/user/edit/" + user.userId} className="mr-sm-4 btn btn-warning">Edit Info</Link>
               <Link to={"/user/delete/" + user.userId} className="btn btn-danger">Close Account</Link>  
             </div>
         )}
-      </div>
-      </div>
-      <div>
-      <h2 className="text-center text-dark silver-black-gradient">Submitted Recipes 
-      {auth.appUser && (auth.appUser.userId === user.userId) && (
-        <blockquote className="text-right">
-          <Link to="/recipe/add" className="btn btn-primary">Add a Recipe</Link>
-        </blockquote>
-        )}
       </h2>
-        {Recipes.length == 0 ? (
-          <p>You have not created any Recipes on CollaborEat yet.</p>
+        {Recipes.length === 0 ? (
+          <p><center>{user.firstName} has not created any Recipes on CollaborEat yet.</center></p>
         ) : (
         <div className="row">
         {Recipes.map(recipe => (

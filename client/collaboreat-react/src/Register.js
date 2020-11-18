@@ -58,31 +58,34 @@ export default function Register() {
     };
 
     return (
-        <center>
-            <div className="col-md-3 center">
+            <div>
                 <Errors errors={errors} />
-                <form onSubmit={handleSubmit}>
-                    <h2>Join and Collabor-EAT!</h2>
-                    <div className="form-group">
-                        <label>First Name:</label>
+                <form className="" onSubmit={handleSubmit}>
+                <center>
+                    <h2>Join and CollaborEat!</h2>
+                    <hr></hr>
+                    <label>First Name:</label>
+                    <div className="col-md-4">
                         <input type="text" placeholder="First Name" onChange={(event) => setFirstName(event.target.value)} />
                     </div>
-                    <div className="form-group">
-                        <label>Last Name:</label>
+                    <label>Last Name:</label>
+                    <div className="col-md-4">
                         <input type="text" placeholder="Last Name" onChange={(event) => setLastName(event.target.value)} />
                     </div>
-                    <div className="form-group">
-                        <label>Email:</label>
+                    <label>Email:</label>
+                    <div className="col-md-4">
                         <input type="text" placeholder="example@email.com" onChange={(event) => setEmail(event.target.value)} />
                     </div>
-                    <div className="form-group">
-                        <label>Password:</label>
+                    <label>Password:</label>
+                    <div className="col-md-4">
                         <input type="password" placeholder="password" onChange={(event) => setPassword(event.target.value)} />
                     </div>
+                    <hr></hr>
                     <button type="submit" className="btn btn-primary">Login</button>
-                    <Link to="/">Cancel</Link>
+                    &nbsp;
+                    <Link to="/"><button className="btn btn-danger">Cancel</button></Link>
+                    </center>
                 </form>
             </div>
-        </center>
     )
 }

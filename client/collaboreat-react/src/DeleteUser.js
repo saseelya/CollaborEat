@@ -57,23 +57,28 @@ export default function EditUser() {
 
     return (
         <div>
+            <center>
             <h2>Close Account</h2>
+            <hr></hr>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>First Name:</label>
+            <label>First Name:</label>
+                <div className="col-md-4">
                     <input type="text" value={firstName} readOnly />
                 </div>
-                <div className="form-group">
-                    <label>Last Name:</label>
+                <label>Last Name:</label>
+                <div className="col-md-4">
                     <input type="text" value={lastName} readOnly />
                 </div>
-                <div className="form-group">
-                    <label>Email:</label>
+                <label>Email:</label>
+                <div className="col-md-4">
                     <input type="text" value={email} readOnly />
                 </div>
+                <hr></hr>
                 <button type="submit" className="btn btn-danger">Close Account</button>
-                <Link to={"/user/" + userId}>Cancel</Link>
+                &nbsp;
+                <Link to={"/user/" + userId}><button className="btn btn-danger mr-4">Cancel</button></Link>
             </form>
+            </center>
         </div>
     )
 }

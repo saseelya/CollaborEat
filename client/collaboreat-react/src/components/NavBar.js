@@ -16,19 +16,23 @@ export default function NavBar() {
   }
 
   return (
-        <nav className="navbar sticky-top navbar-light" style={{ backgroundColor: '#e3f2fd' }}>
-         <Link to="/"><img className="d-block w-100" src="collaborEatLogoSmall.png?text=Second slide&bg=282c34" alt="Second slide" /></Link>
-         <Link to="/recipe/add" className="text-light"><button className="text-dark btn btn-primary">Click here to add a recipe!</button></Link>
-          <form className="form-inline" onSubmit={handleSubmit}>
-          <input className="form-control mr-sm-2 navBarSearchForm" type="search" placeholder="Search By Food Item" aria-label="Search" value={foodItem} onChange={(event) => setFoodItem(event.target.value)} />
+        <nav className="navbar sticky-top navbar-light form-inline" style={{ backgroundColor: '#e3f2fd' }}>
+         <Link to="/"><img className="d-block w-100 form-inline" src="collaborEatLogoSmall.png?text=Second slide&bg=282c34" alt="Second slide" /></Link>
 
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+         <div class="text-right form-inline">
+          <form className="form-inline" onSubmit={handleSubmit}>
+          <input className="form-control navBarSearchForm" type="search" placeholder="Search CollaborEat!" aria-label="Search" value={foodItem} onChange={(event) => setFoodItem(event.target.value)} />
+
+          <button className="btn btn-success mr-sm-2" type="submit">
+            <img className="d-block w-100" src="search.png?text=Second slide&bg=282c34" alt="Second slide" />
+          </button>
+          <Link to="/recipe/add" className="text-light text-left mr-sm-2"><button className="text-dark btn btn-primary">Click here to add a recipe!</button></Link>
         </form>
 
         {!auth.appUser && (
     <>
-        <Link to="/login"><button className="btn btn-warning my-2 my-lg-0">Sign In</button></Link>
-        <Link to="/register"><button className="btn btn-warning my-2 my-lg-0">Sign Up</button></Link>
+        <Link to="/login"><button className="btn btn-warning mr-sm-2">Sign In</button></Link>
+        <Link to="/register"><button className="btn btn-warning">Sign Up</button></Link>
     </>
         )}
         {auth.appUser && (
@@ -38,6 +42,7 @@ export default function NavBar() {
             <button onClick={() => auth.logout()} className="btn btn-warning">Logout</button>
         </div>
         )}
+        </div>
     </nav>
   );
 }
