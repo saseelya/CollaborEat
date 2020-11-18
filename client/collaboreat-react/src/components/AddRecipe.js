@@ -97,19 +97,19 @@ export default function AddRecipe() {
     })
   }
 
-  const addHealthInfoBridge = (healthInfoObj) => {
-    healthInfoObj.preventDefault();
-    fetch('http://localhost:8080/recipe/healthInfo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        recipeId,
-        healthInfoObj
-      })
-    });
-  }
+  // const addHealthInfoBridge = (healthInfoObj) => {
+  //   healthInfoObj.preventDefault();
+  //   fetch('http://localhost:8080/recipe/healthInfo', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       recipeId,
+  //       healthInfoObj
+  //     })
+  //   });
+  // }
 
   
   return (

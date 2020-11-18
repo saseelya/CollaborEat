@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
+import { Multiselect } from 'multiselect-react-dropdown';
 import Errors from './Errors';
 
 export default function EditRecipe() {
@@ -17,9 +18,17 @@ export default function EditRecipe() {
   const [recipeId, setRecipeId] = useState(0);
   const [imageUrl, setImageUrl] = useState('');
   const [errors, setErrors] = useState([]);
+  const [selected, setSelected] = useState([]);
 
   const { id } = useParams();
   const history = useHistory();
+
+  const options=[
+    {name: 'Gluten Free', id: 1},
+    {name: 'Sugar Free', id: 2},
+    {name: 'Vegetarian', id: 3},
+    {name: 'Vegan', id: 4}
+  ];
 
   useEffect(() => {
     const getRecipe = () => {
@@ -70,6 +79,37 @@ export default function EditRecipe() {
     .then (response => {
       if (response.status === 201) {
         console.log('Success!');
+        response.json().then( data => {
+          console.log(selected);
+          var i;
+          const selectedHealthInfo = selected.selected;
+          for (i = 0; i < options.length; i++) {
+            fetch(`http://localhost:8080/recipe/healthInfo/${data.recipeId}/${options.options[i].id}`, {
+              method: 'DELETE'
+            })
+          }
+          for( i = 0; i < selectedHealthInfo.length; i++ ){
+            console.log(selectedHealthInfo[i]);
+            fetch('http://localhost:8080/recipe/healthInfo', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                recipeId: data.recipeId,
+                healthInfo: {healthInfoId: selectedHealthInfo[i].id,
+                            healthInfoName: selectedHealthInfo[i].name}
+              })
+            })
+            .then(response => {
+              if (response.status === 400) {
+                response.json().then(data => {
+                  setErrors([data]);
+                })
+              }
+            }) 
+          }
+        });
         history.push(`/recipe/${recipeId}`)
         // response.json().then(data => console.log(data));
     } else if (response.status === 400) {
@@ -137,6 +177,16 @@ export default function EditRecipe() {
           <option value="7">Side</option>
           <option value="8">Snack</option>
         </select>
+      </div>
+      <div>
+      <label>Select Health Info:  </label>
+      <Multiselect 
+        options={options}
+        selected={selected}
+        onSelect={(selected) => setSelected({selected})} // Function will trigger on select event
+        onRemove={(selected) => setSelected({selected})} // Function will trigger on remove event
+        displayValue="name" // Property name to display in the dropdown options
+        />
       </div>
       <button type="submit">Edit Recipe</button>
       <Link to={"/"}>Cancel</Link>
