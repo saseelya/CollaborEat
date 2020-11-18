@@ -37,7 +37,8 @@ export default function AddRecipe() {
     fetch('http://localhost:8080/recipe/add', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorization": "Bearer " + auth.appUser.token
       },
       body: JSON.stringify({
         recipeId,
@@ -61,9 +62,8 @@ export default function AddRecipe() {
           console.log(data);
           console.log(selected);
         var i;
-        const selectedHealthInfo = selected.selected;
-        for( i = 0; i < selectedHealthInfo.length; i++ ){
-          console.log(selectedHealthInfo[i]);
+        for( i = 0; i < selected.length; i++ ){
+          console.log(selected[i]);
           fetch('http://localhost:8080/recipe/healthInfo', {
             method: 'POST',
             headers: {
@@ -71,8 +71,8 @@ export default function AddRecipe() {
             },
             body: JSON.stringify({
               recipeId: data.recipeId,
-              healthInfo: {healthInfoId: selectedHealthInfo[i].id,
-                          healthInfoName: selectedHealthInfo[i].name}
+              healthInfo: {healthInfoId: selected[i].id,
+                          healthInfoName: selected[i].name}
             })
           })
           .then(response => {
@@ -149,9 +149,9 @@ export default function AddRecipe() {
           <label>Select Health Info:  </label>
           <Multiselect 
             options={options}
-            selected={selected}
-            onSelect={(selected) => setSelected({selected})} // Function will trigger on select event
-            onRemove={(selected) => setSelected({selected})} // Function will trigger on remove event
+            selectedValues={selected}
+            onSelect={(selected) => setSelected(selected)} // Function will trigger on select event
+            onRemove={(selected) => setSelected(selected)} // Function will trigger on remove event
             displayValue="name" // Property name to display in the dropdown options
             />
         </div>

@@ -10,7 +10,8 @@ export default function GetFeedback({ feedback, pageUpdate }) {
     fetch(`http://localhost:8080/feedback/${feedback.feedbackId}`, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorization": "Bearer " + auth.appUser.token
       }
     })
     .then (response => {

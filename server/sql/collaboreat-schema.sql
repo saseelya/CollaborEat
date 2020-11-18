@@ -155,8 +155,10 @@ insert into `collaboreat-schema`.`user`(`firstName`, `lastName`, `email`, `passw
 		values 
 			('Dingo', 'Nevada', 'fakeEmail@fakie.com', 'password'),
             ('Cece', 'Slitty', 'bigFake@fake.com', 'password'),
-            ('Jammy', 'Burrito', 'fakiestEmail@fakiest.com', 'password');
-            
+            ('Jammy', 'Burrito', 'fakiestEmail@fakiest.com', 'password'),
+            ('Nicholas', 'Dorsett', 'ndorsett@dev-10.com', '$2a$10$52inyeNUvtr5CwV/2rmz1eshdhW2EBIq1nUg71qbJSAdkXXflM4im'),
+            ('Jamie', 'Lepito', 'jlepito@dev-10.com', '$2a$10$Eo6krRSpR4ijWHBjdZPOXufM/s/.5ckhobp3YONf.9rkILaAA8vtq'),
+            ('Cecilia', 'Barkume', 'cbarkume@dev-10.com', '$2a$10$HPwJzRylJNS5u6DEw0wsw.vb5wMzmKDLBjnL47zsfuRAXaY4Himn2');
             
 insert into role (`name`) 
 	values 
@@ -166,7 +168,11 @@ insert into role (`name`)
 insert into userRole (`userId`, `roleId`)
 	values
 		(1, 1),
-		(2, 2);
+		(2, 1),
+        (3, 1),
+        (4, 2),
+        (5, 2),
+        (6, 2);
 
 insert into `collaboreat-schema`.`mealType`(`mealTypeName`)
 		values
@@ -183,7 +189,7 @@ insert into `collaboreat-schema`.`healthInfo`(`healthInfoName`)
 		values
 			('Gluten Free'),
             ('Sugar Free'),
-            ('Vegitarian'),
+            ('Vegetarian'),
             ('Vegan');
             
 insert into `collaboreat-schema`.`feedback`(`feedbackComment`, `feedbackRating`, `userId`, `recipeId`)
@@ -194,7 +200,8 @@ insert into `collaboreat-schema`.`feedback`(`feedbackComment`, `feedbackRating`,
 insert into `collaboreat-schema`.`recipeHealthInfo`(`recipeId`, `healthInfoId`)
 		values
 			(2, 1),
-            (1, 2);
+            (1, 2),
+            (9, 3);
   
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

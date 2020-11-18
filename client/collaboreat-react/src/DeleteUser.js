@@ -37,7 +37,8 @@ export default function EditUser() {
         fetch(`http://localhost:8080/user/delete/${user.userId}`, {
             method: 'DELETE',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + auth.appUser.token
             },
             body: JSON.stringify({
                 userId,

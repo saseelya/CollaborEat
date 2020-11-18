@@ -38,7 +38,8 @@ export default function EditUser() {
         const response = await fetch(`http://localhost:8080/user/edit/${userId}`, {
             method: 'PUT',
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + auth.appUser.token
             },
             body: JSON.stringify({
                 userId,

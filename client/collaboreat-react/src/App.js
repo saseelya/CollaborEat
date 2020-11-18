@@ -113,15 +113,6 @@ export default function App() {
                 )
               }
             </Route>
-            <Route exact path="/healthInfo/:id">
-                <HealthInfoByRecipe />
-            </Route>
-            <Route exact path="/healthInfo">
-                <HealthInfo />
-            </Route>
-            <Route exact path="/feedback">
-                <Feedback />
-            </Route>
             <Route exact path="/recipe/food/:food">
               <RecipeCardsByFood />
             </Route>

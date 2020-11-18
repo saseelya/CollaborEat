@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
+import AuthContext from './AuthContext';
 
 export default function DeleteRecipe() {
   const [recipe, setRecipe] = useState('');
@@ -17,6 +18,7 @@ export default function DeleteRecipe() {
   const history = useHistory();
 
   const { id } = useParams();
+  const auth = useContext(AuthContext)
 
   useEffect(() => {
     const getRecipe = () => {
@@ -46,7 +48,8 @@ export default function DeleteRecipe() {
     fetch(`http://localhost:8080/recipe/delete/${recipeId}`, {
       method: 'DELETE',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorization": "Bearer " + auth.appUser.token
       },
       body: JSON.stringify({
         recipeName,

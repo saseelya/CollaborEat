@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { Multiselect } from 'multiselect-react-dropdown';
 import Errors from './Errors';
+import AuthContext from './AuthContext';
 
 export default function EditRecipe() {
   const [recipe, setRecipe] = useState('');
@@ -22,6 +23,7 @@ export default function EditRecipe() {
 
   const { id } = useParams();
   const history = useHistory();
+  const auth = useContext(AuthContext);
 
   const options=[
     {name: 'Gluten Free', id: 1},
@@ -59,7 +61,8 @@ export default function EditRecipe() {
     fetch(`http://localhost:8080/recipe/edit/${recipeId}`, {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorization": "Bearer " + auth.appUser.token
       },
       body: JSON.stringify({
         recipeName,
@@ -89,10 +92,9 @@ export default function EditRecipe() {
               method: 'DELETE'
             })
           }
-          if (selected.selected.length != 0) {
-            const selectedHealthInfo = selected.selected;
-            for( i = 0; i < selectedHealthInfo.length; i++ ){
-              console.log(selectedHealthInfo[i]);
+          if (selected.length != 0) {
+            for( i = 0; i < selected.length; i++ ){
+              console.log(selected[i]);
               fetch('http://localhost:8080/recipe/healthInfo', {
                 method: 'POST',
                 headers: {
@@ -100,8 +102,8 @@ export default function EditRecipe() {
                 },
                 body: JSON.stringify({
                   recipeId: data.recipeId,
-                  healthInfo: {healthInfoId: selectedHealthInfo[i].id,
-                              healthInfoName: selectedHealthInfo[i].name}
+                  healthInfo: {healthInfoId: selected[i].id,
+                              healthInfoName: selected[i].name}
                 })
               })
               .then(response => {
@@ -164,9 +166,9 @@ export default function EditRecipe() {
           <label>Select Health Info:  </label>
           <Multiselect 
             options={options}
-            selected={selected}
-            onSelect={(selected) => setSelected({selected})} // Function will trigger on select event
-            onRemove={(selected) => setSelected({selected})} // Function will trigger on remove event
+            selectedValues={selected}
+            onSelect={(selected) => setSelected(selected)} // Function will trigger on select event
+            onRemove={(selected) => setSelected(selected)} // Function will trigger on remove event
             displayValue="name" // Property name to display in the dropdown options
             />
         </div>

@@ -69,7 +69,8 @@ function ViewRecipe() {
     fetch('http://localhost:8080/feedback/add', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorization": "Bearer " + auth.appUser.token
       },
       body: JSON.stringify({
         feedbackId,
@@ -166,38 +167,6 @@ function ViewRecipe() {
         </div>
       </div>
 
-      {/* <table className="table table-dark table-striped table-hover">
-        <thead>
-          <tr>
-            <th scope="col">Recipe </th>
-            <th scope="col">Recipe Story</th>
-            <th scope="col">Recipe Description</th>
-            <th scope="col">Recipe Ingredients</th>
-            <th scope="col">Recipe Cook Time</th>
-            <th scope="col">Recipe Steps</th>
-            <th scope="col">Date Added</th>
-            <th scope="col">Rating</th>
-            <th scope="col">User</th>
-            <th scope="col">Meal Type</th>
-            <th scope="col">Health Info</th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr key={recipe.recipeId}>
-                <td>{recipe.recipeName}</td> 
-                <td>{recipe.recipeStory}</td>
-                <td>{recipe.recipeDescription}</td>
-                <td>{recipe.recipeIngredients}</td>
-                <td>{recipe.recipeCookTime}</td>
-                <td>{recipe.recipeSteps}</td>
-                <td>{recipe.recipeDate}</td>
-                <td><GetRating recipe={recipe} /></td>
-                <GetPerson id={recipe.userId} />
-                <MealType recipe={recipe} />
-                <td><RecipeHealthInfo recipe={recipe} /></td>
-            </tr>
-        </tbody>
-      </table> */}
       {auth.appUser && (
       <form onSubmit={handleAddSubmit}>
         <div>
