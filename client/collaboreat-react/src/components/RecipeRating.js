@@ -14,7 +14,7 @@ export default function GetRating({ recipe }) {
         if (recipe && recipe.recipeId) {
             getRating();
         }
-    }, [recipe]);
+    }, [recipe.recipeId]);
 
     if (rating === 0) {
         return (<></>);

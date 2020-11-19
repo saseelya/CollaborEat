@@ -14,7 +14,7 @@ export default function RecipeCardsByDate() {
   
   useEffect(() => {
     getRecipe();
-  });
+  }, []);
 
   return (
     <>
