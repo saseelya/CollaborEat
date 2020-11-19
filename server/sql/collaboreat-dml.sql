@@ -3,15 +3,312 @@ USE `collaboreat-schema` ;
 insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDescription`,`recipeIngredients`,
 		`recipeCookTime`, `recipeSteps`, `recipeDate`, `recipeRating`, `userId`, `mealTypeId`, `imageUrl`)
         values
-			('The Sauce','The Story', 'The Description', 
-            'Milk
-            Butter
-            Flour', 
-            15, 
-            'mix the stuff
-            heat it up', 
-			'2020-10-20', 0, 1, 7, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/12/20/0/FNK_The-Best-Tomato-Sauce_H_s4x3.jpg.rend.hgtvcom.826.620.suffix/1576855451811.jpeg'),
+            -- -----
+            
+            ('Fluffy Pancakes','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-11-25', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/5079227.jpg'),
+            
+            ('Downeast Maine Pumpkin Bread','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/4567827.jpg'),
+            
+            ('Zuccini Bread','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/1037957.jpg'),
+            
+            ('Fluffy French Toast','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/2049275.jpg'),
+            
+            ('Classic Waffles','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/34761.jpg'),
+            
+            ('Quick and Crispy Home Fries','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/4516186.jpg'),
+            
+            -- 
+            
+            ('Brunch Enchiladas','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 2, 'https://cf-images.us-east-1.prod.boltdns.net/v1/static/1033249144001/87fdb048-4785-49a8-8bd6-7e9bd3dc6331/35e43ab3-5e20-423f-8d00-d14f493cd7c2/1280x720/match/image.jpg'),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 2, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 2, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 2, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 2, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 2, ''),
+            
+            -- 
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 3, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 3, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 3, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 3, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 3, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 3, ''),
+            
+            -- 
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 4, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 4, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 4, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 4, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 4, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 4, ''),
 			
+            --
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 5, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 5, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 5, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 5, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 5, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 5, ''),
+            
+            --
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 6, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 6, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 6, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 6, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 6, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 6, ''),
+            
+            --
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 7, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 7, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 7, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 7, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 7, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 7, ''),
+            
+            --
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 8, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 8, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 8, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 8, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 8, ''),
+            
+            ('','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-20', 4.32, 1, 8, ''),
+            
+            --
+            
             ('The Gravy', 'Another Story', 'Another Description', 
             'Not Milk
             Not Butter', 
