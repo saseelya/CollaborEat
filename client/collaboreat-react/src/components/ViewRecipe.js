@@ -112,25 +112,25 @@ function ViewRecipe() {
                <hr></hr>
                 <tr>
                 <FacebookShareButton 
-                    url={`google.com`}
+                    url={`http://collaboreat.s3.us-east-2.amazonaws.com/index.html#/recipe/${recipe.recipeId}`}
                     quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
                     hashtag="#collaboreat">
                     <FacebookIcon size={36} />
                   </FacebookShareButton>  
                   <TwitterShareButton 
-                    url={`google.com`}
+                    url={`http://collaboreat.s3.us-east-2.amazonaws.com/index.html#/recipe/${recipe.recipeId}`}
                     quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
                     hashtag="#collaboreat">
                     <TwitterIcon size={36} />
                   </TwitterShareButton>     
                   <PinterestShareButton 
-                    url={`google.com`}
+                    url={`http://collaboreat.s3.us-east-2.amazonaws.com/index.html#/recipe/${recipe.recipeId}`}
                     quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
                     hashtag="#collaboreat">
                     <PinterestIcon size={36} />
                   </PinterestShareButton>            
                   <EmailShareButton 
-                    url={`google.com`}
+                    url={`http://collaboreat.s3.us-east-2.amazonaws.com/index.html#/recipe/${recipe.recipeId}`}
                     quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
                     hashtag="#collaboreat">
                     <EmailIcon size={36} />
