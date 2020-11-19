@@ -53,12 +53,13 @@ public class RecipeService {
     }
 
     public Result<Recipe> update(Recipe recipe) {
-        Result<Recipe> result = validateRecipe(recipe);
-
+        Result<Recipe> result = new Result<>();
         if (recipe == null) {
             result.addMessage("Recipe cannot be null", ResultType.INVALID);
             return result;
         }
+
+        result = validateRecipe(recipe);
 
         Boolean idExists = recipeRepository.findAll().stream()
                 .anyMatch(r -> r.getRecipeId() == recipe.getRecipeId());

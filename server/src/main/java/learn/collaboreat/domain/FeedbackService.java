@@ -38,12 +38,13 @@ public class FeedbackService {
 
     public Result<Feedback> add(Feedback feedback) {
         Result<Feedback> result = new Result<>();
-        if (feedback.getFeedbackComment().isBlank()) {
-            result.addMessage("Comments cannot be blank. ", ResultType.INVALID);
-        }
         if (feedback == null) {
             result.addMessage("Feedback must exist.", ResultType.INVALID);
             return result;
+        }
+
+        if (feedback.getFeedbackComment().isBlank()) {
+            result.addMessage("Comments cannot be blank. ", ResultType.INVALID);
         }
 
         if (feedback.getFeedbackId() != 0) {
@@ -61,13 +62,13 @@ public class FeedbackService {
 
     public Result<Feedback> update(Feedback feedback) {
         Result<Feedback> result = new Result<>();
-
-        if (feedback.getFeedbackComment().isBlank()) {
-            result.addMessage("Comments cannot be blank.", ResultType.INVALID);
-        }
         if (feedback == null) {
             result.addMessage("Feedback must exist.", ResultType.INVALID);
             return result;
+        }
+
+        if (feedback.getFeedbackComment().isBlank()) {
+            result.addMessage("Comments cannot be blank.", ResultType.INVALID);
         }
 
         if (feedback.getFeedbackId() <= 0) {

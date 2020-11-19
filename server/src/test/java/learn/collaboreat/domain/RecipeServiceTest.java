@@ -69,7 +69,6 @@ public class RecipeServiceTest {
     }
 
     @Test
-    @Disabled
     void shouldNotUpdateInvalidRecipe() {
         Recipe mockOut = makeValidRecipe();
         List<Recipe> mockOuts = new ArrayList<>();
@@ -103,6 +102,7 @@ public class RecipeServiceTest {
         recipe.setRecipeRating(5.0);
         recipe.setUserId(1);
         recipe.setMealTypeId(1);
+        recipe.setImageUrl("");
 
         return recipe;
     }

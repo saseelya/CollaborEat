@@ -43,7 +43,6 @@ class FeedbackServiceTest {
     }
 
     @Test
-    @Disabled
     void shouldNotAddInvalid() {
         Feedback feedback = makeFeedback();
 
@@ -67,7 +66,6 @@ class FeedbackServiceTest {
     }
 
     @Test
-    @Disabled
     void shouldNotUpdateInvalid() {
         Feedback feedback = null;
 
