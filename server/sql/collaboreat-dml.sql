@@ -9,37 +9,37 @@ insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDe
             '', 
             10, 
             '', 
-			'2020-11-25', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/5079227.jpg'),
+			'2020-11-25', 4.32, 4, 1, 'https://images.media-allrecipes.com/userphotos/300x300/5079227.jpg'),
             
             ('Downeast Maine Pumpkin Bread','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/4567827.jpg'),
+			'2020-10-2', 3.12, 5, 1, 'https://images.media-allrecipes.com/userphotos/300x300/4567827.jpg'),
             
             ('Zuccini Bread','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/1037957.jpg'),
+			'2020-01-20', 2.53, 2, 1, 'https://images.media-allrecipes.com/userphotos/300x300/1037957.jpg'),
             
             ('Fluffy French Toast','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/2049275.jpg'),
+			'2020-07-05', 3.52, 4, 1, 'https://images.media-allrecipes.com/userphotos/300x300/2049275.jpg'),
             
             ('Classic Waffles','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/34761.jpg'),
+			'2020-03-06', 1.41, 5, 1, 'https://images.media-allrecipes.com/userphotos/300x300/34761.jpg'),
             
             ('Quick and Crispy Home Fries','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 1, 'https://images.media-allrecipes.com/userphotos/300x300/4516186.jpg'),
+			'2020-10-26', 2.52, 2, 1, 'https://images.media-allrecipes.com/userphotos/300x300/4516186.jpg'),
             
             -- 
             
@@ -47,37 +47,75 @@ insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDe
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 2, 'https://cf-images.us-east-1.prod.boltdns.net/v1/static/1033249144001/87fdb048-4785-49a8-8bd6-7e9bd3dc6331/35e43ab3-5e20-423f-8d00-d14f493cd7c2/1280x720/match/image.jpg'),
-            
-            ('','The Story', 'The Description', 
+			'2020-7-4', 2.41, 4, 2, 'https://cf-images.us-east-1.prod.boltdns.net/v1/static/1033249144001/87fdb048-4785-49a8-8bd6-7e9bd3dc6331/35e43ab3-5e20-423f-8d00-d14f493cd7c2/1280x720/match/image.jpg'),
+		
+            ('Brunch Bake','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 2, ''),
+			'2020-3-2', 1.16, 2, 2, 'https://images.media-allrecipes.com/userphotos/300x300/1066103.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Crab Casserole','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 2, ''),
+			'2020-5-27', 3.23, 1, 2, 'https://images.media-allrecipes.com/userphotos/300x300/6437886.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Christmas Brunch Casserole','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 2, ''),
+			'2020-9-28', 4.62, 1, 2, 'https://images.media-allrecipes.com/userphotos/300x300/1868225.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Cheesy Bacon & Eggs Brunch Casserole','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 2, ''),
+			'2020-11-09', 3.25, 3, 2, 'https://images.media-allrecipes.com/userphotos/300x300/3346368.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Big Bob Big Brunch Quesadillas','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 2, ''),
+			'2020-07-04', 4.39, 3, 2, 'https://images.media-allrecipes.com/userphotos/300x300/1042352.jpg'),
+            
+            -- 
+            
+            ('Chocolate Eclair Dessert','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-12-24', 4.93, 5, 3, 'https://images.media-allrecipes.com/userphotos/300x300/485899.jpg'),
+            
+            ('Strawberry Angel Food Dessert','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-10-10', 4.39, 6, 3, 'https://images.media-allrecipes.com/userphotos/300x300/1129209.jpg'),
+            
+            ('Tiramisu Toffee Dessert','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-01-05', 4.92, 3, 3, 'https://images.media-allrecipes.com/userphotos/300x300/116097.jpg'),
+            
+            ('Chocolate Allspice Dessert Nachos','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-06-25', 4.39, 6, 3, 'https://images.media-allrecipes.com/userphotos/300x300/1011258.jpg'),
+            
+            ('Hot Fudge Ice Cream Bar Dessert','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-04-15', 4.12, 6, 3, 'https://images.media-allrecipes.com/userphotos/300x300/329947.jpg'),
+            
+            ('Greek Baklava','The Story', 'The Description', 
+            '', 
+            10, 
+            '', 
+			'2020-02-20', 2.14, 2, 3, 'https://images.media-allrecipes.com/userphotos/300x300/5500391.jpg'),
             
             -- 
             
@@ -85,44 +123,6 @@ insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDe
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 3, ''),
-            
-            ('','The Story', 'The Description', 
-            '', 
-            10, 
-            '', 
-			'2020-10-20', 4.32, 1, 3, ''),
-            
-            ('','The Story', 'The Description', 
-            '', 
-            10, 
-            '', 
-			'2020-10-20', 4.32, 1, 3, ''),
-            
-            ('','The Story', 'The Description', 
-            '', 
-            10, 
-            '', 
-			'2020-10-20', 4.32, 1, 3, ''),
-            
-            ('','The Story', 'The Description', 
-            '', 
-            10, 
-            '', 
-			'2020-10-20', 4.32, 1, 3, ''),
-            
-            ('','The Story', 'The Description', 
-            '', 
-            10, 
-            '', 
-			'2020-10-20', 4.32, 1, 3, ''),
-            
-            -- 
-            
-            ('','The Story', 'The Description', 
-            '', 
-            10, 
-            '', 
 			'2020-10-20', 4.32, 1, 4, ''),
             
             ('','The Story', 'The Description', 
@@ -141,7 +141,7 @@ insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDe
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 4, ''),
+			'2020-10-20', 4.15, 1, 4, ''),
             
             ('','The Story', 'The Description', 
             '', 
@@ -153,7 +153,7 @@ insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDe
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 4, ''),
+			'2020-10-20', 4.88, 1, 4, ''),
 			
             --
             
@@ -161,171 +161,153 @@ insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDe
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 5, ''),
+			'2020-10-20', 4.68, 1, 5, ''),
             
             ('','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 5, ''),
+			'2020-10-20', 4.78, 1, 5, ''),
             
             ('','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 5, ''),
+			'2020-10-20', 2.46, 1, 5, ''),
             
             ('','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 5, ''),
+			'2020-10-20', 2.62, 1, 5, ''),
             
             ('','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 5, ''),
+			'2020-10-20', 4.25, 1, 5, ''),
             
             ('','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 5, ''),
+			'2020-10-20', 4.14, 1, 5, ''),
             
             --
             
-            ('','The Story', 'The Description', 
+            ('Fruity Curry Chicken Salad','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 6, ''),
+			'2020-10-18', 2.36, 2, 6, 'https://images.media-allrecipes.com/userphotos/300x300/1103604.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Sweet Restaurant Slaw','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 6, ''),
+			'2020-05-03', 3.63, 1, 6, 'https://images.media-allrecipes.com/userphotos/300x300/2276935.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Quinoa Black Bean Burgers','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 6, ''),
+			'2020-01-11', 1.25, 5, 6, 'https://images.media-allrecipes.com/userphotos/300x300/5858755.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Black Bean and Couscous Salad','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 6, ''),
+			'2020-11-30', 2.70, 6, 6, 'https://images.media-allrecipes.com/userphotos/300x300/3359485.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Black Bean and Corn Quesadillas','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 6, ''),
+			'2020-08-10', 6.42, 3, 6, 'https://images.media-allrecipes.com/userphotos/300x300/829340.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Amish Macaroni Salad','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 6, ''),
+			'2020-07-10', 1.62, 2, 6, 'https://images.media-allrecipes.com/userphotos/300x300/410845.jpg'),
             
             --
             
-            ('','The Story', 'The Description', 
+            ('Ultimate Side Dish','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 7, ''),
+			'2020-06-12', 2.62, 4, 7, 'https://images.media-allrecipes.com/userphotos/300x300/7980503.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Baked Pineapple Side Dish','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 7, ''),
+			'2020-10-21', 3.62, 5, 7, 'https://images.media-allrecipes.com/userphotos/300x300/882657.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Chef John Shrimp and Grits','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 7, ''),
+			'2020-01-04', 4.21, 3, 7, 'https://images.media-allrecipes.com/userphotos/300x300/6368941.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Gourmet Sweet Potato Classic','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 7, ''),
+			'2020-07-16', 4.14, 5, 7, 'https://images.media-allrecipes.com/userphotos/300x300/303240.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Oven-Roasted Asparagus','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 7, ''),
+			'2020-08-08', 4.97, 3, 7, 'https://images.media-allrecipes.com/userphotos/300x300/1001600.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Elegant Thanksgiving Squash Side Dish','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 7, ''),
+			'2020-05-17', 4.12, 3, 7, 'https://images.media-allrecipes.com/userphotos/300x300/1552766.jpg'),
             
             --
             
-            ('','The Story', 'The Description', 
+            ('Caramel Corn Snack Mix','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 8, ''),
+			'2020-10-23', 1.62, 5, 8, 'https://images.media-allrecipes.com/userphotos/300x300/885434.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('No-Bake Energy Bites','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 8, ''),
+			'2020-08-25', 2.43, 6, 8, 'https://images.media-allrecipes.com/userphotos/300x300/4540780.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Candied Pecans','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 8, ''),
+			'2020-04-05', 3.33, 6, 8, 'https://images.media-allrecipes.com/userphotos/300x300/965865.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Spooky Spider Snacks','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 8, ''),
+			'2020-03-12', 1.42, 2, 8, 'https://images.media-allrecipes.com/userphotos/300x300/913633.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Rye Snack Rounds','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 8, ''),
+			'2020-04-16', 3.34, 6, 8, 'https://images.media-allrecipes.com/userphotos/300x300/972278.jpg'),
             
-            ('','The Story', 'The Description', 
+            ('Mexican Jicama Snack','The Story', 'The Description', 
             '', 
             10, 
             '', 
-			'2020-10-20', 4.32, 1, 8, ''),
+			'2020-05-26', 1.13, 3, 8, 'https://images.media-allrecipes.com/userphotos/300x300/144919.jpg'),
             
             --
-            
-            ('The Gravy', 'Another Story', 'Another Description', 
-            'Not Milk
-            Not Butter', 
-            10, 
-            'do nothing
-            drink alc',
-			'2020-10-15', 0, 2, 7, 'https://www.recipetineats.com/wp-content/uploads/2020/02/Gravy_4-SQ.jpg'),
-			
-            ('Yummy Cookies', 'Yet another Story', 'Delicious', 
-            'Milk
-            Eggs
-            Flour
-            Butter', 30,
-            'mix the stuff
-            heat it up
-            enjoy',
-			'2020-11-13', 0, 2, 8, 'https://upload.wikimedia.org/wikipedia/commons/f/f1/2ChocolateChipCookies.jpg'),
 			
             ('Korean Beef and Broccoli', 'I was searching for new recipes and wandered upon this, it is now a regular on the menu.',
             'Beef, Rice, and Broccolli in brown sugar soy sauce. I usually just use microwave broccolli.', 
