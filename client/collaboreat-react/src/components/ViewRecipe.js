@@ -168,14 +168,14 @@ function ViewRecipe() {
       </div>
       <div className="container">
         <h4>The Ingredients</h4>
-        <ul className="rounded-unordered-list">
-          {recipe.recipeIngredients.split('\n').map((item, i) => <li key={i}>{item}</li>)}
+        <ul className="rounded-unordered-list steps">
+          {recipe.recipeIngredients.split('\n').map((item, i) => <li className="steps-item" key={i}>{item}</li>)}
         </ul>
       </div>
       <div className="container">
         <h4>The Steps</h4>
-        <ol className="rounded-ordered-list">
-          {recipe.recipeSteps.split('\n').map((item, i) => <li key={i}>{item}</li>)}
+        <ol className="rounded-ordered-list steps">
+          {recipe.recipeSteps.split('\n').map((item, i) => <li className="steps-item" key={i}>{item}</li>)}
         </ol>
       </div>
       <div className="container">

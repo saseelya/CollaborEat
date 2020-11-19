@@ -13,7 +13,7 @@ code {
 }
 
 .silver-black-gradient {
-  background: linear-gradient(#d6d6d6,#ffffff, #c0c0c0);
+  background: linear-gradient(#d8d8d8,#ffffff, #f1f1f1);
 }
 
 .navBarSearchForm {
@@ -25,7 +25,7 @@ code {
   justify-content: 'center';
   align-items: 'center';
 }
-ol {
+.steps {
   counter-reset: li; /* Initiate a counter */
   list-style: none; /* Remove default numbering */
   *list-style: decimal; /* Keep using default numbering for IE6/7 */
@@ -33,7 +33,7 @@ ol {
   text-shadow: 0 1px 0 rgba(255,255,255,.5);
 }
 
-li{
+.steps-item{
   position: relative;
   display: block;
   padding: .4em .4em .4em 2em;
@@ -103,13 +103,11 @@ li:hover:before{
 }
 
 .crop-card {
-  width: 300px;
   height: 200px;
   overflow: hidden;
 }
 
 .crop-card img {
-  width: 200px;
   height: 200px;
   margin: 100px 100 0 500px;
 }

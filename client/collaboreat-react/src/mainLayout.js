@@ -17,7 +17,7 @@ export default function MainLayout() {
                     alt="First slide"
                     />
                     <Carousel.Caption className="text-dark silver-black-gradient">
-                        <h3>Welcome to CollaborEat!</h3>
+                        <h3>Welcome to <img src="collaborEatLogoSmall.png?text=First slide&bg=373940" />!</h3>
                         <p>On November 9th, 2020, three friends came together to create CollaborEat, a place for recipes of all kinds.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -30,7 +30,7 @@ export default function MainLayout() {
 
                     <Carousel.Caption className="text-dark silver-black-gradient">
                         <h3>Our Mission</h3>
-                        <p>Here at CollaborEat, we believe that food has the unqiue power to change hearts and minds. Cooking is much more than combining ingredients.</p>
+                        <p>Here at <img src="collaborEatLogoSmall.png?text=First slide&bg=373940" />, we believe that food has the unqiue power to change hearts and minds. Cooking is much more than combining ingredients.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -41,7 +41,7 @@ export default function MainLayout() {
                     />
 
                     <Carousel.Caption className="text-dark silver-black-gradient">
-                        <h3>Interested in CollaborEat?</h3>
+                        <h3>Interested in <img src="collaborEatLogoSmall.png?text=First slide&bg=373940" />?</h3>
                         <p>Register today and start making memories, for free!</p>
                     </Carousel.Caption>
                 </Carousel.Item>
