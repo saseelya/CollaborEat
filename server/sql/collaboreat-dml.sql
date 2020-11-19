@@ -10,7 +10,7 @@ insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDe
             15, 
             'mix the stuff
             heat it up', 
-			'2020-10-20', 0, 1, 1, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/12/20/0/FNK_The-Best-Tomato-Sauce_H_s4x3.jpg.rend.hgtvcom.826.620.suffix/1576855451811.jpeg'),
+			'2020-10-20', 0, 1, 7, 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/12/20/0/FNK_The-Best-Tomato-Sauce_H_s4x3.jpg.rend.hgtvcom.826.620.suffix/1576855451811.jpeg'),
 			
             ('The Gravy', 'Another Story', 'Another Description', 
             'Not Milk
@@ -18,7 +18,7 @@ insert into `collaboreat-schema`.`recipe`(`recipeName`, `recipeStory`, `recipeDe
             10, 
             'do nothing
             drink alc',
-			'2020-10-15', 0, 2, 2, 'https://www.recipetineats.com/wp-content/uploads/2020/02/Gravy_4-SQ.jpg'),
+			'2020-10-15', 0, 2, 7, 'https://www.recipetineats.com/wp-content/uploads/2020/02/Gravy_4-SQ.jpg'),
 			
             ('Yummy Cookies', 'Yet another Story', 'Delicious', 
             'Milk
