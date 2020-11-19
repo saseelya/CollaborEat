@@ -12,7 +12,12 @@ export default function NavBar() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    history.push(`/recipe/food/${foodItem}`);
+    if (!foodItem || foodItem.length === 0 || foodItem.trim() === "") {
+      // do nothing
+    } else {
+      history.push(`/recipe/food/${foodItem}`);
+    }
+    
   }
 
   return (

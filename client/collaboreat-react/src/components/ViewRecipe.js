@@ -25,14 +25,14 @@ function ViewRecipe() {
   
   useEffect(() => {
     const getRecipe = () => {
-      fetch(`http://localhost:8080/recipe/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/recipe/${id}`)
         .then(response => response.json())
         .then(data => {
           setRecipe(data);
         });
     };
     const getFeedback = () => {
-      fetch(`http://localhost:8080/feedback/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/feedback/${id}`)
         .then(response => response.json())
         .then(data => {
           setFeedback(data);
@@ -45,7 +45,7 @@ function ViewRecipe() {
 
   const pageUpdate = () => {
     const getRecipe = () => {
-      fetch(`http://localhost:8080/recipe/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/recipe/${id}`)
         .then(response => response.json())
         .then(data => {
           setRecipe(data);
@@ -53,7 +53,7 @@ function ViewRecipe() {
     }
 
     const getFeedback = () => {
-      fetch(`http://localhost:8080/feedback/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/feedback/${id}`)
         .then(response => response.json())
         .then(data => {
           setFeedback(data);
@@ -66,7 +66,7 @@ function ViewRecipe() {
   const handleAddSubmit = (event) => {
     event.preventDefault();
 
-    fetch('http://localhost:8080/feedback/add', {
+    fetch(`${process.env.REACT_APP_API_URL}/feedback/add`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

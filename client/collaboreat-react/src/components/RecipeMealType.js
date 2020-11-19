@@ -5,7 +5,7 @@ export default function MealType({ recipe }) {
 
   useEffect(() => {
     const getMealType = () => {
-      fetch(`http://localhost:8080/mealType/${recipe.mealTypeId}`)
+      fetch(`${process.env.REACT_APP_API_URL}/mealType/${recipe.mealTypeId}`)
         .then(response => response.json())
         .then(data => {
           setMealType(data);

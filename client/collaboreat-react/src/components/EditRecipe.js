@@ -34,7 +34,7 @@ export default function EditRecipe() {
 
   useEffect(() => {
     const getRecipe = () => {
-        fetch(`http://localhost:8080/recipe/${id}`) 
+        fetch(`${process.env.REACT_APP_API_URL}/recipe/${id}`) 
         .then(response => response.json())
         .then((data) => {
             setRecipe(data);
@@ -58,7 +58,7 @@ export default function EditRecipe() {
   const handleEditSubmit = (event) => {
     event.preventDefault();
     setRecipeId(recipe.recipeId);
-    fetch(`http://localhost:8080/recipe/edit/${recipeId}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/recipe/edit/${recipeId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -88,14 +88,14 @@ export default function EditRecipe() {
           var i;
           
           for (i = 0; i < options.length; i++) {
-            fetch(`http://localhost:8080/recipe/healthInfo/${data.recipeId}/${options[i].id}`, {
+            fetch(`${process.env.REACT_APP_API_URL}/recipe/healthInfo/${data.recipeId}/${options[i].id}`, {
               method: 'DELETE'
             })
           }
           if (selected.length != 0) {
             for( i = 0; i < selected.length; i++ ){
               console.log(selected[i]);
-              fetch('http://localhost:8080/recipe/healthInfo', {
+              fetch(`${process.env.REACT_APP_API_URL}/recipe/healthInfo`, {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'

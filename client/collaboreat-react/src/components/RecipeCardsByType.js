@@ -7,7 +7,7 @@ export default function RecipeCardsByType({ mealTypeId }) {
   const {id} = useParams();
 
   const getRecipe = (identifier) => {
-    fetch(`http://localhost:8080/recipe/mealType/all/${identifier}`)
+    fetch(`${process.env.REACT_APP_API_URL}/recipe/mealType/all/${identifier}`)
       .then(response => response.json())
       .then(data => {
         setRecipe(data);

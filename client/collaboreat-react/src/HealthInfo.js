@@ -4,7 +4,7 @@ export default function HealthInfo() {
   const [healthInfos, setHealthInfo] = useState([]);
 
   const getHealthInfo = () => {
-    fetch('http://localhost:8080/healthInfo')
+    fetch(`${process.env.REACT_APP_API_URL}/healthInfo`)
       .then(response => response.json())
       .then(data => {
         setHealthInfo(data);

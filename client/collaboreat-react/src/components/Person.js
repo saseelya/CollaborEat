@@ -5,7 +5,7 @@ export default function GetPerson({ id }) {
 
   useEffect(() => {
     const getPerson = () => {
-      fetch(`http://localhost:8080/user/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/user/${id}`)
         .then(response => response.json())
         .then(data => {
           setPerson(data);

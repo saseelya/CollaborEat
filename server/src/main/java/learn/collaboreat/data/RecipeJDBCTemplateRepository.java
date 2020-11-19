@@ -96,7 +96,7 @@ public class RecipeJDBCTemplateRepository implements RecipeRepository {
             if(recipe.getImageUrl() != ""){
                 ps.setString(11, recipe.getImageUrl());
             } else {
-                ps.setString(11,"https://www.acouplecooks.com/wp-content/uploads/2019/11/Recipes-Header-1-800x400.jpg");
+                ps.setString(11,"https://www.besthealthmag.ca/wp-content/uploads/2019/07/junk-food-1.gif");
             }
 
             return ps;

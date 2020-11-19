@@ -15,14 +15,14 @@ export default function User() {
 
   useEffect(() => {
     const getUser = () => {
-      fetch(`http://localhost:8080/user/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/user/${id}`)
         .then(response => response.json())
         .then(data => {
           setUser(data);
         });
     };
     const getRecipe = () => {
-      fetch(`http://localhost:8080/recipe/user/${id}`)
+      fetch(`${process.env.REACT_APP_API_URL}/recipe/user/${id}`)
         .then(response => response.json())
         .then(data => {
           setRecipe(data);

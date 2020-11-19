@@ -5,7 +5,7 @@ export default function RecipeCardsByDate() {
   const [Recipes, setRecipe] = useState([]);
 
   const getRecipe = () => {
-    fetch(`http://localhost:8080/recipe/date`)
+    fetch(`${process.env.REACT_APP_API_URL}/recipe/date`)
       .then(response => response.json())
       .then(data => {
         setRecipe(data);

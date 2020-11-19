@@ -8,7 +8,7 @@ export default function RecipeCardsByFood() {
 
   useEffect(() => {
     const getRecipe = () => {
-        fetch(`http://localhost:8080/recipe/food/${food}`)
+        fetch(`${process.env.REACT_APP_API_URL}/recipe/food/${food}`)
           .then(response => response.json())
           .then(data => {
             setRecipe(data);

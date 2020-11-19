@@ -7,7 +7,7 @@ export default function GetFeedback({ feedback, pageUpdate }) {
   const auth = useContext(AuthContext);
 
   const handleDeleteSubmit = (event) => {
-    fetch(`http://localhost:8080/feedback/${feedback.feedbackId}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/feedback/${feedback.feedbackId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

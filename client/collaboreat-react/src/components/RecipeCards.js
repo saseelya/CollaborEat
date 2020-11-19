@@ -6,7 +6,7 @@ export default function RecipeCards() {
   const [Recipes, setRecipe] = useState([]);
 
   const getRecipe = () => {
-    fetch('http://localhost:8080/recipe')
+    fetch(`${process.env.REACT_APP_API_URL}/recipe`)
       .then(response => response.json())
       .then(data => {
         setRecipe(data);

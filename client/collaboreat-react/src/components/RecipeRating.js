@@ -5,7 +5,7 @@ export default function GetRating({ recipe }) {
 
     useEffect(() => {
         const getRating = () => {
-            fetch(`http://localhost:8080/feedback/rating/${recipe.recipeId}`)
+            fetch(`${process.env.REACT_APP_API_URL}/feedback/rating/${recipe.recipeId}`)
             .then(response => response.json())
             .then(data => {
                 setRating(data);

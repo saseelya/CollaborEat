@@ -19,7 +19,7 @@ export default function EditUser() {
 
     useEffect(() => {
         const getUser = () => {
-            fetch(`http://localhost:8080/user/${id}`)
+            fetch(`${process.env.REACT_APP_API_URL}/user/${id}`)
             .then(response => response.json())
             .then(data => {
                 setUser(data);
@@ -35,7 +35,7 @@ export default function EditUser() {
     
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch(`http://localhost:8080/user/edit/${userId}`, {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/user/edit/${userId}`, {
             method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export default function EditUser() {
 
         if (response.status === 201) {
                 // history.push(`/user/${userId}`)
-            const responseAuth = await fetch('http://localhost:8080/user/refresh_token', {
+            const responseAuth = await fetch(`${process.env.REACT_APP_API_URL}/user/refresh_token`, {
             method: 'POST',
             headers: {
                 "Authorization": "Bearer " + auth.appUser.token

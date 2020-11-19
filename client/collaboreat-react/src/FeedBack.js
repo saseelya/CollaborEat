@@ -4,7 +4,7 @@ export default function Feedback() {
   const [Feedbacks, setFeedback] = useState([]);
 
   const getFeedbacks = () => {
-    fetch('http://localhost:8080/feedback')
+    fetch(`${process.env.REACT_APP_API_URL}/feedback`)
       .then(response => response.json())
       .then(data => {
         setFeedback(data);

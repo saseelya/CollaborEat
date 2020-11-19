@@ -22,7 +22,7 @@ export default function DeleteRecipe() {
 
   useEffect(() => {
     const getRecipe = () => {
-        fetch(`http://localhost:8080/recipe/${id}`)
+        fetch(`${process.env.REACT_APP_API_URL}/recipe/${id}`)
         .then(response => response.json())
         .then((data) => {
             setRecipe(data);
@@ -45,7 +45,7 @@ export default function DeleteRecipe() {
   const handleDeleteSubmit = (event) => {
     event.preventDefault();
     setRecipeId(recipe.recipeId);
-    fetch(`http://localhost:8080/recipe/delete/${recipeId}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/recipe/delete/${recipeId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

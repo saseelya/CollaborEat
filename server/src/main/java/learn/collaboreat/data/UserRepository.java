@@ -3,6 +3,7 @@ package learn.collaboreat.data;
 
 
 import learn.collaboreat.models.User;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

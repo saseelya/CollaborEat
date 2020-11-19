@@ -10,7 +10,7 @@ export default function Card({ recipe }) {
 
   useEffect(() => {
     const getUser = () => {
-        fetch(`http://localhost:8080/user/${recipe.userId}`)
+        fetch(`${process.env.REACT_APP_API_URL}/user/${recipe.userId}`)
         .then(response => response.json())
         .then(data => {
           setUser(data);

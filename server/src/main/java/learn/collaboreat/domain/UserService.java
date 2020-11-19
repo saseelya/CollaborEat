@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import javax.validation.ValidationException;
 import java.util.List;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @Service
@@ -66,6 +68,7 @@ public class UserService implements UserDetailsService {
             return result;
         }
 
+        result = validate(user, result);
         result = validatePassword(user, result);
         if (!result.isSuccess()) {
             return result;
@@ -86,6 +89,11 @@ public class UserService implements UserDetailsService {
         Result<User> result = new Result<>();
         if (user == null) {
             result.addMessage("User must exist.", ResultType.INVALID);
+            return result;
+        }
+
+        result = validate(user, result);
+        if (!result.isSuccess()) {
             return result;
         }
 
@@ -141,6 +149,22 @@ public class UserService implements UserDetailsService {
         return result;
     }
 
+    private Result<User> validate(User user, Result<User> result) {
+        if (user.getFirstName() == null || user.getFirstName().isBlank()) {
+            result.addMessage("First Name cannot be blank.", ResultType.INVALID);
+        }
+        if (user.getLastName() == null || user.getLastName().isBlank()) {
+            result.addMessage("Last Name cannot be blank.", ResultType.INVALID);
+        }
+        if (user.getEmail() == null || user.getEmail().isBlank()) {
+            result.addMessage("Email Name cannot be blank.", ResultType.INVALID);
+        }
+        if (!isEmailAddress(user.getEmail())) {
+            result.addMessage("Invalid email address", ResultType.INVALID);
+        }
+        return result;
+    }
+
     private Result<User> validatePassword(User user, Result<User> result) {
         String password = user.getPassword();
         if (password == null || password.length() < 8) {
@@ -165,6 +189,16 @@ public class UserService implements UserDetailsService {
             result.addMessage("Password must contain a digit, a letter, and a non-digit/non-letter", ResultType.INVALID);
         }
         return result;
+    }
+
+    private boolean isEmailAddress(String email) {
+        if (email == null) {
+            return false;
+        }
+        String emailRegex = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$";
+        Pattern emailPattern = Pattern.compile(emailRegex, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = emailPattern.matcher(email);
+        return matcher.find();
     }
 
 }

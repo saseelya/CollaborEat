@@ -18,7 +18,7 @@ export default function EditUser() {
 
     useEffect(() => {
         const getUser = () => {
-            fetch(`http://localhost:8080/user/${id}`)
+            fetch(`${process.env.REACT_APP_API_URL}/user/${id}`)
             .then(response => response.json())
             .then(data => {
                 setUser(data);
@@ -34,7 +34,7 @@ export default function EditUser() {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetch(`http://localhost:8080/user/delete/${user.userId}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/user/delete/${user.userId}`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",

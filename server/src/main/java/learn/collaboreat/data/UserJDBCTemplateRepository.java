@@ -119,6 +119,7 @@ public class UserJDBCTemplateRepository implements UserRepository{
     @Override
     @Transactional
     public boolean delete(User user) {
+        addRecipes(user);
         for (Recipe r : user.getRecipes()) {
             recipeRepository.deleteById(r.getRecipeId());
         }

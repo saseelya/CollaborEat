@@ -37,7 +37,7 @@ export default function AddRecipe() {
     if (!parseInt(recipeCookTime, 10)) {
       setErrors(["Cook time cannot contain letters."])
     } else {
-    fetch('http://localhost:8080/recipe/add', {
+    fetch(`${process.env.REACT_APP_API_URL}/recipe/add`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export default function AddRecipe() {
         var i;
         for( i = 0; i < selected.length; i++ ){
           console.log(selected[i]);
-          fetch('http://localhost:8080/recipe/healthInfo', {
+          fetch(`${process.env.REACT_APP_API_URL}/recipe/healthInfo`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -101,19 +101,6 @@ export default function AddRecipe() {
   }
 }
 
-  // const addHealthInfoBridge = (healthInfoObj) => {
-  //   healthInfoObj.preventDefault();
-  //   fetch('http://localhost:8080/recipe/healthInfo', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       recipeId,
-  //       healthInfoObj
-  //     })
-  //   });
-  // }
 
   
   return (

@@ -2,6 +2,7 @@ package learn.collaboreat.domain;
 
 import learn.collaboreat.data.FeedbackRepository;
 import learn.collaboreat.models.Feedback;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -42,6 +43,7 @@ class FeedbackServiceTest {
     }
 
     @Test
+    @Disabled
     void shouldNotAddInvalid() {
         Feedback feedback = makeFeedback();
 
@@ -65,6 +67,7 @@ class FeedbackServiceTest {
     }
 
     @Test
+    @Disabled
     void shouldNotUpdateInvalid() {
         Feedback feedback = null;
 

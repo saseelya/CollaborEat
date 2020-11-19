@@ -6,7 +6,7 @@ export default function RecipeHealthInfo({ recipe }) {
   const [recipeHealthInfo, setRecipeHealthInfo] = useState([]);
   
   const getRecipeHealthInfo = () => {
-    fetch(`http://localhost:8080/recipe/healthInfo/${recipe.recipeId}`)
+    fetch(`${process.env.REACT_APP_API_URL}/recipe/healthInfo/${recipe.recipeId}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
