@@ -132,7 +132,7 @@ function ViewRecipe() {
                   <EmailShareButton 
                     url={`http://collaboreat.s3.us-east-2.amazonaws.com/index.html#/recipe/${recipe.recipeId}`}
                     quote={"Check out this recipe from CollaborEat! Here's what's cookin': "}
-                    hashtag="#collaboreat">
+                    hashtag="#collaboreat">{/* Smell what's cookin! what's in the kitchey?? a human FINGER */}
                     <EmailIcon size={36} />
                   </EmailShareButton> 
                   <p></p>    
