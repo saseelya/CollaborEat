@@ -1,3 +1,5 @@
+CollaborEat is a website created for the Dev-10 bootcamp in two weeks by Cecilia Barkume, Nicolas Dorsett and Jamie Lepito during late 2020.
+
 1. Unzip file
 2. Navigate to CollaborEat>client>collaboreat-react in powershell
 3. Run npm install
